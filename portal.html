@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Cổng Tài Khoản & Quản Lý Đơn Hàng | Elite Technology</title>
+  <meta name="description" content="Quản lý thông tin tài khoản, theo dõi đơn hàng công nghệ, sổ địa chỉ campus và voucher tích lũy sinh viên.">
+
+  <!-- Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <!-- Tailwind CSS Play CDN with Stitch Design Tokens -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#004ac6",
+            "primary-container": "#2563eb",
+            "on-primary": "#ffffff",
+            "secondary": "#9d4300",
+            "secondary-container": "#fd761a",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-highest": "#dae2fd",
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#434655",
+            "outline": "#737686",
+            "outline-variant": "#c3c6d7",
+            "success": "#16a34a",
+            "warning": "#ea580c"
+          },
+          fontFamily: {
+            display: ["'Plus Jakarta Sans'", "sans-serif"],
+            sans: ["'Inter'", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      background-color: #faf8ff;
+      color: #131b2e;
+      font-family: 'Inter', sans-serif;
+    }
+    .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="min-h-full flex flex-col antialiased bg-surface text-on-surface">
+
+  <!-- ================= TOP NAVBAR ================= -->
+  <header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between gap-4">
+      
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 group flex-shrink-0">
+        <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-2xl font-bold">bolt</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-heading font-extrabold text-xl md:text-2xl text-primary tracking-tight leading-none">Elite Technology</span>
+          <span class="text-[10px] text-on-surface-variant font-semibold tracking-wider uppercase hidden sm:inline">Customer Portal</span>
+        </div>
+      </a>
+
+      <!-- Quick breadcrumb or Title on desktop -->
+      <div class="hidden md:flex items-center gap-2 text-xs text-on-surface-variant font-medium">
+        <a href="index.html" class="hover:text-primary">Trang chủ</a>
+        <span>/</span>
+        <span class="text-on-surface font-semibold">Tài khoản & Đơn hàng</span>
+      </div>
+
+      <!-- Action Items -->
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="text-xs font-semibold text-primary hover:underline flex items-center gap-1">
+          <span class="material-symbols-outlined text-base">storefront</span>
+          <span class="hidden sm:inline">Tiếp tục mua sắm</span>
+        </a>
+        <a href="cart.html" aria-label="Cart" class="relative w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-2xl">shopping_bag</span>
+          <span class="absolute top-1 right-1 bg-primary text-on-primary text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+        </a>
+        <a href="auth.html" class="text-xs font-bold px-3 py-1.5 rounded-lg border border-outline-variant/50 hover:bg-surface-container text-on-surface-variant transition-colors">
+          Đăng xuất
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= PORTAL MAIN BODY ================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+    
+    <!-- Profile Hero Card (Compact & Modern) -->
+    <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-5 sm:p-6 shadow-sm mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-16 h-16 rounded-2xl object-cover ring-2 ring-primary/30">
+          <span class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-success text-white flex items-center justify-center text-[12px] border-2 border-white shadow-sm">
+            <span class="material-symbols-outlined text-xs">check</span>
+          </span>
+        </div>
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <h1 class="font-heading text-lg sm:text-xl font-bold text-on-surface">Alex Rivera</h1>
+            <span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-bold">
+              Sinh Viên Verified
+            </span>
+          </div>
+          <p class="text-xs text-on-surface-variant">MSSV: <strong>SE170123</strong> • Trường Đại Học FPT Campus Hòa Lạc</p>
+          <p class="text-xs text-on-surface-variant">alex.rivera.fer202@fpt.edu.vn</p>
+        </div>
+      </div>
+
+      <!-- Quick KPI Balance -->
+      <div class="flex items-center gap-3 self-stretch sm:self-auto bg-surface-container-low p-3 rounded-xl border border-outline-variant/20">
+        <div class="text-center px-3 border-r border-outline-variant/30">
+          <span class="text-[10px] uppercase font-bold text-on-surface-variant block">Điểm Campus</span>
+          <span class="font-heading font-extrabold text-base text-primary">1.450 pts</span>
+        </div>
+        <div class="text-center px-3 border-r border-outline-variant/30">
+          <span class="text-[10px] uppercase font-bold text-on-surface-variant block">Voucher</span>
+          <span class="font-heading font-extrabold text-base text-secondary">4 Mã</span>
+        </div>
+        <div class="text-center px-3">
+          <span class="text-[10px] uppercase font-bold text-on-surface-variant block">Hạng</span>
+          <span class="font-heading font-extrabold text-base text-on-surface">Gold SV</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layout: 2 Columns (Navigation Tabs + Tab Panels) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      
+      <!-- Left Column: Navigation Menu (Sticky on Desktop, Horizontal Scroll on Mobile) -->
+      <aside class="lg:col-span-3 bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-2 sm:p-3 shadow-sm lg:sticky lg:top-24">
+        
+        <!-- Mobile Horizontal Tab Bar -->
+        <div class="flex lg:flex-col overflow-x-auto no-scrollbar gap-1 p-1">
+          <button onclick="setPortalTab('orders')" id="nav-orders" class="portal-nav-btn active flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-primary text-white shadow-sm">
+            <span class="material-symbols-outlined text-lg">package_2</span>
+            <span>Đơn Hàng Của Tôi</span>
+            <span class="ml-auto hidden lg:inline px-1.5 py-0.2 rounded-full bg-white/20 text-[10px]">3</span>
+          </button>
+
+          <button onclick="setPortalTab('profile')" id="nav-profile" class="portal-nav-btn flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-on-surface-variant hover:bg-surface-container-low transition-all whitespace-nowrap">
+            <span class="material-symbols-outlined text-lg">account_circle</span>
+            <span>Thông Tin Cá Nhân</span>
+          </button>
+
+          <button onclick="setPortalTab('addresses')" id="nav-addresses" class="portal-nav-btn flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-on-surface-variant hover:bg-surface-container-low transition-all whitespace-nowrap">
+            <span class="material-symbols-outlined text-lg">location_on</span>
+            <span>Sổ Địa Chỉ Giao Hàng</span>
+          </button>
+
+          <button onclick="setPortalTab('vouchers')" id="nav-vouchers" class="portal-nav-btn flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-on-surface-variant hover:bg-surface-container-low transition-all whitespace-nowrap">
+            <span class="material-symbols-outlined text-lg">confirmation_number</span>
+            <span>Kho Voucher & Ưu Đãi</span>
+          </button>
+
+          <button onclick="setPortalTab('security')" id="nav-security" class="portal-nav-btn flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-on-surface-variant hover:bg-surface-container-low transition-all whitespace-nowrap">
+            <span class="material-symbols-outlined text-lg">shield_lock</span>
+            <span>Bảo Mật & Mật Khẩu</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Right Column: Tab Content Area -->
+      <div class="lg:col-span-9 space-y-6">
+
+        <!-- ================= TAB 1: ORDERS ================= -->
+        <section id="panel-orders" class="portal-panel space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h2 class="font-heading text-lg font-bold text-on-surface">Đơn Hàng Gần Đây</h2>
+              <p class="text-xs text-on-surface-variant">Theo dõi hành trình đơn hàng và lịch sử mua hàng công nghệ</p>
+            </div>
+            
+            <!-- Quick Filter Chips -->
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+              <button class="px-3 py-1 rounded-full bg-primary text-white text-xs font-bold shadow-sm">Tất cả</button>
+              <button class="px-3 py-1 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant text-xs font-medium">Đang giao (1)</button>
+              <button class="px-3 py-1 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant text-xs font-medium">Hoàn thành (2)</button>
+            </div>
+          </div>
+
+          <!-- Order Card 1 (Active Delivery) -->
+          <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-5 shadow-sm space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-outline-variant/20">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-lg">local_shipping</span>
+                <span class="text-xs font-bold text-on-surface">Mã đơn: <span class="text-primary font-mono">#ORD-98214</span></span>
+                <span class="text-xs text-outline">• 07/10/2026</span>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 text-xs font-bold flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+                Đang vận chuyển Campus Express
+              </span>
+            </div>
+
+            <!-- Product Items in Order -->
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=120&auto=format&fit=crop&q=80" alt="Product" class="w-14 h-14 rounded-xl object-cover bg-surface-container-low">
+                <div>
+                  <h4 class="text-xs sm:text-sm font-semibold text-on-surface line-clamp-1">Tai Nghe NovaPro Wireless ANC</h4>
+                  <p class="text-xs text-on-surface-variant">Màu: Midnight Blue • SL: 1</p>
+                  <p class="text-xs font-bold text-primary mt-0.5">2.990.000đ</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="text-xs text-on-surface-variant block">Tổng thanh toán</span>
+                <span class="font-heading font-extrabold text-sm sm:text-base text-on-surface">2.990.000đ</span>
+              </div>
+            </div>
+
+            <!-- Tracking Timeline -->
+            <div class="bg-surface-container-low p-3.5 rounded-xl border border-outline-variant/20 space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-semibold text-primary flex items-center gap-1">
+                  <span class="material-symbols-outlined text-base">near_me</span>
+                  Shipper đang đến Ký Túc Xá Dom A (Phòng 302)
+                </span>
+                <span class="text-on-surface-variant font-medium">Dự kiến: 11:45 Hôm nay</span>
+              </div>
+              <!-- Progress Bar -->
+              <div class="w-full bg-outline-variant/30 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-primary h-full rounded-full w-3/4"></div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center justify-end gap-2 pt-1">
+              <button onclick="alert('Đang mở bản đồ vị trí shipper trên campus...')" class="px-3.5 py-1.5 rounded-lg border border-outline-variant/50 hover:bg-surface-container-low text-xs font-semibold text-on-surface transition-colors">
+                Xem Vị Trí Shipper
+              </button>
+              <button onclick="alert('Hotline hỗ trợ đơn hàng: 1900 8888')" class="px-3.5 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-bold text-primary transition-colors">
+                Hỗ Trợ Đơn
+              </button>
+            </div>
+          </div>
+
+          <!-- Order Card 2 (Completed) -->
+          <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-5 shadow-sm space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-outline-variant/20">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-success text-lg">check_circle</span>
+                <span class="text-xs font-bold text-on-surface">Mã đơn: <span class="text-primary font-mono">#ORD-95410</span></span>
+                <span class="text-xs text-outline">• 28/09/2026</span>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-green-100 text-green-700 text-xs font-bold">
+                Giao hàng thành công
+              </span>
+            </div>
+
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=120&auto=format&fit=crop&q=80" alt="Product" class="w-14 h-14 rounded-xl object-cover bg-surface-container-low">
+                <div>
+                  <h4 class="text-xs sm:text-sm font-semibold text-on-surface line-clamp-1">Bàn Phím Cơ Không Dây ErgoWave</h4>
+                  <p class="text-xs text-on-surface-variant">Switch: Brown • SL: 1</p>
+                  <p class="text-xs font-bold text-primary mt-0.5">1.650.000đ</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="text-xs text-on-surface-variant block">Tổng thanh toán</span>
+                <span class="font-heading font-extrabold text-sm sm:text-base text-on-surface">1.650.000đ</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-end gap-2 pt-1">
+              <button onclick="alert('Đã thêm sản phẩm lại vào giỏ hàng!')" class="px-3.5 py-1.5 rounded-lg border border-outline-variant/50 hover:bg-surface-container-low text-xs font-semibold text-on-surface transition-colors">
+                Mua Lại
+              </button>
+              <button onclick="alert('Mở form đánh giá sản phẩm')" class="px-3.5 py-1.5 rounded-lg bg-secondary-container hover:bg-secondary text-white text-xs font-bold shadow-sm transition-colors">
+                Đánh Giá Sản Phẩm (+50 xu)
+              </button>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ================= TAB 2: PROFILE ================= -->
+        <section id="panel-profile" class="portal-panel space-y-4 hidden">
+          <div>
+            <h2 class="font-heading text-lg font-bold text-on-surface">Hồ Sơ Cá Nhân</h2>
+            <p class="text-xs text-on-surface-variant">Cập nhật thông tin sinh viên và tài khoản nhận hàng</p>
+          </div>
+
+          <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-5 sm:p-6 shadow-sm">
+            <form onsubmit="event.preventDefault(); alert('Đã lưu thông tin hồ sơ thành công!');" class="space-y-4 max-w-2xl">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="space-y-1">
+                  <label class="block text-xs font-semibold text-on-surface">Họ và tên</label>
+                  <input type="text" value="Alex Rivera" class="w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/50 bg-surface text-xs text-on-surface focus:outline-none focus:border-primary">
+                </div>
+                <div class="space-y-1">
+                  <label class="block text-xs font-semibold text-on-surface">Số điện thoại</label>
+                  <input type="tel" value="0987 654 321" class="w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/50 bg-surface text-xs text-on-surface focus:outline-none focus:border-primary">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="space-y-1">
+                  <label class="block text-xs font-semibold text-on-surface">Email Campus</label>
+                  <input type="email" value="alex.rivera.fer202@fpt.edu.vn" readonly class="w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/40 bg-surface-container-low text-xs text-on-surface-variant cursor-not-allowed">
+                </div>
+                <div class="space-y-1">
+                  <label class="block text-xs font-semibold text-on-surface">Mã Số Sinh Viên (MSSV)</label>
+                  <input type="text" value="SE170123" readonly class="w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/40 bg-surface-container-low text-xs text-on-surface-variant cursor-not-allowed">
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <label class="block text-xs font-semibold text-on-surface">Khoa / Ngành Học</label>
+                <input type="text" value="Kỹ Thuật Phần Mềm (Software Engineering) - Khóa K17" class="w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/50 bg-surface text-xs text-on-surface focus:outline-none focus:border-primary">
+              </div>
+
+              <button type="submit" class="px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-container text-white text-xs font-bold shadow-sm transition-colors">
+                Lưu Thay Đổi
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ================= TAB 3: ADDRESSES ================= -->
+        <section id="panel-addresses" class="portal-panel space-y-4 hidden">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="font-heading text-lg font-bold text-on-surface">Sổ Địa Chỉ Giao Hàng</h2>
+              <p class="text-xs text-on-surface-variant">Địa chỉ ưu tiên khi nhận hàng Express tại Campus</p>
+            </div>
+            <button onclick="alert('Mở modal thêm địa chỉ mới')" class="px-3.5 py-2 rounded-xl bg-primary text-white text-xs font-bold flex items-center gap-1 shadow-sm">
+              <span class="material-symbols-outlined text-base">add</span>
+              <span>Thêm Địa Chỉ</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Address 1 (Default Campus) -->
+            <div class="p-4 rounded-2xl bg-surface-container-lowest border-2 border-primary/30 shadow-sm relative space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-on-surface flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-primary text-base">apartment</span>
+                  Ký Túc Xá Dom A (Phòng 302)
+                </span>
+                <span class="px-2 py-0.5 rounded bg-primary text-white text-[10px] font-bold">Mặc định</span>
+              </div>
+              <p class="text-xs text-on-surface-variant">Người nhận: <strong>Alex Rivera</strong> (0987 654 321)</p>
+              <p class="text-xs text-on-surface-variant">Khuôn viên Đại học FPT, Khu Công Nghệ Cao Hòa Lạc, Thạch Thất, Hà Nội</p>
+              <div class="pt-2 flex items-center gap-3 text-xs">
+                <a href="#" class="text-primary font-semibold hover:underline">Chỉnh sửa</a>
+                <span class="text-outline">•</span>
+                <span class="text-xs text-on-surface-variant">Giao miễn phí 2h</span>
+              </div>
+            </div>
+
+            <!-- Address 2 (Home) -->
+            <div class="p-4 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-on-surface flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-outline text-base">home</span>
+                  Nhà Riêng (Cuối tuần)
+                </span>
+              </div>
+              <p class="text-xs text-on-surface-variant">Người nhận: <strong>Alex Rivera</strong> (0987 654 321)</p>
+              <p class="text-xs text-on-surface-variant">Số 45 Ngõ 120 Hoàng Quốc Việt, Cầu Giấy, Hà Nội</p>
+              <div class="pt-2 flex items-center gap-3 text-xs">
+                <a href="#" class="text-primary font-semibold hover:underline">Chỉnh sửa</a>
+                <span class="text-outline">•</span>
+                <a href="#" class="text-on-surface-variant hover:text-primary font-medium">Đặt làm mặc định</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= TAB 4: VOUCHERS ================= -->
+        <section id="panel-vouchers" class="portal-panel space-y-4 hidden">
+          <div>
+            <h2 class="font-heading text-lg font-bold text-on-surface">Kho Voucher Của Bạn</h2>
+            <p class="text-xs text-on-surface-variant">Các mã giảm giá áp dụng tự động khi mua sắm</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm flex items-center justify-between gap-3">
+              <div class="space-y-1">
+                <span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold">CAMPUS EXCLUSIVE</span>
+                <h4 class="font-heading font-bold text-sm text-on-surface">GIẢM 15% ĐƠN GEAR</h4>
+                <p class="text-xs text-on-surface-variant">Tối đa 150k cho bàn phím & tai nghe</p>
+                <p class="text-[10px] text-outline">HSD: 31/10/2026</p>
+              </div>
+              <button onclick="alert('Đã sao chép mã SVGEAR15')" class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-bold text-primary transition-colors">
+                Dùng Ngay
+              </button>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm flex items-center justify-between gap-3">
+              <div class="space-y-1">
+                <span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed text-[10px] font-bold">FREESHIP CAMPUS</span>
+                <h4 class="font-heading font-bold text-sm text-on-surface">MIỄN PHÍ VẬN CHUYỂN</h4>
+                <p class="text-xs text-on-surface-variant">Đơn từ 150.000đ khu vực trường</p>
+                <p class="text-[10px] text-outline">HSD: 15/11/2026</p>
+              </div>
+              <button onclick="alert('Đã sao chép mã FREESHIP')" class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-bold text-primary transition-colors">
+                Dùng Ngay
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= TAB 5: SECURITY ================= -->
+        <section id="panel-security" class="portal-panel space-y-4 hidden">
+          <div>
+            <h2 class="font-heading text-lg font-bold text-on-surface">Bảo Mật Tài Khoản</h2>
+            <p class="text-xs text-on-surface-variant">Đổi mật khẩu và quản lý phiên đăng nhập thiết bị</p>
+          </div>
+
+          <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-5 sm:p-6 shadow-sm max-w-2xl space-y-4">
+            <form onsubmit="event.preventDefault(); alert('Đã cập nhật mật khẩu mới thành công!');" class="space-y-3">
+              <div class="space-y-1">
+                <label class="block text-xs font-semibold text-on-surface">Mật khẩu hiện tại</label>
+                <input type="password" placeholder="••••••••" required class="w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/50 bg-surface text-xs text-on-surface focus:outline-none focus:border-primary">
+              </div>
+              <div class="space-y-1">
+                <label class="block text-xs font-semibold text-on-surface">Mật khẩu mới</label>
+                <input type="password" placeholder="••••••••" required class="w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/50 bg-surface text-xs text-on-surface focus:outline-none focus:border-primary">
+              </div>
+              <button type="submit" class="px-5 py-2.5 rounded-xl bg-primary text-white text-xs font-bold shadow-sm hover:bg-primary-container transition-colors">
+                Cập Nhật Mật Khẩu
+              </button>
+            </form>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ================= BOTTOM NAVIGATION BAR (MOBILE ONLY) ================= -->
+  <nav class="md:hidden fixed bottom-0 inset-x-0 bg-surface/95 backdrop-blur-lg border-t border-outline-variant/40 z-50 px-2 py-1 flex items-center justify-around shadow-lg">
+    <a href="index.html" class="flex flex-col items-center py-1 text-on-surface-variant hover:text-primary">
+      <span class="material-symbols-outlined text-2xl">home</span>
+      <span class="text-[10px] font-medium">Trang chủ</span>
+    </a>
+    <a href="products.html" class="flex flex-col items-center py-1 text-on-surface-variant hover:text-primary">
+      <span class="material-symbols-outlined text-2xl">grid_view</span>
+      <span class="text-[10px] font-medium">Sản phẩm</span>
+    </a>
+    <a href="cart.html" class="relative flex flex-col items-center py-1 text-on-surface-variant hover:text-primary">
+      <span class="material-symbols-outlined text-2xl">shopping_bag</span>
+      <span class="absolute top-0 right-3 bg-secondary-container text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+      <span class="text-[10px] font-medium">Giỏ hàng</span>
+    </a>
+    <a href="portal.html" class="flex flex-col items-center py-1 text-primary">
+      <span class="material-symbols-outlined text-2xl">person</span>
+      <span class="text-[10px] font-bold">Cá nhân</span>
+    </a>
+  </nav>
+
+  <script>
+    function setPortalTab(tabId) {
+      // Hide all panels
+      document.querySelectorAll('.portal-panel').forEach(panel => {
+        panel.classList.add('hidden');
+      });
+
+      // Show selected panel
+      const targetPanel = document.getElementById('panel-' + tabId);
+      if (targetPanel) {
+        targetPanel.classList.remove('hidden');
+      }
+
+      // Update button classes
+      document.querySelectorAll('.portal-nav-btn').forEach(btn => {
+        btn.className = "portal-nav-btn flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-on-surface-variant hover:bg-surface-container-low transition-all whitespace-nowrap";
+      });
+
+      const activeBtn = document.getElementById('nav-' + tabId);
+      if (activeBtn) {
+        activeBtn.className = "portal-nav-btn active flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-primary text-white shadow-sm";
+      }
+    }
+  </script>
+</body>
+</html>

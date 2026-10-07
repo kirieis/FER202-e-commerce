@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Đăng Nhập & Đăng Ký | Elite Technology</title>
+  <meta name="description" content="Đăng nhập tài khoản Elite Technology để nhận ưu đãi thành viên sinh viên, theo dõi đơn hàng và quản lý tài khoản.">
+
+  <!-- Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <!-- Tailwind CSS Play CDN with Stitch Design Tokens -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#004ac6",
+            "primary-container": "#2563eb",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#eeefff",
+            "secondary": "#9d4300",
+            "secondary-container": "#fd761a",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-highest": "#dae2fd",
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#434655",
+            "outline": "#737686",
+            "outline-variant": "#c3c6d7",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          },
+          fontFamily: {
+            display: ["'Plus Jakarta Sans'", "sans-serif"],
+            sans: ["'Inter'", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      background-color: #faf8ff;
+      color: #131b2e;
+      font-family: 'Inter', sans-serif;
+    }
+    .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-full flex flex-col justify-center bg-surface antialiased">
+
+  <!-- Top bar for quick home navigation -->
+  <div class="fixed top-0 inset-x-0 p-4 flex items-center justify-between z-20 max-w-7xl mx-auto">
+    <a href="index.html" class="flex items-center gap-2.5 group">
+      <div class="w-9 h-9 rounded-xl bg-primary text-on-primary flex items-center justify-center font-bold shadow-sm group-hover:scale-105 transition-transform">
+        <span class="material-symbols-outlined text-xl">bolt</span>
+      </div>
+      <span class="font-heading font-extrabold text-xl text-primary tracking-tight">Elite Technology</span>
+    </a>
+    <a href="index.html" class="text-xs font-semibold text-on-surface-variant hover:text-primary flex items-center gap-1 transition-colors">
+      <span class="material-symbols-outlined text-base">arrow_back</span>
+      <span>Về trang chủ</span>
+    </a>
+  </div>
+
+  <!-- Container for Auth Box -->
+  <main class="w-full max-w-4xl mx-auto px-4 py-16 sm:py-20 flex items-center justify-center">
+    
+    <!-- Split Layout Card: 2 columns on desktop (Form + Campus Showcase) -->
+    <div class="w-full bg-surface-container-lowest rounded-2xl border border-outline-variant/40 shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-12">
+      
+      <!-- Left Column: Form (Login / Register Tabs) -->
+      <div class="md:col-span-7 p-6 sm:p-10 flex flex-col justify-center">
+        
+        <!-- Header & Segmented Switcher -->
+        <div class="space-y-4 mb-6">
+          <div class="inline-flex p-1 bg-surface-container rounded-xl w-full">
+            <button id="tab-login-btn" onclick="switchTab('login')" class="flex-1 py-2 text-xs font-bold rounded-lg transition-all bg-surface-container-lowest text-primary shadow-sm">
+              Đăng Nhập
+            </button>
+            <button id="tab-register-btn" onclick="switchTab('register')" class="flex-1 py-2 text-xs font-bold rounded-lg transition-all text-on-surface-variant hover:text-on-surface">
+              Tạo Tài Khoản
+            </button>
+          </div>
+
+          <div id="auth-title-box">
+            <h1 class="font-heading text-2xl font-bold text-on-surface" id="auth-title">Chào Mừng Trở Lại</h1>
+            <p class="text-xs text-on-surface-variant mt-1" id="auth-subtitle">Đăng nhập tài khoản để nhận ưu đãi sinh viên và theo dõi đơn hàng</p>
+          </div>
+        </div>
+
+        <!-- 1-Click Fast Auth (Google & Student SSO) -->
+        <div class="space-y-2 mb-6">
+          <button type="button" class="w-full flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-xl border border-outline-variant/60 bg-surface-container-lowest hover:bg-surface-container-low text-xs font-semibold text-on-surface transition-all active:scale-[0.98]">
+            <svg class="w-4 h-4" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.35 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+            <span>Tiếp tục bằng tài khoản Google</span>
+          </button>
+          
+          <button type="button" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-surface-container hover:bg-surface-container-high text-xs font-semibold text-primary transition-all active:scale-[0.98]">
+            <span class="material-symbols-outlined text-base">school</span>
+            <span>Đăng nhập qua cổng Sinh viên (FPT/ĐH)</span>
+          </button>
+        </div>
+
+        <!-- Divider -->
+        <div class="relative flex items-center justify-center mb-6">
+          <div class="border-t border-outline-variant/40 w-full"></div>
+          <span class="bg-surface-container-lowest px-3 text-[11px] text-outline uppercase font-semibold tracking-wider">hoặc email</span>
+        </div>
+
+        <!-- FORM INPUTS -->
+        <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+          
+          <!-- Full name (Register only) -->
+          <div id="field-fullname" class="space-y-1 hidden">
+            <label class="block text-xs font-semibold text-on-surface">Họ và tên</label>
+            <input type="text" placeholder="Nguyễn Văn A" class="w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/60 bg-surface-container-lowest text-xs text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+          </div>
+
+          <!-- Email -->
+          <div class="space-y-1">
+            <label class="block text-xs font-semibold text-on-surface">Email</label>
+            <input type="email" required placeholder="sinhvien@fpt.edu.vn" class="w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/60 bg-surface-container-lowest text-xs text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+          </div>
+
+          <!-- Student ID (Register only) -->
+          <div id="field-studentid" class="space-y-1 hidden">
+            <label class="block text-xs font-semibold text-on-surface">Mã số sinh viên (để nhận giảm 15%)</label>
+            <input type="text" placeholder="SE170123" class="w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/60 bg-surface-container-lowest text-xs text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+          </div>
+
+          <!-- Password & Forgot link -->
+          <div class="space-y-1">
+            <div class="flex items-center justify-between">
+              <label class="block text-xs font-semibold text-on-surface">Mật khẩu</label>
+              <a href="#" onclick="alert('Tính năng khôi phục mật khẩu: Hệ thống đã gửi mã xác thực OTP về email của bạn!');" class="text-[11px] font-semibold text-primary hover:underline" id="link-forgot-pw">Quên mật khẩu?</a>
+            </div>
+            <div class="relative">
+              <input type="password" id="input-password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/60 bg-surface-container-lowest text-xs text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+              <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-2.5 text-outline hover:text-on-surface">
+                <span class="material-symbols-outlined text-lg" id="pw-visibility-icon">visibility</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" id="btn-submit" class="w-full py-3 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-bold text-xs sm:text-sm shadow-md transition-all active:scale-[0.98] flex items-center justify-center gap-1.5 mt-2">
+            <span id="btn-submit-text">Đăng Nhập Ngay</span>
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </button>
+        </form>
+
+        <p class="text-[11px] text-center text-on-surface-variant mt-5">
+          Bằng việc đăng ký, bạn đồng ý với <a href="#" class="text-primary hover:underline">Điều khoản dịch vụ</a> và <a href="#" class="text-primary hover:underline">Chính sách bảo mật</a> của Elite Tech.
+        </p>
+
+      </div>
+
+      <!-- Right Column: Visual Showcase & Campus Perks (Desktop Only) -->
+      <div class="hidden md:flex md:col-span-5 bg-gradient-to-br from-primary via-primary-container to-surface-tint p-8 text-on-primary flex-col justify-between relative overflow-hidden">
+        <!-- Ambient circle glows -->
+        <div class="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-white/10 blur-xl"></div>
+        <div class="absolute -left-12 -bottom-12 w-48 h-48 rounded-full bg-secondary-container/20 blur-xl"></div>
+
+        <div class="relative z-10 space-y-4">
+          <span class="inline-block px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider">
+            Campus Privilege
+          </span>
+          <h3 class="font-heading text-2xl font-bold leading-tight">
+            Một tài khoản, ngập tràn đặc quyền công nghệ
+          </h3>
+          <p class="text-xs text-on-primary-container leading-relaxed">
+            Nhận mã giảm giá trực tiếp tới 15% cho tất cả đơn hàng linh kiện, laptop và gear chính hãng khi đăng nhập bằng email trường.
+          </p>
+        </div>
+
+        <!-- 3 Feature Points -->
+        <div class="relative z-10 space-y-3 my-6">
+          <div class="flex items-center gap-3 bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+            <span class="material-symbols-outlined text-secondary-fixed text-xl">electric_moped</span>
+            <div class="text-xs">
+              <p class="font-bold">Giao tận tay 2h</p>
+              <p class="text-[10px] text-on-primary-container">Khuôn viên ký túc xá & giảng đường</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+            <span class="material-symbols-outlined text-secondary-fixed text-xl">credit_card</span>
+            <div class="text-xs">
+              <p class="font-bold">Trả góp 0% lãi suất</p>
+              <p class="text-[10px] text-on-primary-container">Chỉ cần mã số sinh viên hợp lệ</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative z-10 border-t border-white/20 pt-4 flex items-center gap-2">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="w-8 h-8 rounded-full object-cover ring-2 ring-white/30" alt="Student">
+          <div class="text-[11px]">
+            <p class="font-bold">Đã có 5.200+ sinh viên</p>
+            <p class="text-on-primary-container text-[10px]">kích hoạt tài khoản campus thành công</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    let currentMode = 'login';
+
+    function switchTab(mode) {
+      currentMode = mode;
+      const tabLogin = document.getElementById('tab-login-btn');
+      const tabRegister = document.getElementById('tab-register-btn');
+      const title = document.getElementById('auth-title');
+      const subtitle = document.getElementById('auth-subtitle');
+      const btnText = document.getElementById('btn-submit-text');
+      const fieldFullname = document.getElementById('field-fullname');
+      const fieldStudentId = document.getElementById('field-studentid');
+      const forgotLink = document.getElementById('link-forgot-pw');
+
+      if (mode === 'login') {
+        tabLogin.className = "flex-1 py-2 text-xs font-bold rounded-lg transition-all bg-surface-container-lowest text-primary shadow-sm";
+        tabRegister.className = "flex-1 py-2 text-xs font-bold rounded-lg transition-all text-on-surface-variant hover:text-on-surface";
+        title.innerText = "Chào Mừng Trở Lại";
+        subtitle.innerText = "Đăng nhập tài khoản để nhận ưu đãi sinh viên và theo dõi đơn hàng";
+        btnText.innerText = "Đăng Nhập Ngay";
+        fieldFullname.classList.add('hidden');
+        fieldStudentId.classList.add('hidden');
+        forgotLink.classList.remove('hidden');
+      } else {
+        tabRegister.className = "flex-1 py-2 text-xs font-bold rounded-lg transition-all bg-surface-container-lowest text-primary shadow-sm";
+        tabLogin.className = "flex-1 py-2 text-xs font-bold rounded-lg transition-all text-on-surface-variant hover:text-on-surface";
+        title.innerText = "Đăng Ký Tài Khoản Mới";
+        subtitle.innerText = "Tạo tài khoản và xác thực sinh viên để nhận voucher 100k đầu tiên";
+        btnText.innerText = "Tạo Tài Khoản";
+        fieldFullname.classList.remove('hidden');
+        fieldStudentId.classList.remove('hidden');
+        forgotLink.classList.add('hidden');
+      }
+    }
+
+    function togglePasswordVisibility() {
+      const input = document.getElementById('input-password');
+      const icon = document.getElementById('pw-visibility-icon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.innerText = 'visibility_off';
+      } else {
+        input.type = 'password';
+        icon.innerText = 'visibility';
+      }
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      // Mock flow: redirect to portal
+      window.location.href = 'portal.html';
+    }
+  </script>
+</body>
+</html>
