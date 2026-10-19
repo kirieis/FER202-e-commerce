@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0B0D14;
+  --surface: #141824;
+  --band: #0F1220;
+  --card: #151A2A;
+  --stage: linear-gradient(180deg, #1F2540 0%, #131829 100%);
+  --tx: #F3F4F8;
+  --mu: #8A90A6;
+  --ln: rgba(255, 255, 255, 0.10);
+  --bln: rgba(255, 255, 255, 0.10);
+  --ink: #0B0D14;
+  --ink2: #141824;
+  --pri: #6F5CFF;
+  --pri-h: #8A7BFF;
+  --warm: #FF8A4C;
+  --ok: #3DD598;
+  --pop: #FF4D8D;
+  --btn-p-bg: #F3F4F8;
+  --btn-p-tx: #0B0D14;
+  --btn-s-bg: rgba(255, 255, 255, 0.08);
+  --btn-s-tx: #F3F4F8;
+  --add-btn-bg: #F3F4F8;
+  --add-btn-tx: #0B0D14;
+  --modal-bg: #141824;
+  --modal-tab-bg: #1C2235;
+  --hero-glow: radial-gradient(closest-side, rgba(111,92,255,0.45), transparent 72%), radial-gradient(closest-side at 70% 60%, rgba(255,138,76,0.30), transparent 70%);
+  --hero-shadow: drop-shadow(0 32px 56px rgba(0,0,0,0.75));
+  --f: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  --fm: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+:root[data-theme="light"], html[data-theme="light"] {
+  --bg: #FBFBFD;
+  --surface: #F0F1F6;
+  --band: #ECEEF3;
+  --card: #FFFFFF;
+  --stage: linear-gradient(180deg, #F7F8FB 0%, #E2E5ED 100%);
+  --tx: #0B0D14;
+  --mu: #5B6176;
+  --ln: rgba(11, 13, 20, 0.10);
+  --bln: rgba(11, 13, 20, 0.10);
+  --ink: #FFFFFF;
+  --ink2: #F0F1F6;
+  --pri: #5B47F5;
+  --pri-h: #4634D6;
+  --warm: #FF7A33;
+  --ok: #0B7F58;
+  --pop: #FF4D8D;
+  --btn-p-bg: #0B0D14;
+  --btn-p-tx: #FBFBFD;
+  --btn-s-bg: #FFFFFF;
+  --btn-s-tx: #0B0D14;
+  --add-btn-bg: #0B0D14;
+  --add-btn-tx: #FBFBFD;
+  --modal-bg: #FFFFFF;
+  --modal-tab-bg: #E8EBF2;
+  --hero-glow: radial-gradient(closest-side, rgba(111,92,255,0.22), transparent 72%), radial-gradient(closest-side at 70% 60%, rgba(255,122,51,0.18), transparent 70%);
+  --hero-shadow: drop-shadow(0 28px 48px rgba(11,13,20,0.18));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--tx);
+  font-family: var(--f);
+  min-height: 100vh;
+  transition: background-color 200ms ease, color 200ms ease;
+  overflow-x: hidden;
+}
+
+.font-mono-code {
+  font-family: var(--fm);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ln);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mu);
+}

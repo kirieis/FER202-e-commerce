@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UniGear - Đăng nhập & Đăng ký Sinh viên</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0D14;--ink2:#141824;--ink3:#1C2234;--tx:#F3F4F8;--mu:#8A90A6;--ln:rgba(255,255,255,.1);
+  --pri:#6F5CFF;--pri-h:#8A7BFF;--warm:#FF8A4C;--ok:#3DD598;
+  --band:#0F1220;--card:#151A2A;--stage:linear-gradient(#1F2540,#131829);--btx:#F3F4F8;--bmu:#8A90A6;--bln:rgba(255,255,255,.12);
+  --f:'Be Vietnam Pro',system-ui,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;
+  box-sizing:border-box;
+}
+:root[data-theme="light"]{
+  --ink:#FBFBFD;--ink2:#F0F1F6;--ink3:#E2E5EE;--tx:#0B0D14;--mu:#5B6176;--ln:rgba(11,13,20,.1);
+  --pri:#5B47F5;--pri-h:#4634D6;--warm:#FF7A33;--ok:#0B7F58;
+  --band:#ECEEF3;--card:#FFFFFF;--stage:linear-gradient(#F7F8FB,#E2E5ED);--btx:#0B0D14;--bmu:#5B6176;--bln:#D9DCE6;
+}
+*{box-sizing:border-box;margin:0;padding:0;transition:background-color .2s,color .2s,border-color .2s}
+body{background:var(--ink);color:var(--tx);font:400 15px/1.6 var(--f);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px;width:100%}
+
+/* Header */
+header{position:sticky;top:0;z-index:40;background:rgba(11,13,20,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--ln)}
+:root[data-theme="light"] header{background:rgba(251,251,253,.85)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:800 20px var(--f);letter-spacing:-.04em;display:flex;align-items:center;gap:10px}
+.logo-icon{width:20px;height:20px;border-radius:50%;background:conic-gradient(from 200deg,var(--pri),var(--warm),var(--pri))}
+.btn-icon{width:40px;height:40px;border-radius:50%;border:1px solid var(--ln);background:rgba(255,255,255,.05);color:var(--tx);display:grid;place-items:center;cursor:pointer}
+:root[data-theme="light"] .btn-icon{background:#fff}
+
+/* Auth Center Container */
+.auth-wrapper{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 20px;position:relative}
+.auth-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(111,92,255,.2) 0%,rgba(255,138,76,.12) 50%,transparent 70%);filter:blur(50px);pointer-events:none;z-index:0}
+
+.auth-card{position:relative;z-index:1;background:var(--card);border:1px solid var(--bln);border-radius:32px;width:100%;max-width:520px;padding:40px;box-shadow:0 30px 60px rgba(0,0,0,.4)}
+:root[data-theme="light"] .auth-card{box-shadow:0 20px 40px rgba(11,13,20,.08)}
+
+/* Segmented Tabs */
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--ink2);padding:5px;border-radius:999px;margin-bottom:28px;border:1px solid var(--bln)}
+.auth-tab-btn{padding:10px 16px;border-radius:999px;border:0;background:none;font:600 14px var(--f);color:var(--mu);cursor:pointer;transition:.2s}
+.auth-tab-btn.active{background:var(--tx);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+
+.auth-header{margin-bottom:24px;text-align:center}
+.auth-header h1{font:800 28px/1.2 var(--f);letter-spacing:-.04em}
+.auth-header p{color:var(--mu);font-size:14px;margin-top:6px}
+
+/* Social Login */
+.social-btns{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.btn-social{display:flex;align-items:center;justify-content:center;gap:12px;background:var(--ink2);border:1px solid var(--bln);border-radius:14px;padding:12px;color:var(--tx);font:600 14px var(--f);cursor:pointer;transition:.2s}
+.btn-social:hover{border-color:var(--pri)}
+
+.divider{display:flex;align-items:center;text-align:center;margin:18px 0;color:var(--mu);font-size:13px}
+.divider::before,.divider::after{content:"";flex:1;border-bottom:1px solid var(--bln)}
+.divider span{padding:0 12px}
+
+/* Forms */
+.form-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-label{font:600 13px var(--f);color:var(--mu);display:flex;justify-content:space-between}
+.form-input{background:var(--ink2);border:1px solid var(--bln);border-radius:14px;padding:13px 16px;color:var(--tx);font:400 14px var(--f);outline:none}
+.form-input:focus{border-color:var(--pri);box-shadow:0 0 0 3px rgba(111,92,255,.2)}
+.form-note{font-size:12px;color:var(--ok);margin-top:2px}
+
+.student-card-upload{border:2px dashed var(--bln);background:var(--ink2);border-radius:16px;padding:20px;text-align:center;cursor:pointer;transition:.2s}
+.student-card-upload:hover{border-color:var(--warm)}
+
+.btn-submit{background:var(--tx);color:var(--ink);border:0;border-radius:999px;padding:15px;font:700 15px var(--f);cursor:pointer;width:100%;margin-top:10px;transition:.2s}
+.btn-submit:hover{background:var(--pri);color:#fff;transform:translateY(-1px)}
+
+/* Footer info */
+.auth-footer{margin-top:20px;text-align:center;font-size:13px;color:var(--mu)}
+.auth-footer a{color:var(--pri);font-weight:600}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--tx);color:var(--ink);padding:12px 24px;border-radius:999px;font:600 14px var(--f);opacity:0;pointer-events:none;transition:.25s;z-index:70}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#">
+      <span class="logo-icon"></span>
+      UniGear
+    </a>
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="btn-icon" id="themeBtn" aria-label="Chuyển chế độ Sáng / Tối" title="Đổi màu Sáng / Tối">
+        <svg id="moonIcon" style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg id="sunIcon" style="width:20px;height:20px;display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+      <a href="#" style="font:600 14px var(--f);color:var(--mu)">← Về cửa hàng</a>
+    </div>
+  </div>
+</header>
+
+<main class="auth-wrapper">
+  <div class="auth-glow"></div>
+  <div class="auth-card">
+
+    <!-- Tabs chuyển đổi Đăng nhập / Đăng ký -->
+    <div class="auth-tabs">
+      <button class="auth-tab-btn active" id="tabLogin" onclick="switchAuth('login')">Đăng nhập</button>
+      <button class="auth-tab-btn" id="tabRegister" onclick="switchAuth('register')">Đăng ký Thẻ Sinh Viên</button>
+    </div>
+
+    <!-- Login Form View -->
+    <div id="formLoginView">
+      <div class="auth-header">
+        <h1>Chào mừng sinh viên trở lại</h1>
+        <p>Đăng nhập để nhận giá ưu đãi và quản lý đơn hàng</p>
+      </div>
+
+      <div class="social-btns">
+        <button class="btn-social" onclick="fakeSocial('Google')">
+          <svg style="width:18px;height:18px" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.4 9 5 12 5z"/><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/><path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.8s.2-2.1.4-2.8L1.9 6.3C.7 8.7 0 10.3 0 12s.7 3.3 1.9 5.7l3.7-2.9z"/><path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.4-6.4-5.2L1.9 16C3.7 19.7 7.5 23 12 23z"/></svg>
+          Tiếp tục với Google Sinh Viên (@edu.vn)
+        </button>
+      </div>
+
+      <div class="divider"><span>hoặc tài khoản UniGear</span></div>
+
+      <form onsubmit="handleAuthSubmit(event, 'Đăng nhập thành công! Đang chuyển hướng...')">
+        <div class="form-field">
+          <label class="form-label">Email hoặc Số điện thoại</label>
+          <input class="form-input" type="text" placeholder="name@sinhvien.edu.vn hoặc 09xx" required value="nam.nguyen@hust.edu.vn">
+        </div>
+        <div class="form-field">
+          <div class="form-label">
+            <span>Mật khẩu</span>
+            <a href="#" style="color:var(--warm);font-size:12px">Quên mật khẩu?</a>
+          </div>
+          <input class="form-input" type="password" placeholder="••••••••" required value="12345678">
+        </div>
+
+        <button type="submit" class="btn-submit">Đăng nhập tài khoản</button>
+      </form>
+    </div>
+
+    <!-- Register Form View -->
+    <div id="formRegisterView" style="display:none">
+      <div class="auth-header">
+        <h1>Tạo tài khoản UniGear</h1>
+        <p>Tự động nhận chiết khấu -5% trên toàn bộ đơn hàng</p>
+      </div>
+
+      <form onsubmit="handleAuthSubmit(event, 'Đăng ký thành công! Thẻ sinh viên đã được ghi nhận giảm 5%.')">
+        <div class="form-field">
+          <label class="form-label">Họ và tên sinh viên</label>
+          <input class="form-input" type="text" placeholder="Nguyễn Văn A" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email trường hoặc cá nhân</label>
+          <input class="form-input" type="email" placeholder="example@edu.vn" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Trường Đại học / Cao đẳng & Mã sinh viên</label>
+          <input class="form-input" type="text" placeholder="ĐH Bách Khoa - MSSV: 2021xxxx" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Tải lên ảnh Thẻ sinh viên (Mặt trước)</label>
+          <div class="student-card-upload" onclick="fakeUpload()">
+            <div id="uploadTxt">
+              <svg style="width:24px;height:24px;margin:0 auto 6px;color:var(--mu)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              <div style="font:600 13px var(--f)">Chụp hoặc Chọn ảnh thẻ SV</div>
+              <div style="font-size:11px;color:var(--mu);margin-top:2px">Hệ thống AI duyệt trong 1 phút</div>
+            </div>
+          </div>
+          <span class="form-note">✓ Hỗ trợ hơn 80 trường ĐH, CĐ trên cả nước</span>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Mật khẩu</label>
+          <input class="form-input" type="password" placeholder="Tối thiểu 6 ký tự" required>
+        </div>
+
+        <button type="submit" class="btn-submit" style="background:var(--warm);color:#1A0F08">Xác thực & Tạo tài khoản</button>
+      </form>
+    </div>
+
+    <div class="auth-footer">
+      Bằng việc tiếp tục, bạn đồng ý với <a href="#">Điều khoản bảo mật</a> & <a href="#">Chính sách thẻ sinh viên</a> của UniGear.
+    </div>
+
+  </div>
+</main>
+
+<div class="toast" id="toastAuth">Thông báo</div>
+
+<script>
+// Light/Dark Theme toggle
+var currentTheme = localStorage.getItem('unigear_theme') || 'dark';
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  var moon = document.getElementById('moonIcon');
+  var sun = document.getElementById('sunIcon');
+  if (theme === 'light') {
+    moon.style.display = 'none';
+    sun.style.display = 'block';
+  } else {
+    moon.style.display = 'block';
+    sun.style.display = 'none';
+  }
+}
+applyTheme(currentTheme);
+
+document.getElementById('themeBtn').addEventListener('click', function() {
+  currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+  localStorage.setItem('unigear_theme', currentTheme);
+  applyTheme(currentTheme);
+  showToast('Đã đổi chế độ ' + (currentTheme === 'light' ? 'Sáng' : 'Tối'));
+});
+
+function switchAuth(type) {
+  var isLogin = type === 'login';
+  document.getElementById('tabLogin').classList.toggle('active', isLogin);
+  document.getElementById('tabRegister').classList.toggle('active', !isLogin);
+  document.getElementById('formLoginView').style.display = isLogin ? 'block' : 'none';
+  document.getElementById('formRegisterView').style.display = !isLogin ? 'block' : 'none';
+}
+
+function fakeSocial(name) {
+  showToast('Đang kết nối xác thực tài khoản ' + name + '...');
+}
+
+function fakeUpload() {
+  var box = document.getElementById('uploadTxt');
+  box.innerHTML = '<div style="color:var(--ok);font-weight:700">✓ the_sinh_vien_hust.jpg (Đã tải lên)</div><div style="font-size:11px;color:var(--mu)">Đã nhận diện họ tên & MSSV</div>';
+  showToast('Đã nhận diện thẻ sinh viên hợp lệ!');
+}
+
+function handleAuthSubmit(e, msg) {
+  e.preventDefault();
+  showToast(msg);
+}
+
+function showToast(text) {
+  var t = document.getElementById('toastAuth');
+  t.textContent = text;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2200);
+}
+</script>
+</body>
+</html>

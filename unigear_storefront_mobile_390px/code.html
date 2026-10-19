@@ -1,0 +1,1639 @@
+<!DOCTYPE html><html data-theme="dark" lang="vi" style="opacity: 0;" data-stitch-anim-opacity="true"><head>
+<meta charset="utf-8">
+<meta content="width=390, initial-scale=1, viewport-fit=cover" name="viewport">
+<title>UniGear Mobile – Công Nghệ Cho Sinh Viên</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0B0D14;
+  --surface: #141824;
+  --surface-alt: #1B2132;
+  --band: #0F1220;
+  --card: #151A2A;
+  --stage: linear-gradient(180deg, #1F2540 0%, #131829 100%);
+  --tx: #F3F4F8;
+  --mu: #8A90A6;
+  --ln: rgba(255, 255, 255, 0.10);
+  --pri: #6F5CFF;
+  --pri-h: #8A7BFF;
+  --warm: #FF8A4C;
+  --ok: #3DD598;
+  --pop: #FF4D8D;
+  --btn-p-bg: #F3F4F8;
+  --btn-p-tx: #0B0D14;
+  --btn-s-bg: rgba(255, 255, 255, 0.08);
+  --btn-s-tx: #F3F4F8;
+  --add-btn-bg: #F3F4F8;
+  --add-btn-tx: #0B0D14;
+  --sheet-bg: #121624;
+  --tab-active: rgba(111, 92, 255, 0.16);
+  --hero-glow: radial-gradient(closest-side, rgba(111,92,255,0.42), transparent 72%), radial-gradient(closest-side at 70% 60%, rgba(255,138,76,0.28), transparent 70%);
+  --hero-shadow: drop-shadow(0 24px 38px rgba(0,0,0,0.65));
+  --f: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  --fm: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+:root[data-theme="light"] {
+  --bg: #FBFBFD;
+  --surface: #F0F1F6;
+  --surface-alt: #E4E7F0;
+  --band: #F2F3F8;
+  --card: #FFFFFF;
+  --stage: linear-gradient(180deg, #F7F8FB 0%, #E2E5ED 100%);
+  --tx: #0B0D14;
+  --mu: #5B6176;
+  --ln: rgba(11, 13, 20, 0.10);
+  --pri: #5B47F5;
+  --pri-h: #4634D6;
+  --warm: #FF7A33;
+  --ok: #0B7F58;
+  --pop: #FF4D8D;
+  --btn-p-bg: #0B0D14;
+  --btn-p-tx: #FBFBFD;
+  --btn-s-bg: #FFFFFF;
+  --btn-s-tx: #0B0D14;
+  --add-btn-bg: #0B0D14;
+  --add-btn-tx: #FBFBFD;
+  --sheet-bg: #FFFFFF;
+  --tab-active: rgba(91, 71, 245, 0.12);
+  --hero-glow: radial-gradient(closest-side, rgba(111,92,255,0.20), transparent 72%), radial-gradient(closest-side at 70% 60%, rgba(255,122,51,0.16), transparent 70%);
+  --hero-shadow: drop-shadow(0 20px 32px rgba(11,13,20,0.18));
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  background-color: var(--bg);
+  color: var(--tx);
+  font-family: var(--f);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-color: var(--bg);
+  color: var(--tx);
+  min-height: 100vh;
+  transition: background-color 200ms ease, color 200ms ease;
+  overflow-x: hidden;
+  border-left: 1px solid var(--ln);
+  border-right: 1px solid var(--ln);
+  position: relative;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; outline: none; background: transparent; }
+:focus-visible { outline: 2px solid var(--warm); outline-offset: 2px; }
+
+.wrap {
+  padding: 0 16px;
+}
+
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 64px;
+  background: rgba(11, 13, 20, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--ln);
+  transition: background 200ms ease, border-color 200ms ease;
+}
+:root[data-theme="light"] header {
+  background: rgba(251, 251, 253, 0.90);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: conic-gradient(from 200deg, var(--pri), var(--warm), var(--pri));
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--tx);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--ln);
+  color: var(--tx);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 180ms ease;
+}
+.theme-btn:active {
+  transform: scale(0.92);
+}
+
+.cart-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--ln);
+  color: var(--tx);
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 180ms ease;
+}
+.cart-pill:active {
+  transform: scale(0.96);
+}
+.cart-count {
+  background: var(--pri);
+  color: #FFFFFF;
+  border-radius: 999px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 40px 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chip-sale {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--ln);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--tx);
+  margin-bottom: 20px;
+}
+.chip-sale b {
+  color: var(--warm);
+  font-weight: 700;
+}
+
+.hero h1 {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+  margin: 0 auto 16px;
+  color: var(--tx);
+}
+
+.hero p.lead-hero {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--mu);
+  margin: 0 auto 24px;
+  padding: 0 6px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 16px;
+}
+
+.btn-pill {
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 180ms ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--btn-p-bg);
+  color: var(--btn-p-tx);
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background: var(--btn-s-bg);
+  color: var(--btn-s-tx);
+  border: 1px solid var(--ln);
+}
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+.hero-stage {
+  position: relative;
+  margin: 32px auto 0;
+  padding: 0 12px;
+}
+.hero-glow-back {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -40%);
+  width: 95%;
+  height: 95%;
+  background: var(--hero-glow);
+  filter: blur(34px);
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-product-svg {
+  position: relative;
+  z-index: 2;
+  filter: var(--hero-shadow);
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-caption {
+  font-family: var(--fm);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--mu);
+  margin-top: 10px;
+  padding: 0 12px;
+}
+.hero-caption b {
+  color: var(--tx);
+  font-weight: 600;
+}
+
+/* Sections */
+.sec {
+  padding: 50px 0;
+}
+.sec-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--tx);
+  margin-bottom: 8px;
+}
+.sec-lead {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--mu);
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+/* Bento Grid Mobile */
+.bento-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bento-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 20px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--ln);
+  cursor: pointer;
+  transition: transform 180ms ease;
+}
+.bento-tile:active {
+  transform: scale(0.99);
+}
+
+.bento-tile h3 {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--tx);
+  margin-bottom: 2px;
+  position: relative;
+  z-index: 2;
+}
+.bento-tile p {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--mu);
+  position: relative;
+  z-index: 2;
+}
+
+.bento-img-wrap {
+  position: absolute;
+  right: -8%;
+  bottom: -10%;
+  width: 65%;
+  z-index: 1;
+}
+
+:root[data-theme="dark"] .tile-laptop {
+  background: radial-gradient(120% 90% at 85% 100%, rgba(111,92,255,0.45), transparent 65%), var(--surface);
+}
+:root[data-theme="dark"] .tile-laptop .bento-img-wrap { width: 78%; right: -2%; bottom: -4%; }
+:root[data-theme="dark"] .tile-tablet {
+  background: radial-gradient(100% 90% at 100% 100%, rgba(255,138,76,0.30), transparent 60%), var(--surface);
+}
+:root[data-theme="dark"] .tile-earbuds { background: var(--surface); }
+:root[data-theme="dark"] .tile-accessories { background: var(--surface); }
+
+:root[data-theme="light"] .tile-laptop { background: linear-gradient(160deg, #EDEAFF 0%, #DCD6FF 100%); }
+:root[data-theme="light"] .tile-laptop .bento-img-wrap { width: 78%; right: -2%; bottom: -4%; }
+:root[data-theme="light"] .tile-tablet { background: linear-gradient(160deg, #FFF0E6 0%, #FFD9C2 100%); }
+:root[data-theme="light"] .tile-earbuds { background: linear-gradient(160deg, #EAF1FF 0%, #D4E2FF 100%); }
+:root[data-theme="light"] .tile-accessories { background: linear-gradient(160deg, #F6F7FA 0%, #E4E7EF 100%); }
+
+/* Band Product Section */
+.band-section {
+  background-color: var(--band);
+  padding: 52px 0;
+  transition: background-color 200ms ease;
+}
+
+.filters-scroll {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 22px;
+  scrollbar-width: none;
+}
+.filters-scroll::-webkit-scrollbar { display: none; }
+
+.filter-pill {
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--card);
+  color: var(--tx);
+  border: 1px solid var(--ln);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.filter-pill[aria-pressed="true"] {
+  background: var(--tx);
+  color: var(--bg);
+  border-color: var(--tx);
+  font-weight: 600;
+}
+.filter-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--ln);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+/* Products Cards Mobile */
+.products-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.prod-card {
+  background: var(--card);
+  border-radius: 26px;
+  padding: 10px 10px 18px;
+  border: 1px solid var(--ln);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+.prod-card:active {
+  transform: scale(0.99);
+}
+
+.prod-stage {
+  background: var(--stage);
+  border-radius: 18px;
+  aspect-ratio: 1.25;
+  padding: 6% 8%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.prod-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--warm);
+  color: #1A0F08;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  z-index: 3;
+}
+.prod-detail-hint {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.prod-info {
+  padding: 14px 10px 0;
+}
+.prod-name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--tx);
+  margin-bottom: 3px;
+}
+.prod-spec {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--mu);
+  margin-bottom: 12px;
+}
+
+.prod-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.old-price {
+  font-size: 12px;
+  color: var(--mu);
+  text-decoration: line-through;
+}
+.current-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--tx);
+}
+.student-price {
+  font-family: var(--fm);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ok);
+  margin-top: 2px;
+}
+
+.add-btn {
+  background: var(--add-btn-bg);
+  color: var(--add-btn-tx);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.add-btn:active {
+  transform: scale(0.96);
+}
+
+/* How to Buy & Trade Guide Section */
+.trade-guide-section {
+  padding: 52px 0;
+  background: var(--bg);
+}
+.guide-tabs {
+  display: flex;
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 4px;
+  margin-bottom: 20px;
+  border: 1px solid var(--ln);
+}
+.guide-tab-btn {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 10px;
+  color: var(--mu);
+  transition: all 180ms ease;
+  text-align: center;
+}
+.guide-tab-btn.active {
+  background: var(--card);
+  color: var(--tx);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.guide-panel {
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+}
+.guide-panel.active {
+  display: flex;
+}
+
+.guide-card {
+  background: var(--surface);
+  border: 1px solid var(--ln);
+  border-radius: 20px;
+  padding: 16px 18px;
+}
+.guide-badge {
+  font-family: var(--fm);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--pri);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.guide-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--tx);
+}
+.guide-card p {
+  font-size: 13px;
+  color: var(--mu);
+  line-height: 1.45;
+}
+
+/* Steps Mobile */
+.student-section {
+  padding: 48px 0;
+  border-top: 1px solid var(--ln);
+}
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.step-item {
+  border-top: 1px solid var(--ln);
+  padding-top: 14px;
+}
+.step-num {
+  font-family: var(--fm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--warm);
+}
+.step-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 6px 0 4px;
+  color: var(--tx);
+}
+.step-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--mu);
+}
+
+/* Drawer / Bottom Sheet Modal */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 240ms ease, visibility 240ms;
+}
+.drawer-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bottom-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 390px;
+  margin: 0 auto;
+  background: var(--sheet-bg);
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  z-index: 101;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.45);
+  border-top: 1px solid var(--ln);
+  border-left: 1px solid var(--ln);
+  border-right: 1px solid var(--ln);
+  overflow: hidden;
+}
+.drawer-overlay.open .bottom-sheet {
+  transform: translateY(0);
+}
+
+.sheet-drag-handle {
+  width: 40px;
+  height: 4px;
+  background: var(--mu);
+  opacity: 0.4;
+  border-radius: 999px;
+  margin: 12px auto 6px;
+  flex-shrink: 0;
+}
+
+.sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 18px 12px;
+  border-bottom: 1px solid var(--ln);
+}
+.sheet-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tx);
+  font-size: 18px;
+}
+
+.sheet-body {
+  overflow-y: auto;
+  padding: 16px 18px 24px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sheet-prod-preview {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 16px;
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 18px;
+}
+.sheet-prod-img {
+  width: 90px;
+  height: 80px;
+  border-radius: 12px;
+  background: var(--stage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.sheet-prod-img svg {
+  width: 85%;
+  height: auto;
+}
+
+.sheet-nav-tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--surface);
+  padding: 4px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+}
+.sheet-tab-item {
+  flex: 1;
+  padding: 9px 0;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 10px;
+  color: var(--mu);
+  transition: all 180ms ease;
+}
+.sheet-tab-item.active {
+  background: var(--sheet-bg);
+  color: var(--tx);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--ln);
+  font-size: 13px;
+}
+.spec-label { color: var(--mu); }
+.spec-val { color: var(--tx); font-weight: 500; text-align: right; }
+
+.tradein-calc-box {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 14px;
+  margin-top: 12px;
+  border: 1px solid var(--ln);
+}
+
+.trade-steps-mini {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.trade-step-line {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--mu);
+}
+.trade-step-line span.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--pri);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Footer Mobile */
+footer {
+  border-top: 1px solid var(--ln);
+  padding: 36px 0 48px;
+  font-size: 13px;
+  color: var(--mu);
+}
+.footer-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Toast */
+.toast-msg {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translate(-50%, 20px);
+  background: var(--tx);
+  color: var(--bg);
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease, transform 200ms ease, visibility 200ms;
+  z-index: 999;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+  white-space: nowrap;
+}
+.toast-msg.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap bar">
+<div class="logo-group">
+<div aria-hidden="true" class="logo-mark"></div>
+<span class="logo-text">UniGear</span>
+</div>
+<div class="header-actions">
+<!-- Theme toggle -->
+<button aria-label="Đổi giao diện Sáng/Tối" class="theme-btn" id="mThemeToggle">
+<!-- Sun icon (shown when dark to switch to light) -->
+<svg fill="none" height="16" id="mSunIcon" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" style="display: block;">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="12" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+<!-- Moon icon (shown when light to switch to dark) -->
+<svg fill="none" height="16" id="mMoonIcon" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="display:none;" viewBox="0 0 24 24" width="16">
+<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+</svg>
+</button>
+<button aria-label="Giỏ hàng" class="cart-pill">
+<span class="">Giỏ hàng</span>
+<span class="cart-count" id="mCartCount">0</span>
+</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="hero">
+<div class="wrap">
+<a class="chip-sale" href="#uu-dai" style="cursor: pointer;"><b>-5%</b> khi xác thực thẻ sinh viên</a>
+<h1 class="">Máy mạnh cho đồ án. Giá vừa ví sinh viên.</h1>
+<p class="lead-hero">Laptop, tai nghe, phụ kiện chính hãng tại UniGear. Trả góp 0% không cần thẻ tín dụng.</p>
+<div class="hero-actions">
+<a class="btn-pill btn-primary" href="#san-pham">Mua ngay</a>
+<a class="btn-pill btn-secondary" href="#cach-thuc">Xem cách mua &amp; bán máy</a>
+</div>
+</div>
+<div class="hero-stage">
+<div class="hero-glow-back"></div>
+<div id="mHeroSvg"><svg class="hero-product-svg" viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc101" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6F5CFF"></stop><stop offset="100%" stop-color="#FF8A4C"></stop></linearGradient><linearGradient id="mbody101" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase101" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><g transform="translate(45, 15)"><rect x="40" y="10" width="370" height="236" rx="16" fill="url(#mbody101)"></rect><rect x="42" y="12" width="366" height="232" rx="14" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"></rect><rect x="52" y="22" width="346" height="212" rx="8" fill="url(#msc101)"></rect><ellipse cx="160" cy="80" rx="130" ry="60" fill="#ffffff" opacity="0.12"></ellipse><circle cx="225" cy="16" r="2.2" fill="#0B0D14"></circle><path d="M0 252 h450 l-18 28 a12 12 0 0 1 -10 6 h-404 a12 12 0 0 1 -10 -6 z" fill="url(#mbase101)"></path><path d="M0 252 h450" stroke="rgba(255,255,255,0.4)" stroke-width="1"></path><rect x="180" y="252" width="90" height="6" rx="3" fill="#8F96A8"></rect></g></svg></div>
+</div>
+<div class="hero-caption">
+<b>Nova Air 14</b> &nbsp; từ 15.990.000đ &nbsp;hoặc&nbsp; 1.332.500đ/tháng
+    </div>
+</section>
+<!-- Bento Section -->
+<section class="sec" id="danh-muc">
+<div class="wrap">
+<h2 class="sec-title">Chọn đúng thứ bạn cần.</h2>
+<p class="sec-lead">Bốn nhóm thiết bị sinh viên dùng nhiều nhất.</p>
+<div class="bento-grid" id="mBentoGrid"><a class="bento-tile tile-laptop" href="#san-pham" data-cat="may"><h3 class="">Laptop</h3><p class="">Từ 11.490.000đ</p><div class="bento-img-wrap"><svg class="hero-product-svg" viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc102" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6F5CFF"></stop><stop offset="100%" stop-color="#FF8A4C"></stop></linearGradient><linearGradient id="mbody102" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase102" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><g transform="translate(45, 15)"><rect x="40" y="10" width="370" height="236" rx="16" fill="url(#mbody102)"></rect><rect x="42" y="12" width="366" height="232" rx="14" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"></rect><rect x="52" y="22" width="346" height="212" rx="8" fill="url(#msc102)"></rect><ellipse cx="160" cy="80" rx="130" ry="60" fill="#ffffff" opacity="0.12"></ellipse><circle cx="225" cy="16" r="2.2" fill="#0B0D14"></circle><path d="M0 252 h450 l-18 28 a12 12 0 0 1 -10 6 h-404 a12 12 0 0 1 -10 -6 z" fill="url(#mbase102)"></path><path d="M0 252 h450" stroke="rgba(255,255,255,0.4)" stroke-width="1"></path><rect x="180" y="252" width="90" height="6" rx="3" fill="#8F96A8"></rect></g></svg></div></a><a class="bento-tile tile-tablet" href="#san-pham" data-cat="may"><h3 class="">Tablet</h3><p class="">Từ 6.490.000đ</p><div class="bento-img-wrap"><svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc103" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF8A4C"></stop><stop offset="100%" stop-color="#FF4D8D"></stop></linearGradient><linearGradient id="mbody103" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase103" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><rect x="75" y="12" width="240" height="194" rx="20" fill="url(#mbody103)"></rect><rect x="84" y="21" width="222" height="176" rx="12" fill="url(#msc103)"></rect><ellipse cx="160" cy="70" rx="90" ry="40" fill="#fff" opacity="0.12"></ellipse><rect x="332" y="44" width="10" height="136" rx="5" fill="url(#mbase103)"></rect><circle cx="195" cy="16" r="2" fill="#0B0D14"></circle></svg></div></a><a class="bento-tile tile-earbuds" href="#san-pham" data-cat="am"><h3 class="">Tai nghe</h3><p class="">Từ 890.000đ</p><div class="bento-img-wrap"><svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc104" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6F5CFF"></stop><stop offset="100%" stop-color="#FFFFFF"></stop></linearGradient><linearGradient id="mbody104" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase104" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><g transform="translate(15, 0)"><ellipse cx="145" cy="74" rx="22" ry="26" fill="#F4F5F9"></ellipse><rect x="156" y="82" width="10" height="48" rx="5" fill="#F4F5F9"></rect><ellipse cx="225" cy="74" rx="22" ry="26" fill="#F4F5F9"></ellipse><rect x="204" y="82" width="10" height="48" rx="5" fill="#F4F5F9"></rect><rect x="105" y="108" width="160" height="106" rx="44" fill="url(#mbase104)"></rect><path d="M107 150 h156" stroke="#9EA6B9" stroke-width="2"></path><circle cx="185" cy="184" r="5" fill="#6F5CFF"></circle></g></svg></div></a><a class="bento-tile tile-accessories" href="#san-pham" data-cat="pk"><h3 class="">Phụ kiện</h3><p class="">Bàn phím, sạc, loa. Từ 590.000đ</p><div class="bento-img-wrap"><svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc105" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF8A4C"></stop><stop offset="100%" stop-color="#6F5CFF"></stop></linearGradient><linearGradient id="mbody105" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase105" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><rect x="34" y="42" width="332" height="144" rx="16" fill="url(#mbody105)"></rect><rect x="50" y="60" width="21" height="23" rx="5" fill="#FF8A4C"></rect><rect x="75" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="100" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="125" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="150" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="175" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="200" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="225" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="250" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="275" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="300" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="325" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="50" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="75" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="100" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="125" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="150" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="175" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="200" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="225" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="250" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="275" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="300" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="325" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="50" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="75" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="100" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="125" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="150" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="175" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="200" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="225" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="250" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="275" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="300" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="325" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="50" y="144" width="60" height="23" rx="5" fill="#282E40"></rect><rect x="115" y="144" width="135" height="23" rx="5" fill="#282E40"></rect><rect x="255" y="144" width="91" height="23" rx="5" fill="#6F5CFF"></rect></svg></div></a></div>
+</div>
+</section>
+<!-- Products on Band -->
+<section class="band-section" id="san-pham">
+<div class="wrap">
+<div style="display:flex;justify-content:space-between;align-items:baseline;">
+<h2 class="sec-title">Chọn theo ngân sách.</h2>
+<span style="font-size:12px;color:var(--mu);" class="">Chạm để xem chi tiết</span>
+</div>
+<p class="sec-lead">Giá đã gồm VAT. Thẻ sinh viên giảm thêm 5%, bảo hành 1 đổi 1 trong 30 ngày.</p>
+<div class="filters-scroll" id="mFiltersBar">
+<button aria-pressed="true" class="filter-pill" data-group="price" data-val="all">Mọi mức giá</button>
+<button aria-pressed="false" class="filter-pill" data-group="price" data-val="under1m">Dưới 1 triệu</button>
+<button aria-pressed="false" class="filter-pill" data-group="price" data-val="1to5m">1 đến 5 triệu</button>
+<button aria-pressed="false" class="filter-pill" data-group="price" data-val="over5m">Trên 5 triệu</button>
+<span aria-hidden="true" class="filter-sep"></span>
+<button aria-pressed="true" class="filter-pill" data-group="cat" data-val="all">Tất cả loại</button>
+<button aria-pressed="false" class="filter-pill" data-group="cat" data-val="may">Máy tính</button>
+<button aria-pressed="false" class="filter-pill" data-group="cat" data-val="am">Âm thanh</button>
+<button aria-pressed="false" class="filter-pill" data-group="cat" data-val="pk">Phụ kiện</button>
+</div>
+<div class="products-grid" id="mProductsContainer"><article class="prod-card" data-id="p1"><div class="prod-stage"><span class="prod-badge">-11%</span><span class="prod-detail-hint">Chi tiết ➔</span><svg class="hero-product-svg" viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc106" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6F5CFF"></stop><stop offset="100%" stop-color="#FF8A4C"></stop></linearGradient><linearGradient id="mbody106" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase106" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><g transform="translate(45, 15)"><rect x="40" y="10" width="370" height="236" rx="16" fill="url(#mbody106)"></rect><rect x="42" y="12" width="366" height="232" rx="14" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"></rect><rect x="52" y="22" width="346" height="212" rx="8" fill="url(#msc106)"></rect><ellipse cx="160" cy="80" rx="130" ry="60" fill="#ffffff" opacity="0.12"></ellipse><circle cx="225" cy="16" r="2.2" fill="#0B0D14"></circle><path d="M0 252 h450 l-18 28 a12 12 0 0 1 -10 6 h-404 a12 12 0 0 1 -10 -6 z" fill="url(#mbase106)"></path><path d="M0 252 h450" stroke="rgba(255,255,255,0.4)" stroke-width="1"></path><rect x="180" y="252" width="90" height="6" rx="3" fill="#8F96A8"></rect></g></svg></div><div class="prod-info"><h3 class="prod-name">Nova Air 14</h3><p class="prod-spec">Chip M-Core, RAM 16GB, pin 12 giờ</p><div class="prod-bottom"><div class="prod-pricing"><div class="old-price">17.990.000đ</div><div class="current-price">15.990.000đ</div><div class="student-price">Thẻ SV 15.190.500đ</div></div><button class="add-btn" data-add="true" data-name="Nova Air 14">Thêm vào giỏ</button></div></div></article><article class="prod-card" data-id="p2"><div class="prod-stage"><span class="prod-detail-hint">Chi tiết ➔</span><svg class="hero-product-svg" viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc107" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1FA2FF"></stop><stop offset="100%" stop-color="#6F5CFF"></stop></linearGradient><linearGradient id="mbody107" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase107" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><g transform="translate(45, 15)"><rect x="40" y="10" width="370" height="236" rx="16" fill="url(#mbody107)"></rect><rect x="42" y="12" width="366" height="232" rx="14" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"></rect><rect x="52" y="22" width="346" height="212" rx="8" fill="url(#msc107)"></rect><ellipse cx="160" cy="80" rx="130" ry="60" fill="#ffffff" opacity="0.12"></ellipse><circle cx="225" cy="16" r="2.2" fill="#0B0D14"></circle><path d="M0 252 h450 l-18 28 a12 12 0 0 1 -10 6 h-404 a12 12 0 0 1 -10 -6 z" fill="url(#mbase107)"></path><path d="M0 252 h450" stroke="rgba(255,255,255,0.4)" stroke-width="1"></path><rect x="180" y="252" width="90" height="6" rx="3" fill="#8F96A8"></rect></g></svg></div><div class="prod-info"><h3 class="prod-name">Nova Lite 15</h3><p class="prod-spec">RAM 8GB, SSD 512GB, màn 15.6 inch</p><div class="prod-bottom"><div class="prod-pricing"><div class="current-price">11.490.000đ</div><div class="student-price">Thẻ SV 10.915.500đ</div></div><button class="add-btn" data-add="true" data-name="Nova Lite 15">Thêm vào giỏ</button></div></div></article><article class="prod-card" data-id="p3"><div class="prod-stage"><span class="prod-detail-hint">Chi tiết ➔</span><svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc108" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF8A4C"></stop><stop offset="100%" stop-color="#FF4D8D"></stop></linearGradient><linearGradient id="mbody108" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase108" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><rect x="75" y="12" width="240" height="194" rx="20" fill="url(#mbody108)"></rect><rect x="84" y="21" width="222" height="176" rx="12" fill="url(#msc108)"></rect><ellipse cx="160" cy="70" rx="90" ry="40" fill="#fff" opacity="0.12"></ellipse><rect x="332" y="44" width="10" height="136" rx="5" fill="url(#mbase108)"></rect><circle cx="195" cy="16" r="2" fill="#0B0D14"></circle></svg></div><div class="prod-info"><h3 class="prod-name">Note 11</h3><p class="prod-spec">Máy tính bảng kèm bút cảm ứng, 11 inch</p><div class="prod-bottom"><div class="prod-pricing"><div class="current-price">6.490.000đ</div><div class="student-price">Thẻ SV 6.165.500đ</div></div><button class="add-btn" data-add="true" data-name="Note 11">Thêm vào giỏ</button></div></div></article><article class="prod-card" data-id="p4"><div class="prod-stage"><span class="prod-detail-hint">Chi tiết ➔</span><svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc109" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6F5CFF"></stop><stop offset="100%" stop-color="#FFFFFF"></stop></linearGradient><linearGradient id="mbody109" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase109" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><g transform="translate(15, 0)"><ellipse cx="145" cy="74" rx="22" ry="26" fill="#F4F5F9"></ellipse><rect x="156" y="82" width="10" height="48" rx="5" fill="#F4F5F9"></rect><ellipse cx="225" cy="74" rx="22" ry="26" fill="#F4F5F9"></ellipse><rect x="204" y="82" width="10" height="48" rx="5" fill="#F4F5F9"></rect><rect x="105" y="108" width="160" height="106" rx="44" fill="url(#mbase109)"></rect><path d="M107 150 h156" stroke="#9EA6B9" stroke-width="2"></path><circle cx="185" cy="184" r="5" fill="#6F5CFF"></circle></g></svg></div><div class="prod-info"><h3 class="prod-name">Pulse ANC</h3><p class="prod-spec">Chống ồn chủ động, pin 32 giờ</p><div class="prod-bottom"><div class="prod-pricing"><div class="current-price">2.490.000đ</div><div class="student-price">Thẻ SV 2.365.500đ</div></div><button class="add-btn" data-add="true" data-name="Pulse ANC">Thêm vào giỏ</button></div></div></article><article class="prod-card" data-id="p5"><div class="prod-stage"><span class="prod-badge">-17%</span><span class="prod-detail-hint">Chi tiết ➔</span><svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc110" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF8A4C"></stop><stop offset="100%" stop-color="#6F5CFF"></stop></linearGradient><linearGradient id="mbody110" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase110" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><rect x="34" y="42" width="332" height="144" rx="16" fill="url(#mbody110)"></rect><rect x="50" y="60" width="21" height="23" rx="5" fill="#FF8A4C"></rect><rect x="75" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="100" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="125" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="150" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="175" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="200" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="225" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="250" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="275" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="300" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="325" y="60" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="50" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="75" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="100" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="125" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="150" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="175" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="200" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="225" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="250" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="275" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="300" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="325" y="88" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="50" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="75" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="100" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="125" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="150" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="175" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="200" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="225" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="250" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="275" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="300" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="325" y="116" width="21" height="23" rx="5" fill="#282E40"></rect><rect x="50" y="144" width="60" height="23" rx="5" fill="#282E40"></rect><rect x="115" y="144" width="135" height="23" rx="5" fill="#282E40"></rect><rect x="255" y="144" width="91" height="23" rx="5" fill="#6F5CFF"></rect></svg></div><div class="prod-info"><h3 class="prod-name">Keyd 75</h3><p class="prod-spec">Bàn phím cơ 3 chế độ</p><div class="prod-bottom"><div class="prod-pricing"><div class="old-price">2.290.000đ</div><div class="current-price">1.890.000đ</div><div class="student-price">Thẻ SV 1.795.500đ</div></div><button class="add-btn" data-add="true" data-name="Keyd 75">Thêm vào giỏ</button></div></div></article><article class="prod-card" data-id="p6"><div class="prod-stage"><span class="prod-badge">-19%</span><span class="prod-detail-hint">Chi tiết ➔</span><svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc111" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF8A4C"></stop><stop offset="100%" stop-color="#6F5CFF"></stop></linearGradient><linearGradient id="mbody111" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase111" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><rect x="110" y="28" width="180" height="180" rx="50" fill="url(#mbody111)"></rect><rect x="110" y="94" width="180" height="48" fill="#FF8A4C" opacity="0.9"></rect><line x1="124" x2="276" y1="118" y2="118" stroke="#0B0D14" stroke-width="28" stroke-dasharray="3 7" opacity="0.35"></line><circle cx="200" cy="62" r="9" fill="#6F5CFF"></circle></svg></div><div class="prod-info"><h3 class="prod-name">Cube Mini</h3><p class="prod-spec">Loa chống nước IPX7, pin 14 giờ</p><div class="prod-bottom"><div class="prod-pricing"><div class="old-price">1.590.000đ</div><div class="current-price">1.290.000đ</div><div class="student-price">Thẻ SV 1.225.500đ</div></div><button class="add-btn" data-add="true" data-name="Cube Mini">Thêm vào giỏ</button></div></div></article><article class="prod-card" data-id="p7"><div class="prod-stage"><span class="prod-badge">-25%</span><span class="prod-detail-hint">Chi tiết ➔</span><svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc112" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF8A4C"></stop><stop offset="100%" stop-color="#FFFFFF"></stop></linearGradient><linearGradient id="mbody112" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase112" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><g transform="translate(15, 0)"><ellipse cx="145" cy="74" rx="22" ry="26" fill="#F4F5F9"></ellipse><rect x="156" y="82" width="10" height="48" rx="5" fill="#F4F5F9"></rect><ellipse cx="225" cy="74" rx="22" ry="26" fill="#F4F5F9"></ellipse><rect x="204" y="82" width="10" height="48" rx="5" fill="#F4F5F9"></rect><rect x="105" y="108" width="160" height="106" rx="44" fill="url(#mbase112)"></rect><path d="M107 150 h156" stroke="#9EA6B9" stroke-width="2"></path><circle cx="185" cy="184" r="5" fill="#FF8A4C"></circle></g></svg></div><div class="prod-info"><h3 class="prod-name">Dot Air</h3><p class="prod-spec">Tai nghe true wireless, pin 24 giờ</p><div class="prod-bottom"><div class="prod-pricing"><div class="old-price">1.190.000đ</div><div class="current-price">890.000đ</div><div class="student-price">Thẻ SV 845.500đ</div></div><button class="add-btn" data-add="true" data-name="Dot Air">Thêm vào giỏ</button></div></div></article><article class="prod-card" data-id="p8"><div class="prod-stage"><span class="prod-detail-hint">Chi tiết ➔</span><svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="msc113" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3A4A7A"></stop><stop offset="100%" stop-color="#6F5CFF"></stop></linearGradient><linearGradient id="mbody113" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"></stop><stop offset="100%" stop-color="#1B1E2B"></stop></linearGradient><linearGradient id="mbase113" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"></stop><stop offset="100%" stop-color="#B6BCCB"></stop></linearGradient></defs><rect x="150" y="14" width="100" height="212" rx="28" fill="url(#msc113)"></rect><ellipse cx="180" cy="80" rx="22" ry="60" fill="#fff" opacity="0.14"></ellipse><rect x="168" y="48" width="11" height="5" rx="2.5" fill="#fff" opacity="1"></rect><rect x="185" y="48" width="11" height="5" rx="2.5" fill="#fff" opacity="1"></rect><rect x="202" y="48" width="11" height="5" rx="2.5" fill="#fff" opacity="1"></rect><rect x="219" y="48" width="11" height="5" rx="2.5" fill="#fff" opacity="0.3"></rect><rect x="150" y="130" width="100" height="6" fill="#0B0D14" opacity="0.25"></rect><rect x="184" y="210" width="32" height="6" rx="3" fill="#0B0D14" opacity="0.5"></rect></svg></div><div class="prod-info"><h3 class="prod-name">Sạc dự phòng 20.000</h3><p class="prod-spec">Sạc nhanh 22.5W, 2 cổng sạc</p><div class="prod-bottom"><div class="prod-pricing"><div class="current-price">590.000đ</div><div class="student-price">Thẻ SV 560.500đ</div></div><button class="add-btn" data-add="true" data-name="Sạc dự phòng 20.000">Thêm vào giỏ</button></div></div></article></div>
+</div>
+</section>
+<!-- How to Buy & Sell / Trade-in Guide Section -->
+<section class="trade-guide-section" id="cach-thuc">
+<div class="wrap">
+<h2 class="sec-title">Cách thức Mua &amp; Bán máy.</h2>
+<p class="sec-lead">Chính sách dành riêng cho sinh viên tại UniGear: mua dễ, trả góp nhẹ và thu cũ giá cao.</p>
+<div class="guide-tabs">
+<button class="guide-tab-btn active" data-target="guide-buy">1. Mua máy &amp; Trả góp 0%</button>
+<button class="guide-tab-btn" data-target="guide-trade">2. Thu cũ đổi mới &amp; Bán máy</button>
+</div>
+<!-- Panel 1: Buy & Installment -->
+<div class="guide-panel active" id="guide-buy">
+<div class="guide-card">
+<div class="guide-badge">Không cần thẻ tín dụng</div>
+<h4 class="">Trả góp qua CCCD &amp; Thẻ sinh viên</h4>
+<p class="">Hỗ trợ sinh viên từ 18 tuổi. Chỉ cần chụp CCCD gắn chip và Thẻ SV còn hiệu lực, duyệt hạn mức trong 5 phút qua ứng dụng đối tác Kredivo/HomePay.</p>
+</div>
+<div class="guide-card">
+<div class="guide-badge">Giảm trực tiếp 5%</div>
+<h4 class="">Xác thực Thẻ sinh viên tự động</h4>
+<p class="">Mỗi sinh viên được áp dụng chiết khấu 5% cho tối đa 2 thiết bị công nghệ mỗi năm học, tích hợp trừ thẳng tại bước thanh toán.</p>
+</div>
+<div class="guide-card">
+<div class="guide-badge">Bảo hành an tâm</div>
+<h4 class="">Bảo hành phần cứng 12 tháng + 1 đổi 1</h4>
+<p class="">Lỗi nhà sản xuất đổi mới trong 30 ngày. Hỗ trợ mượn máy thay thế dùng tạm khi máy bạn bảo hành đồ án.</p>
+</div>
+</div>
+<!-- Panel 2: Trade-in & Sell -->
+<div class="guide-panel" id="guide-trade">
+<div class="guide-card">
+<div class="guide-badge">Định giá 3 bước</div>
+<h4 class="">Bán lại máy cũ không lo bị ép giá</h4>
+<p class="">Kiểm tra tình trạng ngoại hình, pin và chức năng online. Nhận báo giá minh bạch ngay trên hệ thống trước khi quyết định bán.</p>
+</div>
+<div class="guide-card">
+<div class="guide-badge">Thu tận ký túc xá</div>
+<h4 class="">Thu máy tận nơi &amp; Nhận tiền ngay</h4>
+<p class="">Kỹ thuật viên UniGear ghé ký túc xá hoặc trường của bạn kiểm tra 10 phút, giải ngân chuyển khoản ngay lập tức.</p>
+</div>
+<div class="guide-card">
+<div class="guide-badge">Trợ giá lên đời</div>
+<h4 class="">Trợ giá thêm đến 1.000.000đ khi lên đời</h4>
+<p class="">Đổi laptop/tablet cũ sang mẫu UniGear mới, bạn được cộng thêm khoản trợ giá sinh viên giúp tiết kiệm tối đa chi phí.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Student Offer Section -->
+<section class="student-section" id="uu-dai">
+<div class="wrap">
+<h2 class="sec-title">Giảm 5% cho sinh viên.</h2>
+<p class="sec-lead">Xác thực một lần, dùng cho mọi đơn hàng trong năm học tại UniGear.</p>
+<div class="steps-list">
+<div class="step-item">
+<span class="step-num">BƯỚC 1</span>
+<h3 class="step-title">Chụp thẻ sinh viên</h3>
+<p class="step-desc">Ảnh rõ mặt trước, thấy tên trường và mã số sinh viên còn hạn sử dụng.</p>
+</div>
+<div class="step-item">
+<span class="step-num">BƯỚC 2</span>
+<h3 class="step-title">Chờ duyệt khoảng 1 phút</h3>
+<p class="step-desc">Hệ thống AI đối chiếu tự động với danh sách hơn 80 trường đại học đối tác.</p>
+</div>
+<div class="step-item">
+<span class="step-num">BƯỚC 3</span>
+<h3 class="step-title">Giảm giá tự động</h3>
+<p class="step-desc">Giá ưu đãi sinh viên hiển thị ngay lập tức và áp dụng trực tiếp tại giỏ hàng.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Interactive Product Detail & Trade-in Drawer -->
+<div class="drawer-overlay" id="productDrawerOverlay">
+<div class="bottom-sheet" id="productBottomSheet">
+<div class="sheet-drag-handle"></div>
+<div class="sheet-head">
+<div>
+<span id="drawerCategory" style="font-size:11px;font-family:var(--fm);color:var(--warm);font-weight:600;" class="">CHI TIẾT THIẾT BỊ</span>
+<h3 id="drawerTitle" style="font-size:18px;font-weight:800;color:var(--tx);" class="">Tên thiết bị</h3>
+</div>
+<button aria-label="Đóng" class="sheet-close-btn" id="drawerCloseBtn">×</button>
+</div>
+<div class="sheet-body">
+<div class="sheet-prod-preview">
+<div class="sheet-prod-img" id="drawerSvgHolder"></div>
+<div>
+<div id="drawerSpec" style="font-size:12px;color:var(--mu);" class="">Thông số</div>
+<div id="drawerPrice" style="font-size:18px;font-weight:700;color:var(--tx);margin-top:2px;" class="">0đ</div>
+<div id="drawerStudentPrice" style="font-size:12px;color:var(--ok);font-weight:600;" class="">Thẻ SV: 0đ</div>
+</div>
+</div>
+<!-- Action Tabs inside Drawer -->
+<div class="sheet-nav-tabs">
+<button class="sheet-tab-item active" data-tab="tab-buy">Mua hàng &amp; Trả góp</button>
+<button class="sheet-tab-item" data-tab="tab-trade">Thu cũ / Bán lại</button>
+<button class="sheet-tab-item" data-tab="tab-specs">Thông số kỹ thuật</button>
+</div>
+<!-- Drawer Tab 1: Buy & Installment -->
+<div class="drawer-content-pane" id="tab-buy">
+<div style="background:var(--surface);padding:14px;border-radius:16px;margin-bottom:14px;border:1px solid var(--ln);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:13px;font-weight:600;color:var(--tx);" class="">Giá niêm yết:</span>
+<span id="drawerPaneRegularPrice" style="font-size:14px;font-weight:600;color:var(--tx);" class="">15.990.000đ</span>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px dashed var(--ln);border-bottom:1px dashed var(--ln);">
+<span style="font-size:13px;font-weight:700;color:var(--ok);" class="">Ưu đãi Thẻ Sinh Viên (-5%):</span>
+<span id="drawerPaneStudentPrice" style="font-size:15px;font-weight:800;color:var(--ok);" class="">15.190.500đ</span>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
+<span style="font-size:12px;color:var(--mu);" class="">Trả góp 0% (kỳ hạn 12T):</span>
+<span id="drawerPaneMonthPrice" style="font-size:12px;font-family:var(--fm);font-weight:600;color:var(--tx);" class="">~1.265.000đ/tháng</span>
+</div>
+</div>
+<div style="margin-bottom:16px;display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--mu);">
+<div style="display:flex;gap:6px;align-items:center;">
+<svg fill="none" height="14" stroke="var(--ok)" stroke-width="2" viewBox="0 0 24 24" width="14"><path d="M20 6L9 17l-5-5"></path></svg>
+<span class="">Bảo hành chính hãng 12 tháng tại hệ thống UniGear Care</span>
+</div>
+<div style="display:flex;gap:6px;align-items:center;">
+<svg fill="none" height="14" stroke="var(--ok)" stroke-width="2" viewBox="0 0 24 24" width="14"><path d="M20 6L9 17l-5-5"></path></svg>
+<span class="">Giao hoả tốc miễn phí tận ký túc xá trong 2 giờ</span>
+</div>
+<div style="display:flex;gap:6px;align-items:center;">
+<svg fill="none" height="14" stroke="var(--ok)" stroke-width="2" viewBox="0 0 24 24" width="14"><path d="M20 6L9 17l-5-5"></path></svg>
+<span class="">Bao gồm VAT và chứng nhận hoá đơn sinh viên</span>
+</div>
+</div>
+<div style="display:flex;gap:10px;">
+<button class="btn-pill btn-primary" id="drawerBuyNowBtn" style="flex:1;">Thêm vào giỏ</button>
+<button class="btn-pill btn-secondary" id="drawerInstallmentBtn" style="flex:1;">Trả góp 0%</button>
+</div>
+</div>
+<!-- Drawer Tab 2: Trade-in / Sell -->
+<div class="drawer-content-pane" id="tab-trade" style="display:none;">
+<div class="tradein-calc-box">
+<span style="font-size:12px;font-family:var(--fm);color:var(--warm);font-weight:600;" class="">ƯỚC TÍNH THU CŨ ĐỔI MỚI</span>
+<h4 style="font-size:15px;font-weight:700;margin:4px 0 6px;color:var(--tx);" class="">Bán máy cũ lên đời mẫu này</h4>
+<p style="font-size:12px;color:var(--mu);" class="">UniGear hỗ trợ thu mua lại laptop, iPad, tai nghe cũ của mọi hãng. Nhận thêm phiếu trợ giá 500.000đ khi lên đời.</p>
+<div style="background:var(--card);border-radius:12px;padding:10px;margin-top:10px;border:1px solid var(--ln);">
+<div style="font-size:12px;color:var(--mu);" class="">Khoản bù dự kiến sau khi thu máy cũ:</div>
+<div id="drawerTradeEstimate" style="font-size:17px;font-weight:700;color:var(--tx);margin-top:2px;" class="">Từ 3.500.000đ – 7.000.000đ</div>
+</div>
+</div>
+<div class="trade-steps-mini">
+<div class="trade-step-line">
+<span class="circle">1</span>
+<span class="">Mang máy đến UniGear hoặc đặt lịch kỹ thuật viên đến tận KTX.</span>
+</div>
+<div class="trade-step-line">
+<span class="circle">2</span>
+<span class="">Kiểm tra phần cứng 10 phút, báo giá theo bảng minh bạch.</span>
+</div>
+<div class="trade-step-line">
+<span class="circle">3</span>
+<span class="">Bù chênh lệch lấy máy mới ngay hoặc nhận tiền mặt/chuyển khoản.</span>
+</div>
+</div>
+<button class="btn-pill btn-primary" id="drawerBookTradeBtn" style="width:100%;margin-top:16px;">Đăng ký thẩm định bán máy</button>
+</div>
+<!-- Drawer Tab 3: Detailed Specs -->
+<div class="drawer-content-pane" id="tab-specs" style="display:none;">
+<div id="drawerSpecsList"></div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class="wrap footer-stack">
+<div style="display:flex;align-items:center;gap:8px;">
+<div class="logo-mark" style="width:16px;height:16px;"></div>
+<span style="font-weight:700;color:var(--tx);" class="">UniGear Store · Công nghệ cho sinh viên</span>
+</div>
+<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<a href="#danh-muc" class="">Danh mục</a>
+<a href="#san-pham" class="">Sản phẩm</a>
+<a href="#cach-thuc" class="">Mua &amp; Bán máy</a>
+<a href="#uu-dai" class="">Thẻ sinh viên</a>
+</div>
+<div>
+<span class="">© 2025 UniGear Store. Be Vietnam Pro &amp; JetBrains Mono.</span>
+</div>
+</div>
+</footer>
+<div class="toast-msg" id="mToastMsg" role="status"></div>
+<script>
+var uid = 100;
+function makeDefs(g1, g2) {
+  uid++;
+  return '<defs>' +
+    '<linearGradient id="msc' + uid + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="' + g1 + '"/><stop offset="100%" stop-color="' + g2 + '"/></linearGradient>' +
+    '<linearGradient id="mbody' + uid + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"/><stop offset="100%" stop-color="#1B1E2B"/></linearGradient>' +
+    '<linearGradient id="mbase' + uid + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"/><stop offset="100%" stop-color="#B6BCCB"/></linearGradient>' +
+  '</defs>';
+}
+
+var R = {
+  lap: function(c1, c2) {
+    var d = makeDefs(c1, c2);
+    return '<svg class="hero-product-svg" viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">' + d +
+      '<g transform="translate(45, 15)">' +
+        '<rect x="40" y="10" width="370" height="236" rx="16" fill="url(#mbody' + uid + ')"/>' +
+        '<rect x="42" y="12" width="366" height="232" rx="14" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>' +
+        '<rect x="52" y="22" width="346" height="212" rx="8" fill="url(#msc' + uid + ')"/>' +
+        '<ellipse cx="160" cy="80" rx="130" ry="60" fill="#ffffff" opacity="0.12"/>' +
+        '<circle cx="225" cy="16" r="2.2" fill="#0B0D14"/>' +
+        '<path d="M0 252 h450 l-18 28 a12 12 0 0 1 -10 6 h-404 a12 12 0 0 1 -10 -6 z" fill="url(#mbase' + uid + ')"/>' +
+        '<path d="M0 252 h450" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>' +
+        '<rect x="180" y="252" width="90" height="6" rx="3" fill="#8F96A8"/>' +
+      '</g>' +
+    '</svg>';
+  },
+  tab: function(c1, c2) {
+    var d = makeDefs(c1, c2);
+    return '<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">' + d +
+      '<rect x="75" y="12" width="240" height="194" rx="20" fill="url(#mbody' + uid + ')"/>' +
+      '<rect x="84" y="21" width="222" height="176" rx="12" fill="url(#msc' + uid + ')"/>' +
+      '<ellipse cx="160" cy="70" rx="90" ry="40" fill="#fff" opacity="0.12"/>' +
+      '<rect x="332" y="44" width="10" height="136" rx="5" fill="url(#mbase' + uid + ')"/>' +
+      '<circle cx="195" cy="16" r="2" fill="#0B0D14"/>' +
+    '</svg>';
+  },
+  buds: function(c1, c2) {
+    var d = makeDefs(c1, c2);
+    return '<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">' + d +
+      '<g transform="translate(15, 0)">' +
+        '<ellipse cx="145" cy="74" rx="22" ry="26" fill="#F4F5F9"/>' +
+        '<rect x="156" y="82" width="10" height="48" rx="5" fill="#F4F5F9"/>' +
+        '<ellipse cx="225" cy="74" rx="22" ry="26" fill="#F4F5F9"/>' +
+        '<rect x="204" y="82" width="10" height="48" rx="5" fill="#F4F5F9"/>' +
+        '<rect x="105" y="108" width="160" height="106" rx="44" fill="url(#mbase' + uid + ')"/>' +
+        '<path d="M107 150 h156" stroke="#9EA6B9" stroke-width="2"/>' +
+        '<circle cx="185" cy="184" r="5" fill="' + c1 + '"/>' +
+      '</g>' +
+    '</svg>';
+  },
+  kb: function(c1, c2) {
+    var d = makeDefs(c1, c2);
+    var keys = '';
+    for (var r = 0; r < 3; r++) {
+      for (var c = 0; c < 12; c++) {
+        var isEsc = (r === 0 && c === 0);
+        keys += '<rect x="' + (50 + c * 25) + '" y="' + (60 + r * 28) + '" width="21" height="23" rx="5" fill="' + (isEsc ? c1 : '#282E40') + '"/>';
+      }
+    }
+    return '<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">' + d +
+      '<rect x="34" y="42" width="332" height="144" rx="16" fill="url(#mbody' + uid + ')"/>' +
+      keys +
+      '<rect x="50" y="144" width="60" height="23" rx="5" fill="#282E40"/>' +
+      '<rect x="115" y="144" width="135" height="23" rx="5" fill="#282E40"/>' +
+      '<rect x="255" y="144" width="91" height="23" rx="5" fill="' + c2 + '"/>' +
+    '</svg>';
+  },
+  spk: function(c1, c2) {
+    var d = makeDefs(c1, c2);
+    return '<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">' + d +
+      '<rect x="110" y="28" width="180" height="180" rx="50" fill="url(#mbody' + uid + ')"/>' +
+      '<rect x="110" y="94" width="180" height="48" fill="' + c1 + '" opacity="0.9"/>' +
+      '<line x1="124" x2="276" y1="118" y2="118" stroke="#0B0D14" stroke-width="28" stroke-dasharray="3 7" opacity="0.35"/>' +
+      '<circle cx="200" cy="62" r="9" fill="' + c2 + '"/>' +
+    '</svg>';
+  },
+  pb: function(c1, c2) {
+    var d = makeDefs(c1, c2);
+    var leds = '';
+    for (var i = 0; i < 4; i++) {
+      leds += '<rect x="' + (168 + i * 17) + '" y="' + 48 + '" width="11" height="5" rx="2.5" fill="#fff" opacity="' + (i < 3 ? '1' : '0.3') + '"/>';
+    }
+    return '<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">' + d +
+      '<rect x="150" y="14" width="100" height="212" rx="28" fill="url(#msc' + uid + ')"/>' +
+      '<ellipse cx="180" cy="80" rx="22" ry="60" fill="#fff" opacity="0.14"/>' +
+      leds +
+      '<rect x="150" y="130" width="100" height="6" fill="#0B0D14" opacity="0.25"/>' +
+      '<rect x="184" y="210" width="32" height="6" rx="3" fill="#0B0D14" opacity="0.5"/>' +
+    '</svg>';
+  }
+};
+
+var products = [
+  { 
+    id: 'p1', 
+    name: "Nova Air 14", 
+    cat: "may", 
+    spec: "Chip M-Core, RAM 16GB, pin 12 giờ", 
+    p: 15990000, 
+    oldP: 17990000, 
+    sale: "-11%", 
+    type: "lap", 
+    c1: "#6F5CFF", 
+    c2: "#FF8A4C",
+    specs: [
+      { label: "Màn hình", val: "14.0 inch IPS 2.2K Retina 100% sRGB" },
+      { label: "Vi xử lý", val: "UniCore 8 nhân (4P + 4E), 4.2GHz" },
+      { label: "Bộ nhớ RAM", val: "16GB LPDDR5x 6400MHz" },
+      { label: "Ổ cứng", val: "512GB PCIe Gen4 NVMe SSD" },
+      { label: "Trọng lượng", val: "1.24 kg siêu nhẹ vỏ nhôm" },
+      { label: "Thời lượng pin", val: "Khoảng 12 giờ văn phòng, sạc 65W GaN" }
+    ]
+  },
+  { 
+    id: 'p2', 
+    name: "Nova Lite 15", 
+    cat: "may", 
+    spec: "RAM 8GB, SSD 512GB, màn 15.6 inch", 
+    p: 11490000, 
+    oldP: null, 
+    sale: null, 
+    type: "lap", 
+    c1: "#1FA2FF", 
+    c2: "#6F5CFF",
+    specs: [
+      { label: "Màn hình", val: "15.6 inch FHD IPS Anti-Glare" },
+      { label: "Vi xử lý", val: "UniCore 6 nhân 12 luồng" },
+      { label: "RAM / Ổ cứng", val: "8GB DDR4 + 512GB SSD" },
+      { label: "Trọng lượng", val: "1.65 kg" },
+      { label: "Bàn phím", val: "Có cụm phím số Numpad tiện gõ số liệu" }
+    ]
+  },
+  { 
+    id: 'p3', 
+    name: "Note 11", 
+    cat: "may", 
+    spec: "Máy tính bảng kèm bút cảm ứng, 11 inch", 
+    p: 6490000, 
+    oldP: null, 
+    sale: null, 
+    type: "tab", 
+    c1: "#FF8A4C", 
+    c2: "#FF4D8D",
+    specs: [
+      { label: "Màn hình", val: "11.0 inch 2K 90Hz hỗ trợ bút cảm ứng" },
+      { label: "Phụ kiện đi kèm", val: "Bút cảm ứng UniPen độ trễ thấp" },
+      { label: "Dung lượng", val: "128GB ROM + 6GB RAM" },
+      { label: "Pin", val: "8.000 mAh, sạc nhanh 33W" }
+    ]
+  },
+  { 
+    id: 'p4', 
+    name: "Pulse ANC", 
+    cat: "am", 
+    spec: "Chống ồn chủ động, pin 32 giờ", 
+    p: 2490000, 
+    oldP: null, 
+    sale: null, 
+    type: "buds", 
+    c1: "#6F5CFF", 
+    c2: "#FFFFFF",
+    specs: [
+      { label: "Chống ồn", val: "Hybrid ANC -42dB cực tĩnh trong thư viện" },
+      { label: "Thời lượng pin", val: "8h tai nghe + 24h dock sạc" },
+      { label: "Kết nối", val: "Bluetooth 5.3 kết nối 2 thiết bị song song" },
+      { label: "Chống nước", val: "IPX5 kháng mồ hôi tập gym" }
+    ]
+  },
+  { 
+    id: 'p5', 
+    name: "Keyd 75", 
+    cat: "pk", 
+    spec: "Bàn phím cơ 3 chế độ", 
+    p: 1890000, 
+    oldP: 2290000, 
+    sale: "-17%", 
+    type: "kb", 
+    c1: "#FF8A4C", 
+    c2: "#6F5CFF",
+    specs: [
+      { label: "Layout", val: "75% nhỏ gọn gàng balo" },
+      { label: "Switch", val: "Linear Gateron êm ái không ồn phòng học" },
+      { label: "Kết nối", val: "Type-C, Wireless 2.4G & Bluetooth" },
+      { label: "Hotswap", val: "Có, mạch xuôi LED RGB" }
+    ]
+  },
+  { 
+    id: 'p6', 
+    name: "Cube Mini", 
+    cat: "am", 
+    spec: "Loa chống nước IPX7, pin 14 giờ", 
+    p: 1290000, 
+    oldP: 1590000, 
+    sale: "-19%", 
+    type: "spk", 
+    c1: "#FF8A4C", 
+    c2: "#6F5CFF",
+    specs: [
+      { label: "Công suất", val: "15W Bass Boost" },
+      { label: "Kháng nước", val: "Chuẩn IPX7 chống nước sâu" },
+      { label: "Thời lượng pin", val: "14 giờ liên tục" }
+    ]
+  },
+  { 
+    id: 'p7', 
+    name: "Dot Air", 
+    cat: "am", 
+    spec: "Tai nghe true wireless, pin 24 giờ", 
+    p: 890000, 
+    oldP: 1190000, 
+    sale: "-25%", 
+    type: "buds", 
+    c1: "#FF8A4C", 
+    c2: "#FFFFFF",
+    specs: [
+      { label: "Trọng lượng", val: "3.5g mỗi tai siêu nhẹ" },
+      { label: "Mic đàm thoại", val: "Dual mic ENC lọc ồn cuộc gọi" },
+      { label: "Tổng thời gian", val: "24 giờ sạc Type-C" }
+    ]
+  },
+  { 
+    id: 'p8', 
+    name: "Sạc dự phòng 20.000", 
+    cat: "pk", 
+    spec: "Sạc nhanh 22.5W, 2 cổng sạc", 
+    p: 590000, 
+    oldP: null, 
+    sale: null, 
+    type: "pb", 
+    c1: "#3A4A7A", 
+    c2: "#6F5CFF",
+    specs: [
+      { label: "Dung lượng pin", val: "20.000 mAh (đủ sạc 4 lần điện thoại)" },
+      { label: "Chuẩn sạc", val: "PD 20W + QC 22.5W sạc nhanh" },
+      { label: "Đầu ra", val: "2 cổng USB-A & 1 cổng Type-C 2 chiều" }
+    ]
+  }
+];
+
+function formatVND(n) {
+  return Math.round(n).toLocaleString('vi-VN') + 'đ';
+}
+
+function getPriceBand(p) {
+  if (p < 1000000) return 'under1m';
+  if (p <= 5000000) return '1to5m';
+  return 'over5m';
+}
+
+document.getElementById('mHeroSvg').innerHTML = R.lap("#6F5CFF", "#FF8A4C");
+
+var bentoData = [
+  { title: "Laptop", sub: "Từ 11.490.000đ", cat: "may", type: "lap", c1: "#6F5CFF", c2: "#FF8A4C", cls: "tile-laptop" },
+  { title: "Tablet", sub: "Từ 6.490.000đ", cat: "may", type: "tab", c1: "#FF8A4C", c2: "#FF4D8D", cls: "tile-tablet" },
+  { title: "Tai nghe", sub: "Từ 890.000đ", cat: "am", type: "buds", c1: "#6F5CFF", c2: "#FFFFFF", cls: "tile-earbuds" },
+  { title: "Phụ kiện", sub: "Bàn phím, sạc, loa. Từ 590.000đ", cat: "pk", type: "kb", c1: "#FF8A4C", c2: "#6F5CFF", cls: "tile-accessories" }
+];
+
+document.getElementById('mBentoGrid').innerHTML = bentoData.map(function(item) {
+  return '<a class="bento-tile ' + item.cls + '" href="#san-pham" data-cat="' + item.cat + '">' +
+    '<h3>' + item.title + '</h3>' +
+    '<p>' + item.sub + '</p>' +
+    '<div class="bento-img-wrap">' + R[item.type](item.c1, item.c2) + '</div>' +
+  '</a>';
+}).join('');
+
+var currentPriceFilter = 'all';
+var currentCatFilter = 'all';
+var cartCount = 0;
+var toastTimer = null;
+var selectedProduct = null;
+
+function renderProducts() {
+  var filtered = products.filter(function(item) {
+    var matchPrice = (currentPriceFilter === 'all' || getPriceBand(item.p) === currentPriceFilter);
+    var matchCat = (currentCatFilter === 'all' || item.cat === currentCatFilter);
+    return matchPrice && matchCat;
+  });
+
+  var container = document.getElementById('mProductsContainer');
+  if (!filtered.length) {
+    container.innerHTML = '<div style="padding: 32px 0; text-align: center; color: var(--mu);">Không có sản phẩm trong bộ lọc này.</div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(function(item) {
+    var studentPrice = Math.round(item.p * 0.95);
+    return '<article class="prod-card" data-id="' + item.id + '">' +
+      '<div class="prod-stage">' +
+        (item.sale ? '<span class="prod-badge">' + item.sale + '</span>' : '') +
+        '<span class="prod-detail-hint">Chi tiết ➔</span>' +
+        R[item.type](item.c1, item.c2) +
+      '</div>' +
+      '<div class="prod-info">' +
+        '<h3 class="prod-name">' + item.name + '</h3>' +
+        '<p class="prod-spec">' + item.spec + '</p>' +
+        '<div class="prod-bottom">' +
+          '<div class="prod-pricing">' +
+            (item.oldP ? '<div class="old-price">' + formatVND(item.oldP) + '</div>' : '') +
+            '<div class="current-price">' + formatVND(item.p) + '</div>' +
+            '<div class="student-price">Thẻ SV ' + formatVND(studentPrice) + '</div>' +
+          '</div>' +
+          '<button class="add-btn" data-add="true" data-name="' + item.name + '">Thêm vào giỏ</button>' +
+        '</div>' +
+      '</div>' +
+    '</article>';
+  }).join('');
+}
+
+function syncFilters() {
+  document.querySelectorAll('.filter-pill').forEach(function(pill) {
+    var grp = pill.getAttribute('data-group');
+    var val = pill.getAttribute('data-val');
+    var isPressed = (grp === 'price' && val === currentPriceFilter) || (grp === 'cat' && val === currentCatFilter);
+    pill.setAttribute('aria-pressed', isPressed);
+  });
+}
+
+renderProducts();
+
+// Filter click
+document.getElementById('mFiltersBar').addEventListener('click', function(e) {
+  var pill = e.target.closest('.filter-pill');
+  if (!pill) return;
+  var grp = pill.getAttribute('data-group');
+  var val = pill.getAttribute('data-val');
+  if (grp === 'price') currentPriceFilter = val;
+  if (grp === 'cat') currentCatFilter = val;
+  syncFilters();
+  renderProducts();
+});
+
+// Bento click
+document.getElementById('mBentoGrid').addEventListener('click', function(e) {
+  var tile = e.target.closest('.bento-tile');
+  if (!tile) return;
+  currentCatFilter = tile.getAttribute('data-cat');
+  currentPriceFilter = 'all';
+  syncFilters();
+  renderProducts();
+});
+
+// Toast Helper
+function showToast(text) {
+  var toast = document.getElementById('mToastMsg');
+  toast.textContent = text;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function() {
+    toast.classList.remove('show');
+  }, 2200);
+}
+
+// Drawer logic
+var drawerOverlay = document.getElementById('productDrawerOverlay');
+var drawerCloseBtn = document.getElementById('drawerCloseBtn');
+
+function openDrawerForProduct(prod) {
+  selectedProduct = prod;
+  var studentP = Math.round(prod.p * 0.95);
+  var monthP = Math.round(studentP / 12);
+
+  document.getElementById('drawerCategory').textContent = (prod.cat === 'may' ? 'MÁY TÍNH / TABLET' : (prod.cat === 'am' ? 'THIẾT BỊ ÂM THANH' : 'PHỤ KIỆN HỌC TẬP'));
+  document.getElementById('drawerTitle').textContent = prod.name;
+  document.getElementById('drawerSpec').textContent = prod.spec;
+  document.getElementById('drawerPrice').textContent = formatVND(prod.p);
+  document.getElementById('drawerStudentPrice').textContent = 'Thẻ SV: ' + formatVND(studentP);
+  document.getElementById('drawerSvgHolder').innerHTML = R[prod.type](prod.c1, prod.c2);
+
+  // Pane 1: Buy
+  document.getElementById('drawerPaneRegularPrice').textContent = formatVND(prod.p);
+  document.getElementById('drawerPaneStudentPrice').textContent = formatVND(studentP);
+  document.getElementById('drawerPaneMonthPrice').textContent = '~' + formatVND(monthP) + '/tháng';
+
+  // Pane 2: Trade estimate
+  var minTrade = Math.round(prod.p * 0.25);
+  var maxTrade = Math.round(prod.p * 0.55);
+  document.getElementById('drawerTradeEstimate').textContent = 'Bù từ ' + formatVND(minTrade) + ' – ' + formatVND(maxTrade);
+
+  // Pane 3: Specs list
+  var specsHtml = '';
+  if (prod.specs && prod.specs.length) {
+    specsHtml = prod.specs.map(function(s) {
+      return '<div class="spec-item"><span class="spec-label">' + s.label + '</span><span class="spec-val">' + s.val + '</span></div>';
+    }).join('');
+  } else {
+    specsHtml = '<div class="spec-item"><span class="spec-label">Thông tin</span><span class="spec-val">' + prod.spec + '</span></div>';
+  }
+  document.getElementById('drawerSpecsList').innerHTML = specsHtml;
+
+  // Reset tab to buy
+  switchDrawerTab('tab-buy');
+  drawerOverlay.classList.add('open');
+}
+
+function closeDrawer() {
+  drawerOverlay.classList.remove('open');
+}
+
+function switchDrawerTab(tabId) {
+  document.querySelectorAll('.sheet-tab-item').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+  });
+  document.querySelectorAll('.drawer-content-pane').forEach(function(pane) {
+    pane.style.display = (pane.id === tabId) ? 'block' : 'none';
+  });
+}
+
+// Drawer tab switches
+document.querySelectorAll('.sheet-tab-item').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var tid = this.getAttribute('data-tab');
+    switchDrawerTab(tid);
+  });
+});
+
+drawerCloseBtn.addEventListener('click', closeDrawer);
+drawerOverlay.addEventListener('click', function(e) {
+  if (e.target === drawerOverlay) closeDrawer();
+});
+
+// Product grid events (delegation)
+document.getElementById('mProductsContainer').addEventListener('click', function(e) {
+  var addBtn = e.target.closest('[data-add="true"]');
+  if (addBtn) {
+    e.stopPropagation();
+    var name = addBtn.getAttribute('data-name');
+    cartCount++;
+    document.getElementById('mCartCount').textContent = cartCount;
+    showToast('Đã thêm ' + name + ' vào giỏ');
+    return;
+  }
+
+  var card = e.target.closest('.prod-card');
+  if (card) {
+    var id = card.getAttribute('data-id');
+    var found = products.find(function(p) { return p.id === id; });
+    if (found) {
+      openDrawerForProduct(found);
+    }
+  }
+});
+
+// Drawer actions
+document.getElementById('drawerBuyNowBtn').addEventListener('click', function() {
+  if (!selectedProduct) return;
+  cartCount++;
+  document.getElementById('mCartCount').textContent = cartCount;
+  showToast('Đã thêm ' + selectedProduct.name + ' vào giỏ');
+  closeDrawer();
+});
+
+document.getElementById('drawerInstallmentBtn').addEventListener('click', function() {
+  if (!selectedProduct) return;
+  showToast('Đã chọn hồ sơ trả góp 0% cho ' + selectedProduct.name);
+  closeDrawer();
+});
+
+document.getElementById('drawerBookTradeBtn').addEventListener('click', function() {
+  if (!selectedProduct) return;
+  showToast('Đã mở lịch định giá thu cũ cho ' + selectedProduct.name);
+  closeDrawer();
+});
+
+// Guide Tab Switching
+document.querySelectorAll('.guide-tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var target = this.getAttribute('data-target');
+    document.querySelectorAll('.guide-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.guide-panel').forEach(function(p) { p.classList.remove('active'); });
+    this.classList.add('active');
+    document.getElementById(target).classList.add('active');
+  });
+});
+
+// Full Light/Dark Theme Toggle functionality with localStorage
+var mThemeToggle = document.getElementById('mThemeToggle');
+var mMoonIcon = document.getElementById('mMoonIcon');
+var mSunIcon = document.getElementById('mSunIcon');
+
+function updateThemeIcons(theme) {
+  if (theme === 'light') {
+    // Current is light: show moon icon to allow switching back to dark
+    mMoonIcon.style.display = 'block';
+    mSunIcon.style.display = 'none';
+  } else {
+    // Current is dark: show sun icon to allow switching to light
+    mMoonIcon.style.display = 'none';
+    mSunIcon.style.display = 'block';
+  }
+}
+
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  try {
+    localStorage.setItem('unigear_theme', theme);
+  } catch(e) {}
+  updateThemeIcons(theme);
+}
+
+var savedTheme = 'dark';
+try {
+  savedTheme = localStorage.getItem('unigear_theme') || 'dark';
+} catch(e) {}
+setTheme(savedTheme);
+
+mThemeToggle.addEventListener('click', function() {
+  var current = document.documentElement.getAttribute('data-theme') || 'dark';
+  var next = (current === 'dark') ? 'light' : 'dark';
+  setTheme(next);
+  showToast('Đã chuyển sang chế độ ' + (next === 'light' ? 'Sáng' : 'Tối'));
+});
+</script>
+
+
+</body></html>

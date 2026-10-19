@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>UniGear – Thiết bị công nghệ &amp; Thu cũ đổi mới sinh viên</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #0B0D14;
+  --surface: #141824;
+  --band: #0F1220;
+  --card: #151A2A;
+  --stage: linear-gradient(180deg, #1F2540 0%, #131829 100%);
+  --tx: #F3F4F8;
+  --mu: #8A90A6;
+  --ln: rgba(255, 255, 255, 0.10);
+  --pri: #6F5CFF;
+  --pri-h: #8A7BFF;
+  --warm: #FF8A4C;
+  --ok: #3DD598;
+  --pop: #FF4D8D;
+  --btn-p-bg: #F3F4F8;
+  --btn-p-tx: #0B0D14;
+  --btn-s-bg: rgba(255, 255, 255, 0.08);
+  --btn-s-tx: #F3F4F8;
+  --add-btn-bg: #F3F4F8;
+  --add-btn-tx: #0B0D14;
+  --modal-bg: #141824;
+  --modal-tab-bg: #1C2235;
+  --hero-glow: radial-gradient(closest-side, rgba(111,92,255,0.45), transparent 72%), radial-gradient(closest-side at 70% 60%, rgba(255,138,76,0.30), transparent 70%);
+  --hero-shadow: drop-shadow(0 32px 56px rgba(0,0,0,0.75));
+  --f: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  --fm: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+:root[data-theme="light"] {
+  --bg: #FBFBFD;
+  --surface: #F0F1F6;
+  --band: #ECEEF3;
+  --card: #FFFFFF;
+  --stage: linear-gradient(180deg, #F7F8FB 0%, #E2E5ED 100%);
+  --tx: #0B0D14;
+  --mu: #5B6176;
+  --ln: rgba(11, 13, 20, 0.10);
+  --pri: #5B47F5;
+  --pri-h: #4634D6;
+  --warm: #FF7A33;
+  --ok: #0B7F58;
+  --pop: #FF4D8D;
+  --btn-p-bg: #0B0D14;
+  --btn-p-tx: #FBFBFD;
+  --btn-s-bg: #FFFFFF;
+  --btn-s-tx: #0B0D14;
+  --add-btn-bg: #0B0D14;
+  --add-btn-tx: #FBFBFD;
+  --modal-bg: #FFFFFF;
+  --modal-tab-bg: #E8EBF2;
+  --hero-glow: radial-gradient(closest-side, rgba(111,92,255,0.22), transparent 72%), radial-gradient(closest-side at 70% 60%, rgba(255,122,51,0.18), transparent 70%);
+  --hero-shadow: drop-shadow(0 28px 48px rgba(11,13,20,0.18));
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  background-color: var(--bg);
+  color: var(--tx);
+  font-family: var(--f);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--tx);
+  min-height: 100vh;
+  transition: background-color 200ms ease, color 200ms ease;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; outline: none; }
+:focus-visible { outline: 2px solid var(--warm); outline-offset: 3px; }
+
+.wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 64px;
+  background: rgba(11, 13, 20, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--ln);
+  transition: background 200ms ease, border-color 200ms ease;
+}
+:root[data-theme="light"] header {
+  background: rgba(251, 251, 253, 0.85);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 24px;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: conic-gradient(from 200deg, var(--pri), var(--warm), var(--pri));
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--tx);
+}
+
+.logo-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mu);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--ln);
+}
+
+nav.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mu);
+}
+
+nav.nav-links a {
+  transition: color 150ms ease;
+}
+nav.nav-links a:hover {
+  color: var(--tx);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--ln);
+  color: var(--tx);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 180ms ease;
+}
+.theme-btn:hover {
+  border-color: var(--tx);
+  transform: scale(1.05);
+}
+
+.cart-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--ln);
+  color: var(--tx);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 180ms ease;
+}
+.cart-pill:hover {
+  border-color: var(--tx);
+}
+.cart-count {
+  background: var(--pri);
+  color: #FFFFFF;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 80px 0 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chip-sale {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--ln);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--tx);
+  margin-bottom: 28px;
+}
+.chip-sale b {
+  color: var(--warm);
+  font-weight: 700;
+}
+
+.hero h1 {
+  font-size: 88px;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1.0;
+  max-width: 16ch;
+  margin: 0 auto 24px;
+  color: var(--tx);
+}
+
+.hero p.lead-hero {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--mu);
+  max-width: 52ch;
+  margin: 0 auto 36px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-pill {
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 180ms cubic-bezier(0.2, 0, 0, 1), background-color 180ms ease, border-color 180ms ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--btn-p-bg);
+  color: var(--btn-p-tx);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--btn-s-bg);
+  color: var(--btn-s-tx);
+  border: 1px solid var(--ln);
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+:root[data-theme="light"] .btn-secondary:hover {
+  background: #E8EBF2;
+}
+
+.hero-stage {
+  position: relative;
+  max-width: 860px;
+  margin: 64px auto 0;
+  padding: 0 20px;
+  cursor: pointer;
+}
+.hero-glow-back {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -40%);
+  width: 90%;
+  height: 90%;
+  background: var(--hero-glow);
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-product-svg {
+  position: relative;
+  z-index: 2;
+  filter: var(--hero-shadow);
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: filter 200ms ease, transform 300ms ease;
+}
+.hero-stage:hover .hero-product-svg {
+  transform: translateY(-4px) scale(1.01);
+}
+
+.hero-caption {
+  font-family: var(--fm);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--mu);
+  margin-top: 14px;
+  padding-bottom: 24px;
+}
+.hero-caption b {
+  color: var(--tx);
+  font-weight: 600;
+}
+
+/* Sections Common */
+.sec {
+  padding: 96px 0;
+}
+.sec-title {
+  font-size: 50px;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  color: var(--tx);
+  margin-bottom: 12px;
+}
+.sec-lead {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--mu);
+  max-width: 50ch;
+  margin-bottom: 40px;
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 240px;
+  gap: 20px;
+}
+
+.bento-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--ln);
+  cursor: pointer;
+  transition: border-color 200ms ease, transform 200ms ease;
+  text-decoration: none;
+}
+.bento-tile:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+:root[data-theme="light"] .bento-tile:hover {
+  border-color: rgba(11, 13, 20, 0.28);
+}
+
+.bento-tile h3 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--tx);
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 2;
+}
+.bento-tile p {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--mu);
+  position: relative;
+  z-index: 2;
+}
+
+.bento-img-wrap {
+  position: absolute;
+  right: -5%;
+  bottom: -6%;
+  width: 72%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Dark theme specific bento glow */
+:root[data-theme="dark"] .tile-laptop {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: radial-gradient(120% 90% at 85% 100%, rgba(111,92,255,0.45), transparent 65%), var(--surface);
+}
+:root[data-theme="dark"] .tile-laptop .bento-img-wrap {
+  width: 96%;
+  right: 1%;
+  bottom: 2%;
+}
+:root[data-theme="dark"] .tile-laptop h3 {
+  font-size: 34px;
+}
+:root[data-theme="dark"] .tile-tablet {
+  background: radial-gradient(100% 90% at 100% 100%, rgba(255,138,76,0.30), transparent 60%), var(--surface);
+}
+:root[data-theme="dark"] .tile-earbuds {
+  background: var(--surface);
+}
+:root[data-theme="dark"] .tile-accessories {
+  grid-column: span 2;
+  background: var(--surface);
+}
+
+/* Light theme specific bento gradients */
+:root[data-theme="light"] .tile-laptop {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: linear-gradient(160deg, #EDEAFF 0%, #DCD6FF 100%);
+}
+:root[data-theme="light"] .tile-laptop .bento-img-wrap {
+  width: 96%;
+  right: 1%;
+  bottom: 2%;
+}
+:root[data-theme="light"] .tile-laptop h3 {
+  font-size: 34px;
+}
+:root[data-theme="light"] .tile-tablet {
+  background: linear-gradient(160deg, #FFF0E6 0%, #FFD9C2 100%);
+}
+:root[data-theme="light"] .tile-earbuds {
+  background: linear-gradient(160deg, #EAF1FF 0%, #D4E2FF 100%);
+}
+:root[data-theme="light"] .tile-accessories {
+  grid-column: span 2;
+  background: linear-gradient(160deg, #F6F7FA 0%, #E4E7EF 100%);
+}
+
+/* Product Section on Band */
+.band-section {
+  background-color: var(--band);
+  padding: 96px 0;
+  transition: background-color 200ms ease;
+}
+
+.filters-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.filter-pill {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  background: var(--card);
+  color: var(--tx);
+  border: 1px solid var(--ln);
+  transition: all 180ms ease;
+  cursor: pointer;
+}
+.filter-pill[aria-pressed="true"] {
+  background: var(--tx);
+  color: var(--band);
+  border-color: var(--tx);
+  font-weight: 600;
+}
+.filter-sep {
+  width: 1px;
+  height: 22px;
+  background: var(--ln);
+  margin: 0 6px;
+}
+
+/* Products Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.prod-card {
+  background: var(--card);
+  border-radius: 28px;
+  padding: 12px 12px 22px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ln);
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), box-shadow 200ms ease, border-color 200ms ease;
+  cursor: pointer;
+}
+.prod-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+:root[data-theme="light"] .prod-card:hover {
+  border-color: rgba(11, 13, 20, 0.22);
+}
+
+.prod-stage {
+  background: var(--stage);
+  border-radius: 20px;
+  aspect-ratio: 1.15;
+  padding: 8% 10%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.prod-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--warm);
+  color: #1A0F08;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  line-height: 1.4;
+  z-index: 3;
+}
+
+.prod-info {
+  padding: 20px 14px 4px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.prod-name {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--tx);
+  margin-bottom: 4px;
+}
+.prod-spec {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--mu);
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+.prod-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.prod-pricing {
+  display: flex;
+  flex-direction: column;
+}
+.old-price {
+  font-size: 13px;
+  color: var(--mu);
+  text-decoration: line-through;
+  line-height: 1.2;
+}
+.current-price {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--tx);
+  line-height: 1.2;
+}
+.student-price {
+  font-family: var(--fm);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ok);
+  margin-top: 3px;
+  letter-spacing: -0.01em;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-btn {
+  background: transparent;
+  color: var(--mu);
+  padding: 9px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid var(--ln);
+  transition: all 180ms ease;
+  white-space: nowrap;
+}
+.detail-btn:hover {
+  color: var(--tx);
+  border-color: var(--tx);
+}
+
+.add-btn {
+  background: var(--add-btn-bg);
+  color: var(--add-btn-tx);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 180ms ease, color 180ms ease, transform 150ms ease;
+  white-space: nowrap;
+}
+.add-btn:hover {
+  background: var(--pri);
+  color: #FFFFFF;
+}
+
+/* Trade-In & How It Works Section */
+.workflow-section {
+  padding: 96px 0;
+  background: var(--bg);
+}
+
+.workflow-card-banner {
+  background: linear-gradient(135deg, rgba(111,92,255,0.12) 0%, rgba(255,138,76,0.1) 100%), var(--surface);
+  border: 1px solid var(--ln);
+  border-radius: 32px;
+  padding: 44px 40px;
+  margin-bottom: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.workflow-banner-content h3 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  color: var(--tx);
+}
+.workflow-banner-content p {
+  font-size: 16px;
+  color: var(--mu);
+  max-width: 58ch;
+}
+
+.trust-badges-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.trust-badge-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tx);
+  border: 1px solid var(--ln);
+}
+
+.process-grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.process-col {
+  background: var(--surface);
+  border: 1px solid var(--ln);
+  border-radius: 28px;
+  padding: 36px 32px;
+}
+
+.process-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.process-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--pri);
+  color: #fff;
+}
+.process-tag.orange {
+  background: var(--warm);
+  color: #1A0F08;
+}
+
+.process-col h4 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--tx);
+}
+
+.sub-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sub-step-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.step-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--ln);
+  font-family: var(--fm);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tx);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.sub-step-text h5 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--tx);
+  margin-bottom: 2px;
+}
+.sub-step-text p {
+  font-size: 14px;
+  color: var(--mu);
+  line-height: 1.45;
+}
+
+/* Student Discount Steps */
+.student-section {
+  padding: 80px 0 96px;
+  background: var(--band);
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 16px;
+}
+.step-item {
+  border-top: 1px solid var(--ln);
+  padding-top: 24px;
+}
+.step-num {
+  font-family: var(--fm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--warm);
+  letter-spacing: 0.02em;
+}
+.step-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 10px 0 6px;
+  color: var(--tx);
+}
+.step-desc {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--mu);
+  line-height: 1.5;
+}
+
+/* Modal Popup */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  background: var(--modal-bg);
+  border: 1px solid var(--ln);
+  border-radius: 28px;
+  width: 100%;
+  max-width: 820px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 72px rgba(0,0,0,0.5);
+  transform: translateY(24px) scale(0.97);
+  transition: transform 220ms cubic-bezier(0.2, 0, 0, 1);
+  position: relative;
+}
+
+.modal-backdrop.open .modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--ln);
+  color: var(--tx);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 150ms ease;
+}
+.modal-close-btn:hover {
+  background: var(--tx);
+  color: var(--bg);
+}
+
+.modal-content-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+}
+
+.modal-stage {
+  background: var(--stage);
+  padding: 36px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--ln);
+  border-radius: 28px 0 0 28px;
+  position: relative;
+}
+
+.modal-stage svg {
+  width: 100%;
+  max-height: 240px;
+  filter: drop-shadow(0 16px 28px rgba(0,0,0,0.4));
+}
+
+.modal-specs-list {
+  margin-top: 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.spec-badge {
+  background: var(--surface);
+  border: 1px solid var(--ln);
+  border-radius: 8px;
+  padding: 6px 10px;
+  color: var(--mu);
+  font-family: var(--fm);
+}
+.spec-badge b {
+  color: var(--tx);
+}
+
+.modal-body {
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--pri);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.modal-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--tx);
+  line-height: 1.15;
+}
+
+.modal-quick-desc {
+  font-size: 14px;
+  color: var(--mu);
+  margin-top: 6px;
+  margin-bottom: 20px;
+}
+
+/* Tabs */
+.modal-tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--modal-tab-bg);
+  padding: 4px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.modal-tab-btn {
+  flex: 1;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mu);
+  background: transparent;
+  text-align: center;
+  transition: all 180ms ease;
+}
+
+.modal-tab-btn.active {
+  background: var(--card);
+  color: var(--tx);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.tab-pane {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+}
+
+.tab-pane.active {
+  display: flex;
+}
+
+.price-box-modal {
+  background: var(--card);
+  border: 1px solid var(--ln);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+
+.price-row-m {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.m-student-price {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ok);
+}
+
+.m-original-price {
+  font-size: 15px;
+  color: var(--mu);
+  text-decoration: line-through;
+}
+
+.installment-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--tx);
+  margin-top: 10px;
+}
+
+.tradein-box {
+  background: var(--card);
+  border: 1px solid var(--ln);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+
+.tradein-box h5 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--tx);
+  margin-bottom: 4px;
+}
+.tradein-box p {
+  font-size: 13px;
+  color: var(--mu);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.tradein-steps-micro {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--tx);
+}
+
+.tradein-steps-micro div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.modal-btn-buy {
+  flex: 1;
+  background: var(--pri);
+  color: #FFFFFF;
+  padding: 13px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 180ms ease;
+  text-align: center;
+}
+.modal-btn-buy:hover {
+  background: var(--pri-h);
+}
+
+.modal-btn-cart {
+  background: var(--btn-s-bg);
+  color: var(--btn-s-tx);
+  border: 1px solid var(--ln);
+  padding: 13px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 180ms ease;
+}
+.modal-btn-cart:hover {
+  border-color: var(--tx);
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--ln);
+  padding: 48px 0;
+  color: var(--mu);
+  font-size: 14px;
+}
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+.footer-links a:hover {
+  color: var(--tx);
+}
+
+/* Toast */
+.toast-msg {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translate(-50%, 20px);
+  background: var(--tx);
+  color: var(--bg);
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease, transform 200ms ease, visibility 200ms;
+  z-index: 999;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+.toast-msg.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 1024px) {
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 210px; }
+  .bento-tile.tile-laptop { grid-column: span 2; grid-row: span 1; }
+  .bento-tile.tile-accessories { grid-column: span 2; }
+  .process-grid-two { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  nav.nav-links { display: none; }
+  .hero h1 { font-size: 42px; max-width: 100%; }
+  .sec-title { font-size: 32px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; gap: 24px; }
+  .bento-grid { grid-template-columns: 1fr; grid-auto-rows: 190px; }
+  .bento-tile.tile-laptop { grid-column: span 1; }
+  .bento-tile.tile-accessories { grid-column: span 1; }
+  .footer-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .modal-content-grid { grid-template-columns: 1fr; }
+  .modal-stage { border-right: none; border-bottom: 1px solid var(--ln); border-radius: 28px 28px 0 0; }
+}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap bar">
+<div class="logo-group">
+<div aria-hidden="true" class="logo-mark"></div>
+<a class="logo-text" href="#">UniGear</a>
+<span class="logo-badge">For Students</span>
+</div>
+<nav class="nav-links">
+<a href="#danh-muc">Danh mục</a>
+<a href="#san-pham">Sản phẩm</a>
+<a href="#quy-trinh">Mua &amp; Bán cũ</a>
+<a href="#uu-dai">Ưu đãi sinh viên</a>
+</nav>
+<div class="header-actions">
+<button aria-label="Đổi giao diện Sáng/Tối" class="theme-btn" id="themeToggle" title="Chuyển Dark/Light theme">
+<!-- Sun Icon (shown in dark theme) -->
+<svg fill="none" height="18" id="sunIcon" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="display: none;" viewbox="0 0 24 24" width="18">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="12" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+<!-- Moon Icon (shown in light theme) -->
+<svg fill="none" height="18" id="moonIcon" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="display: block;" viewbox="0 0 24 24" width="18">
+<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+</svg>
+</button>
+<button aria-label="Giỏ hàng" class="cart-pill" id="cartPillBtn">
+<span>Giỏ hàng</span>
+<span class="cart-count" id="cartCount">0</span>
+</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="hero">
+<div class="wrap">
+<div class="chip-sale">
+<b>-5%</b> khi xác thực thẻ sinh viên &amp; Thu cũ đổi mới trợ giá 500k
+      </div>
+<h1>Máy mạnh cho đồ án. Giá vừa ví sinh viên.</h1>
+<p class="lead-hero">Laptop, máy tính bảng, tai nghe và phụ kiện chính hãng tại UniGear. Hỗ trợ mua mới, trả góp 0% và thu mua máy cũ trực tiếp.</p>
+<div class="hero-actions">
+<a class="btn-pill btn-primary" href="#san-pham">Khám phá sản phẩm</a>
+<a class="btn-pill btn-secondary" href="#quy-trinh">Cách thức mua &amp; Bán lại</a>
+</div>
+</div>
+<div class="hero-stage" id="heroProductTrigger" title="Nhấn xem chi tiết Nova Air 14">
+<div class="hero-glow-back"></div>
+<div id="heroSvgContainer"></div>
+</div>
+<div class="hero-caption">
+<b>Nova Air 14</b>   từ 15.990.000đ  hoặc  1.332.500đ/tháng (Click xem cấu hình)
+    </div>
+</section>
+<!-- Bento Section -->
+<section class="sec" id="danh-muc">
+<div class="wrap">
+<h2 class="sec-title">Chọn đúng thứ bạn cần.</h2>
+<p class="sec-lead">Bốn nhóm thiết bị sinh viên dùng nhiều nhất, tối ưu hiệu năng và ngân sách.</p>
+<div class="bento-grid" id="bentoContainer"></div>
+</div>
+</section>
+<!-- Product Section on Band -->
+<section class="band-section" id="san-pham">
+<div class="wrap">
+<h2 class="sec-title">Chọn theo ngân sách.</h2>
+<p class="sec-lead">Giá đã gồm VAT. Giảm thêm 5% khi xác thực thẻ SV. Nhấp vào sản phẩm để xem cấu hình và chính sách thu cũ đổi mới.</p>
+<div class="filters-bar" id="filtersBar">
+<button aria-pressed="true" class="filter-pill" data-group="price" data-val="all">Mọi mức giá</button>
+<button aria-pressed="false" class="filter-pill" data-group="price" data-val="under1m">Dưới 1 triệu</button>
+<button aria-pressed="false" class="filter-pill" data-group="price" data-val="1to5m">1 đến 5 triệu</button>
+<button aria-pressed="false" class="filter-pill" data-group="price" data-val="over5m">Trên 5 triệu</button>
+<span aria-hidden="true" class="filter-sep"></span>
+<button aria-pressed="true" class="filter-pill" data-group="cat" data-val="all">Tất cả loại</button>
+<button aria-pressed="false" class="filter-pill" data-group="cat" data-val="may">Máy tính &amp; Tablet</button>
+<button aria-pressed="false" class="filter-pill" data-group="cat" data-val="am">Âm thanh</button>
+<button aria-pressed="false" class="filter-pill" data-group="cat" data-val="pk">Phụ kiện</button>
+</div>
+<div class="products-grid" id="productsContainer"></div>
+</div>
+</section>
+<!-- How It Works Section: Mua Hàng & Bán Lại Máy Cũ (Trade-In) -->
+<section class="workflow-section" id="quy-trinh">
+<div class="wrap">
+<div class="workflow-card-banner">
+<div class="workflow-banner-content">
+<h3>Cách thức Mua hàng &amp; Thu cũ đổi mới tại UniGear</h3>
+<p>Sinh viên an tâm sở hữu đồ công nghệ chính hãng. Dễ dàng bán lại thiết bị cũ không còn nhu cầu để lên đời máy mới với chi phí tiết kiệm nhất.</p>
+</div>
+<div class="trust-badges-row">
+<div class="trust-badge-pill">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Bảo hành 12 tháng 1 đổi 1
+          </div>
+<div class="trust-badge-pill">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5"></path></svg>
+            30 ngày đổi trả miễn phí
+          </div>
+<div class="trust-badge-pill">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+            Trả góp 0% thẻ sinh viên
+          </div>
+</div>
+</div>
+<div class="process-grid-two">
+<!-- Col 1: Mua Hàng Mới / Trả Góp -->
+<div class="process-col">
+<div class="process-header">
+<span class="process-tag">Quy trình mua</span>
+<h4>1. Mua máy mới &amp; Trả góp 0%</h4>
+</div>
+<div class="sub-steps">
+<div class="sub-step-row">
+<div class="step-circle">1</div>
+<div class="sub-step-text">
+<h5>Chọn máy &amp; Áp mã sinh viên</h5>
+<p>Xem chi tiết thông số, chọn máy phù hợp đồ án. Thẻ sinh viên được áp mã giảm ngay 5% trực tiếp.</p>
+</div>
+</div>
+<div class="sub-step-row">
+<div class="step-circle">2</div>
+<div class="sub-step-text">
+<h5>Lựa chọn phương thức thanh toán</h5>
+<p>Thanh toán toàn bộ qua chuyển khoản/thẻ, hoặc chia nhỏ kỳ hạn từ 3-12 tháng không cần chứng minh thu nhập.</p>
+</div>
+</div>
+<div class="sub-step-row">
+<div class="step-circle">3</div>
+<div class="sub-step-text">
+<h5>Nhận máy tại KTX hoặc Campus</h5>
+<p>Giao hàng miễn phí toàn quốc trong 24-48 giờ, kiểm tra máy nguyên seal trước khi thanh toán.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Col 2: Thu Cũ Đổi Mới / Bán Lại Máy -->
+<div class="process-col">
+<div class="process-header">
+<span class="process-tag orange">Thu cũ đổi mới</span>
+<h4>2. Bán lại máy cũ &amp; Lên đời</h4>
+</div>
+<div class="sub-steps">
+<div class="sub-step-row">
+<div class="step-circle">1</div>
+<div class="sub-step-text">
+<h5>Định giá máy cũ online</h5>
+<p>Chọn tình trạng thiết bị (laptop, tablet, tai nghe cũ). Hệ thống UniGear báo giá thu mua trong 30 giây.</p>
+</div>
+</div>
+<div class="sub-step-row">
+<div class="step-circle">2</div>
+<div class="sub-step-text">
+<h5>Kiểm tra máy tận nơi hoặc gửi ship</h5>
+<p>Kỹ thuật viên test nhanh tại campus hoặc gửi bưu tá đến lấy miễn phí. Đảm bảo đúng định giá đã cam kết.</p>
+</div>
+</div>
+<div class="sub-step-row">
+<div class="step-circle">3</div>
+<div class="sub-step-text">
+<h5>Nhận tiền hoặc cấn trừ mua máy mới</h5>
+<p>Nhận tiền chuyển khoản trong 5 phút hoặc trừ trực tiếp vào đơn hàng mới và nhận thêm trợ giá 500.000đ.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Student Offer Section -->
+<section class="student-section" id="uu-dai">
+<div class="wrap">
+<h2 class="sec-title">Giảm 5% cho sinh viên.</h2>
+<p class="sec-lead">Xác thực một lần, dùng cho mọi đơn hàng trong năm học tại UniGear.</p>
+<div class="steps-grid">
+<div class="step-item">
+<span class="step-num">BƯỚC 1</span>
+<h3 class="step-title">Chụp thẻ sinh viên</h3>
+<p class="step-desc">Ảnh rõ mặt trước, thấy tên trường và mã số sinh viên còn hạn sử dụng hoặc ảnh app sinh viên điện tử.</p>
+</div>
+<div class="step-item">
+<span class="step-num">BƯỚC 2</span>
+<h3 class="step-title">Chờ duyệt khoảng 1 phút</h3>
+<p class="step-desc">Hệ thống AI đối chiếu tự động với danh sách hơn 80 trường đại học, cao đẳng đối tác trên toàn quốc.</p>
+</div>
+<div class="step-item">
+<span class="step-num">BƯỚC 3</span>
+<h3 class="step-title">Giảm giá tự động</h3>
+<p class="step-desc">Giá ưu đãi sinh viên hiển thị ngay lập tức và tự động áp dụng trực tiếp tại giỏ hàng và hóa đơn.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap footer-row">
+<div class="footer-brand">
+<div class="logo-mark" style="width:18px;height:18px;"></div>
+<span style="font-weight:800;color:var(--tx);">UniGear</span>
+<span>· UniGear Store · Công nghệ cho sinh viên</span>
+</div>
+<div class="footer-links">
+<a href="#danh-muc">Danh mục</a>
+<a href="#san-pham">Sản phẩm</a>
+<a href="#quy-trinh">Thu cũ đổi mới</a>
+<a href="#uu-dai">Chính sách sinh viên</a>
+<a href="#">Bảo hành 1 đổi 1</a>
+</div>
+<div>
+<span>© 2025 UniGear Store. Be Vietnam Pro &amp; JetBrains Mono.</span>
+</div>
+</div>
+</footer>
+<!-- Interactive Product Detail & Trade-in Modal -->
+<div aria-labelledby="modalProdTitle" aria-modal="true" class="modal-backdrop" id="productModal" role="dialog">
+<div class="modal-box">
+<button aria-label="Đóng cửa sổ" class="modal-close-btn" id="modalCloseBtn">✕</button>
+<div class="modal-content-grid">
+<!-- Left: Visual & Key Specs -->
+<div class="modal-stage">
+<div id="modalSvgWrap"></div>
+<div class="modal-specs-list" id="modalSpecsList"></div>
+</div>
+<!-- Right: Info, Tabs, Actions -->
+<div class="modal-body">
+<span class="modal-header-tag" id="modalTag">Laptop</span>
+<h3 class="modal-title" id="modalProdTitle">Tên sản phẩm</h3>
+<p class="modal-quick-desc" id="modalProdDesc">Thông tin tóm tắt sản phẩm</p>
+<!-- Navigation Tabs: Mua Hàng Mới vs Thu Cũ Bán Lại -->
+<div class="modal-tabs">
+<button class="modal-tab-btn active" data-tab="buy">Mua mới / Trả góp</button>
+<button class="modal-tab-btn" data-tab="trade">Bán cũ / Thu cũ đổi mới</button>
+</div>
+<!-- Tab 1: Buy New & Installment -->
+<div class="tab-pane active" id="tabPaneBuy">
+<div class="price-box-modal">
+<div class="price-row-m">
+<span style="font-size:13px; color:var(--mu);">Giá thẻ sinh viên (-5%):</span>
+<span class="m-student-price" id="modalStudentPrice">0đ</span>
+</div>
+<div class="price-row-m">
+<span style="font-size:13px; color:var(--mu);">Giá niêm yết:</span>
+<span class="m-original-price" id="modalOriginalPrice">0đ</span>
+</div>
+<div class="installment-pill">
+<span>💳 Trả góp sinh viên 0% lãi suất:</span>
+<b id="modalInstallmentText">0đ/tháng (12T)</b>
+</div>
+</div>
+<div style="font-size:12px; color:var(--mu); margin-bottom:16px;">
+            ✓ Tình trạng: <b>Mới 100% nguyên hộp</b>  ·  Bảo hành chính hãng 12 tháng 1 đổi 1  ·  Sẵn hàng giao 2h
+          </div>
+<div class="modal-action-buttons">
+<button class="modal-btn-buy" id="modalBuyNowBtn">Mua ngay</button>
+<button class="modal-btn-cart" id="modalAddToCartBtn">Thêm vào giỏ</button>
+</div>
+</div>
+<!-- Tab 2: Trade-in / Sell Old -->
+<div class="tab-pane" id="tabPaneTrade">
+<div class="tradein-box">
+<h5>Chương trình Thu cũ - Lên đời cho sinh viên</h5>
+<p>Bán lại thiết bị cũ của bạn để cấn trừ trực tiếp lên sản phẩm này hoặc nhận tiền chuyển khoản ngay trong ngày.</p>
+<div style="background:var(--surface); padding:10px 12px; border-radius:12px; margin-bottom:12px;">
+<span style="font-size:12px; color:var(--mu);">Định giá thu mua máy cũ tối đa:</span>
+<div id="modalTradeinEst" style="font-size:18px; font-weight:700; color:var(--warm);">Lên đến 8.000.000đ</div>
+<span style="font-size:11px; color:var(--ok);">+ Trợ giá thêm 500.000đ khi lên đời máy mới</span>
+</div>
+<div class="tradein-steps-micro">
+<div><b>1.</b> Đăng ký định giá &amp; gửi ảnh máy qua Zalo/Web</div>
+<div><b>2.</b> Bưu tá lấy máy tận KTX / Đến cửa hàng kiểm tra 10 phút</div>
+<div><b>3.</b> Nhận tiền mặt hoặc cấn trừ hoá đơn mua máy mới ngay</div>
+</div>
+</div>
+<div class="modal-action-buttons">
+<button class="modal-btn-buy" id="modalTradeinActionBtn" style="background:var(--warm); color:#1A0F08;">Đăng ký định giá thu cũ</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="toast-msg" id="toastMsg" role="status"></div>
+<script>
+// SVG Render Library with Clean 3D Titanium Styling & Screens
+var uid = 0;
+function makeDefs(g1, g2) {
+  uid++;
+  return '<defs>' +
+    '<linearGradient id="sc' + uid + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="' + g1 + '"/><stop offset="100%" stop-color="' + g2 + '"/></linearGradient>' +
+    '<linearGradient id="body' + uid + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#464C5E"/><stop offset="100%" stop-color="#1B1E2B"/></linearGradient>' +
+    '<linearGradient id="base' + uid + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EFF1F7"/><stop offset="100%" stop-color="#B6BCCB"/></linearGradient>' +
+    '<linearGradient id="darkBase' + uid + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2D3243"/><stop offset="100%" stop-color="#161822"/></linearGradient>' +
+  '</defs>';
+}
+
+var R = {
+  lap: function(c1, c2) {
+    var d = makeDefs(c1, c2);
+    return '<svg class="hero-product-svg" viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">' + d +
+      '<g transform="translate(45, 15)">' +
+        '<rect x="40" y="10" width="370" height="236" rx="16" fill="url(#body' + uid + ')"/>' +
+        '<rect x="42" y="12" width="366" height="232" rx="14" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>' +
+        '<rect x="52" y="22" width="346" height="212" rx="8" fill="url(#sc' + uid + ')"/>' +
+        '<ellipse cx="160" cy="80" rx="130" ry="60" fill="#ffffff" opacity="0.12"/>' +
+        '<circle cx="225" cy="16" r="2.2" fill="#0B0D14"/>' +
+        '<path d="M0 252 h450 l-18 28 a12 12 0 0 1 -10 6 h-404 a12 12 0 0 1 -10 -6 z" fill="url(#base' + uid + ')"/>' +
+        '<path d="M0 252 h450" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>' +
+        '<rect x="180" y="252" width="90" height="6" rx="3" fill="#8F96A8"/>' +
+      '</g>' +
+    '</svg>';
+  },
+  tab: function(c1, c2) {
+    var d = makeDefs(c1, c2);
+    return '<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">' + d +
+      '<rect x="75" y="12" width="240" height="194" rx="20" fill="url(#body' + uid + ')"/>' +
+      '<rect x="84" y="21" width="222" height="176" rx="12" fill="url(#sc' + uid + ')"/>' +
+      '<ellipse cx="160" cy="70" rx="90" ry="40" fill="#fff" opacity="0.12"/>' +
+      '<rect x="332" y="44" width="10" height="136" rx="5" fill="url(#base' + uid + ')"/>' +
+      '<circle cx="195" cy="16" r="2" fill="#0B0D14"/>' +
+    '</svg>';
+  },
+  buds: function(c1, c2) {
+    var d = makeDefs(c1, c2);
+    return '<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">' + d +
+      '<g transform="translate(15, 0)">' +
+        '<ellipse cx="145" cy="74" rx="22" ry="26" fill="#F4F5F9"/>' +
+        '<rect x="156" y="82" width="10" height="48" rx="5" fill="#F4F5F9"/>' +
+        '<ellipse cx="225" cy="74" rx="22" ry="26" fill="#F4F5F9"/>' +
+        '<rect x="204" y="82" width="10" height="48" rx="5" fill="#F4F5F9"/>' +
+        '<rect x="105" y="108" width="160" height="106" rx="44" fill="url(#base' + uid + ')"/>' +
+        '<path d="M107 150 h156" stroke="#9EA6B9" stroke-width="2"/>' +
+        '<circle cx="185" cy="184" r="5" fill="' + c1 + '"/>' +
+      '</g>' +
+    '</svg>';
+  },
+  kb: function(c1, c2) {
+    var d = makeDefs(c1, c2);
+    var keys = '';
+    for (var r = 0; r < 3; r++) {
+      for (var c = 0; c < 12; c++) {
+        var isEsc = (r === 0 && c === 0);
+        keys += '<rect x="' + (50 + c * 25) + '" y="' + (60 + r * 28) + '" width="21" height="23" rx="5" fill="' + (isEsc ? c1 : '#282E40') + '"/>';
+      }
+    }
+    return '<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">' + d +
+      '<rect x="34" y="42" width="332" height="144" rx="16" fill="url(#body' + uid + ')"/>' +
+      keys +
+      '<rect x="50" y="144" width="60" height="23" rx="5" fill="#282E40"/>' +
+      '<rect x="115" y="144" width="135" height="23" rx="5" fill="#282E40"/>' +
+      '<rect x="255" y="144" width="91" height="23" rx="5" fill="' + c2 + '"/>' +
+    '</svg>';
+  },
+  spk: function(c1, c2) {
+    var d = makeDefs(c1, c2);
+    return '<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">' + d +
+      '<rect x="110" y="28" width="180" height="180" rx="50" fill="url(#body' + uid + ')"/>' +
+      '<rect x="110" y="94" width="180" height="48" fill="' + c1 + '" opacity="0.9"/>' +
+      '<line x1="124" x2="276" y1="118" y2="118" stroke="#0B0D14" stroke-width="28" stroke-dasharray="3 7" opacity="0.35"/>' +
+      '<circle cx="200" cy="62" r="9" fill="' + c2 + '"/>' +
+    '</svg>';
+  },
+  pb: function(c1, c2) {
+    var d = makeDefs(c1, c2);
+    var leds = '';
+    for (var i = 0; i < 4; i++) {
+      leds += '<rect x="' + (168 + i * 17) + '" y="' + 48 + '" width="11" height="5" rx="2.5" fill="#fff" opacity="' + (i < 3 ? '1' : '0.3') + '"/>';
+    }
+    return '<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">' + d +
+      '<rect x="150" y="14" width="100" height="212" rx="28" fill="url(#sc' + uid + ')"/>' +
+      '<ellipse cx="180" cy="80" rx="22" ry="60" fill="#fff" opacity="0.14"/>' +
+      leds +
+      '<rect x="150" y="130" width="100" height="6" fill="#0B0D14" opacity="0.25"/>' +
+      '<rect x="184" y="210" width="32" height="6" rx="3" fill="#0B0D14" opacity="0.5"/>' +
+    '</svg>';
+  }
+};
+
+// Catalog Products with Detailed Specs and Trade-in Estimation
+var products = [
+  { 
+    id: 'p1', 
+    name: "Nova Air 14", 
+    cat: "may", 
+    spec: "Chip M-Core, RAM 16GB, pin 12 giờ", 
+    p: 15990000, 
+    oldP: 17990000, 
+    sale: "-11%", 
+    type: "lap", 
+    c1: "#6F5CFF", 
+    c2: "#FF8A4C",
+    fullSpecs: ["CPU: M-Core 8 nhân thế hệ mới", "RAM: 16GB LPDDR5x siêu tốc", "Ổ cứng: 512GB PCIe NVMe SSD", "Màn hình: 14 inch 2.8K OLED 120Hz", "Pin: 12 tiếng liên tục"],
+    tradeMax: 10500000,
+    desc: "Chiếc laptop hoàn hảo cho sinh viên IT, Đồ hoạ & Kinh tế. Trọng lượng siêu nhẹ chỉ 1.2kg cùng hiệu năng mạnh mẽ cân mượt mọi đồ án."
+  },
+  { 
+    id: 'p2', 
+    name: "Nova Lite 15", 
+    cat: "may", 
+    spec: "RAM 8GB, SSD 512GB, màn 15.6 inch", 
+    p: 11490000, 
+    oldP: null, 
+    sale: null, 
+    type: "lap", 
+    c1: "#1FA2FF", 
+    c2: "#6F5CFF",
+    fullSpecs: ["CPU: Core i5 thế hệ 12", "RAM: 8GB DDR4 (nâng cấp tối đa 32GB)", "Ổ cứng: 512GB SSD", "Màn hình: 15.6 inch FHD IPS chống chói", "Bàn phím full-size có bàn phím số"],
+    tradeMax: 7000000,
+    desc: "Màn hình rộng rãi, bàn phím số thuận tiện nhập liệu Excel và học tập hàng ngày. Mức giá tối ưu cho sinh viên năm nhất."
+  },
+  { 
+    id: 'p3', 
+    name: "Note 11", 
+    cat: "may", 
+    spec: "Máy tính bảng kèm bút cảm ứng, 11 inch", 
+    p: 6490000, 
+    oldP: null, 
+    sale: null, 
+    type: "tab", 
+    c1: "#FF8A4C", 
+    c2: "#FF4D8D",
+    fullSpecs: ["Màn hình: 11 inch 2K Crystal Clear", "Kèm bút cảm ứng Stylus 4096 mức lực", "RAM: 6GB, Bộ nhớ trong 128GB", "Hỗ trợ chia đôi màn hình ghi chú", "Pin: 7500mAh dùng trọn vẹn cả ngày"],
+    tradeMax: 4200000,
+    desc: "Thay thế vở ghi chép truyền thống. Ghi chú bài giảng trực tiếp lên file slide PDF và vẽ phác thảo ý tưởng nhanh chóng."
+  },
+  { 
+    id: 'p4', 
+    name: "Pulse ANC", 
+    cat: "am", 
+    spec: "Chống ồn chủ động, pin 32 giờ", 
+    p: 2490000, 
+    oldP: null, 
+    sale: null, 
+    type: "buds", 
+    c1: "#6F5CFF", 
+    c2: "#FFFFFF",
+    fullSpecs: ["Chống ồn chủ động Hybrid ANC 42dB", "Pin: 32 giờ kết hợp hộp sạc", "Micro lọc ồn AI đàm thoại rõ ràng", "Chuẩn chống nước IPX5 tập luyện", "Kết nối cùng lúc 2 thiết bị"],
+    tradeMax: 1500000,
+    desc: "Tập trung tuyệt đối khi ôn thi tại quán cafe hay thư viện nhờ khả năng lọc ồn chủ động hàng đầu phân khúc."
+  },
+  { 
+    id: 'p5', 
+    name: "Keyd 75", 
+    cat: "pk", 
+    spec: "Bàn phím cơ, kết nối 3 chế độ Bluetooth/2.4G", 
+    p: 1890000, 
+    oldP: 2290000, 
+    sale: "-17%", 
+    type: "kb", 
+    c1: "#FF8A4C", 
+    c2: "#6F5CFF",
+    fullSpecs: ["Layout 75% nhỏ gọn có núm xoay âm lượng", "3 Mode: Type-C, Bluetooth 5.1, Wireless 2.4G", "Switch cơ học êm ái, hỗ trợ Hotswap", "LED RGB 16.8 triệu màu", "Pin sạc 4000mAh dùng 3 tuần"],
+    tradeMax: 1000000,
+    desc: "Trải nghiệm gõ êm mượt, không gây tiếng ồn ảnh hưởng bạn cùng phòng. Thiết kế nhỏ gọn tiện mang theo trong balo."
+  },
+  { 
+    id: 'p6', 
+    name: "Cube Mini", 
+    cat: "am", 
+    spec: "Loa chống nước IPX7, pin 14 giờ", 
+    p: 1290000, 
+    oldP: 1590000, 
+    sale: "-19%", 
+    type: "spk", 
+    c1: "#FF8A4C", 
+    c2: "#6F5CFF",
+    fullSpecs: ["Công suất: 16W Bass tăng cường", "Chuẩn kháng nước chống bụi IPX7", "Thời lượng pin: 14 giờ liên tục", "Hỗ trợ ghép nối 2 loa Stereo", "Cổng sạc Type-C tiện dụng"],
+    tradeMax: 700000,
+    desc: "Âm thanh sống động cho các buổi thuyết trình nhóm, dã ngoại hoặc thư giãn giải trí tại phòng trọ."
+  },
+  { 
+    id: 'p7', 
+    name: "Dot Air", 
+    cat: "am", 
+    spec: "Tai nghe không dây siêu nhẹ, pin 24 giờ", 
+    p: 890000, 
+    oldP: 1190000, 
+    sale: "-25%", 
+    type: "buds", 
+    c1: "#FF8A4C", 
+    c2: "#FFFFFF",
+    fullSpecs: ["Trọng lượng mỗi bên tai chỉ 3.6g", "Tổng thời lượng pin 24 giờ", "Bluetooth 5.3 độ trễ cực thấp", "Điều khiển cảm ứng chạm nhạy", "Âm bass ấm áp, dễ nghe"],
+    tradeMax: 450000,
+    desc: "Tai nghe True Wireless nhỏ gọn bỏ vừa túi quần, đeo êm tai không đau nhức suốt nhiều giờ học online."
+  },
+  { 
+    id: 'p8', 
+    name: "Sạc dự phòng 20.000", 
+    cat: "pk", 
+    spec: "Sạc nhanh 22.5W, 2 cổng Type-C + A", 
+    p: 590000, 
+    oldP: null, 
+    sale: null, 
+    type: "pb", 
+    c1: "#3A4A7A", 
+    c2: "#6F5CFF",
+    fullSpecs: ["Dung lượng: 20.000mAh đạt chuẩn bay", "Sạc nhanh hai chiều PD 22.5W", "Màn hình LED hiển thị % pin chuẩn xác", "3 cổng ra sạc cùng lúc 3 thiết bị", "Vỏ nhôm chống cháy nổ an toàn"],
+    tradeMax: 300000,
+    desc: "Cứu cánh năng lượng cho những ngày học cả ngày tại giảng đường mà không có sẵn ổ cắm điện."
+  }
+];
+
+function formatVND(n) {
+  return Math.round(n).toLocaleString('vi-VN') + 'đ';
+}
+
+function getPriceBand(p) {
+  if (p < 1000000) return 'under1m';
+  if (p <= 5000000) return '1to5m';
+  return 'over5m';
+}
+
+// Render Hero Product
+document.getElementById('heroSvgContainer').innerHTML = R.lap("#6F5CFF", "#FF8A4C");
+
+// Hero stage click opens details for Nova Air 14
+document.getElementById('heroProductTrigger').addEventListener('click', function() {
+  openProductModal('p1');
+});
+
+// Bento Tiles
+var bentoData = [
+  { title: "Laptop", sub: "Từ 11.490.000đ", cat: "may", type: "lap", c1: "#6F5CFF", c2: "#FF8A4C", cls: "tile-laptop" },
+  { title: "Tablet", sub: "Từ 6.490.000đ", cat: "may", type: "tab", c1: "#FF8A4C", c2: "#FF4D8D", cls: "tile-tablet" },
+  { title: "Tai nghe", sub: "Từ 890.000đ", cat: "am", type: "buds", c1: "#6F5CFF", c2: "#FFFFFF", cls: "tile-earbuds" },
+  { title: "Phụ kiện", sub: "Bàn phím, sạc, loa. Từ 590.000đ", cat: "pk", type: "kb", c1: "#FF8A4C", c2: "#6F5CFF", cls: "tile-accessories" }
+];
+
+document.getElementById('bentoContainer').innerHTML = bentoData.map(function(item) {
+  return '<a class="bento-tile ' + item.cls + '" href="#san-pham" data-cat="' + item.cat + '">' +
+    '<h3>' + item.title + '</h3>' +
+    '<p>' + item.sub + '</p>' +
+    '<div class="bento-img-wrap">' + R[item.type](item.c1, item.c2) + '</div>' +
+  '</a>';
+}).join('');
+
+// Filter & Products Render Logic
+var currentPriceFilter = 'all';
+var currentCatFilter = 'all';
+var cartCount = 0;
+var toastTimer = null;
+var activeProduct = null;
+
+function renderProducts() {
+  var filtered = products.filter(function(item) {
+    var matchPrice = (currentPriceFilter === 'all' || getPriceBand(item.p) === currentPriceFilter);
+    var matchCat = (currentCatFilter === 'all' || item.cat === currentCatFilter);
+    return matchPrice && matchCat;
+  });
+
+  var container = document.getElementById('productsContainer');
+  if (!filtered.length) {
+    container.innerHTML = '<div style="grid-column: 1/-1; padding: 48px 0; text-align: center; color: var(--mu);">Không có sản phẩm nào phù hợp với bộ lọc hiện tại. Vui lòng chọn khoảng giá hoặc nhóm sản phẩm khác.</div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(function(item) {
+    var studentPrice = Math.round(item.p * 0.95);
+    return '<article class="prod-card" data-id="' + item.id + '">' +
+      '<div class="prod-stage">' +
+        (item.sale ? '<span class="prod-badge">' + item.sale + '</span>' : '') +
+        R[item.type](item.c1, item.c2) +
+      '</div>' +
+      '<div class="prod-info">' +
+        '<h3 class="prod-name">' + item.name + '</h3>' +
+        '<p class="prod-spec">' + item.spec + '</p>' +
+        '<div class="prod-bottom">' +
+          '<div class="prod-pricing">' +
+            (item.oldP ? '<span class="old-price">' + formatVND(item.oldP) + '</span>' : '') +
+            '<span class="current-price">' + formatVND(item.p) + '</span>' +
+            '<span class="student-price">Thẻ SV ' + formatVND(studentPrice) + '</span>' +
+          '</div>' +
+          '<div class="card-actions">' +
+            '<button class="detail-btn" data-detail-id="' + item.id + '">Chi tiết</button>' +
+            '<button class="add-btn" data-name="' + item.name + '" data-id="' + item.id + '">Thêm</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</article>';
+  }).join('');
+}
+
+function syncFilters() {
+  document.querySelectorAll('.filter-pill').forEach(function(pill) {
+    var grp = pill.getAttribute('data-group');
+    var val = pill.getAttribute('data-val');
+    var isPressed = (grp === 'price' && val === currentPriceFilter) || (grp === 'cat' && val === currentCatFilter);
+    pill.setAttribute('aria-pressed', isPressed);
+  });
+}
+
+renderProducts();
+
+// Filter Click Event
+document.getElementById('filtersBar').addEventListener('click', function(e) {
+  var pill = e.target.closest('.filter-pill');
+  if (!pill) return;
+  var grp = pill.getAttribute('data-group');
+  var val = pill.getAttribute('data-val');
+  if (grp === 'price') currentPriceFilter = val;
+  if (grp === 'cat') currentCatFilter = val;
+  syncFilters();
+  renderProducts();
+});
+
+// Bento click event to filter
+document.getElementById('bentoContainer').addEventListener('click', function(e) {
+  var tile = e.target.closest('.bento-tile');
+  if (!tile) return;
+  var cat = tile.getAttribute('data-cat');
+  currentCatFilter = cat;
+  currentPriceFilter = 'all';
+  syncFilters();
+  renderProducts();
+});
+
+// Add to Cart Interaction & Toast Notification
+function showToast(msg) {
+  var toast = document.getElementById('toastMsg');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function() {
+    toast.classList.remove('show');
+  }, 2200);
+}
+
+document.getElementById('productsContainer').addEventListener('click', function(e) {
+  var addBtn = e.target.closest('.add-btn');
+  if (addBtn) {
+    e.stopPropagation();
+    var name = addBtn.getAttribute('data-name');
+    cartCount++;
+    document.getElementById('cartCount').textContent = cartCount;
+    showToast('Đã thêm ' + name + ' vào giỏ hàng');
+    return;
+  }
+
+  var detailBtn = e.target.closest('.detail-btn');
+  if (detailBtn) {
+    e.stopPropagation();
+    var pId = detailBtn.getAttribute('data-detail-id');
+    openProductModal(pId);
+    return;
+  }
+
+  var card = e.target.closest('.prod-card');
+  if (card) {
+    var id = card.getAttribute('data-id');
+    openProductModal(id);
+  }
+});
+
+// Header cart pill click
+document.getElementById('cartPillBtn').addEventListener('click', function() {
+  showToast('Giỏ hàng hiện có: ' + cartCount + ' sản phẩm');
+});
+
+/* Modal Logic */
+var modal = document.getElementById('productModal');
+var modalCloseBtn = document.getElementById('modalCloseBtn');
+var tabBuyBtn = document.querySelector('.modal-tab-btn[data-tab="buy"]');
+var tabTradeBtn = document.querySelector('.modal-tab-btn[data-tab="trade"]');
+var tabPaneBuy = document.getElementById('tabPaneBuy');
+var tabPaneTrade = document.getElementById('tabPaneTrade');
+
+function openProductModal(productId) {
+  var p = products.find(function(item) { return item.id === productId; });
+  if (!p) return;
+  activeProduct = p;
+
+  var studentPrice = Math.round(p.p * 0.95);
+  var monthlyInstallment = Math.round(studentPrice / 12);
+
+  document.getElementById('modalTag').textContent = p.cat === 'may' ? 'Máy tính & Tablet' : (p.cat === 'am' ? 'Thiết bị Âm thanh' : 'Phụ kiện công nghệ');
+  document.getElementById('modalProdTitle').textContent = p.name;
+  document.getElementById('modalProdDesc').textContent = p.desc || p.spec;
+  document.getElementById('modalStudentPrice').textContent = formatVND(studentPrice);
+  document.getElementById('modalOriginalPrice').textContent = formatVND(p.p);
+  document.getElementById('modalInstallmentText').textContent = formatVND(monthlyInstallment) + '/tháng (12T)';
+  document.getElementById('modalTradeinEst').textContent = 'Lên đến ' + formatVND(p.tradeMax);
+
+  // Render SVG in modal stage
+  document.getElementById('modalSvgWrap').innerHTML = R[p.type](p.c1, p.c2);
+
+  // Render specs list
+  var specsHtml = p.fullSpecs.map(function(s) {
+    return '<div class="spec-badge">' + s + '</div>';
+  }).join('');
+  document.getElementById('modalSpecsList').innerHTML = specsHtml;
+
+  // Reset tab to buy
+  switchModalTab('buy');
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+modalCloseBtn.addEventListener('click', closeModal);
+modal.addEventListener('click', function(e) {
+  if (e.target === modal) {
+    closeModal();
+  }
+});
+
+function switchModalTab(tab) {
+  if (tab === 'buy') {
+    tabBuyBtn.classList.add('active');
+    tabTradeBtn.classList.remove('active');
+    tabPaneBuy.classList.add('active');
+    tabPaneTrade.classList.remove('active');
+  } else {
+    tabBuyBtn.classList.remove('active');
+    tabTradeBtn.classList.add('active');
+    tabPaneBuy.classList.remove('active');
+    tabPaneTrade.classList.add('active');
+  }
+}
+
+tabBuyBtn.addEventListener('click', function() { switchModalTab('buy'); });
+tabTradeBtn.addEventListener('click', function() { switchModalTab('trade'); });
+
+// Modal action buttons
+document.getElementById('modalAddToCartBtn').addEventListener('click', function() {
+  if (!activeProduct) return;
+  cartCount++;
+  document.getElementById('cartCount').textContent = cartCount;
+  showToast('Đã thêm ' + activeProduct.name + ' vào giỏ hàng');
+  closeModal();
+});
+
+document.getElementById('modalBuyNowBtn').addEventListener('click', function() {
+  if (!activeProduct) return;
+  cartCount++;
+  document.getElementById('cartCount').textContent = cartCount;
+  closeModal();
+  showToast('Đang chuyển đến trang đặt hàng cho ' + activeProduct.name + '...');
+});
+
+document.getElementById('modalTradeinActionBtn').addEventListener('click', function() {
+  if (!activeProduct) return;
+  closeModal();
+  showToast('Đã mở form định giá thu cũ cho ' + activeProduct.name + '. Chuyên viên UniGear sẽ liên hệ bạn ngay!');
+});
+
+// Escape key to close modal
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && modal.classList.contains('open')) {
+    closeModal();
+  }
+});
+
+// Theme Toggle Functionality (Dark / Light)
+var themeToggle = document.getElementById('themeToggle');
+var moonIcon = document.getElementById('moonIcon');
+var sunIcon = document.getElementById('sunIcon');
+
+function updateThemeIcons(theme) {
+  if (theme === 'light') {
+    moonIcon.style.display = 'block';
+    sunIcon.style.display = 'none';
+  } else {
+    moonIcon.style.display = 'none';
+    sunIcon.style.display = 'block';
+  }
+}
+
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('unigear_theme', theme);
+  updateThemeIcons(theme);
+}
+
+// Initial Theme Check from localStorage
+var savedTheme = localStorage.getItem('unigear_theme') || 'dark';
+setTheme(savedTheme);
+
+themeToggle.addEventListener('click', function() {
+  var current = document.documentElement.getAttribute('data-theme') || 'dark';
+  var next = (current === 'dark') ? 'light' : 'dark';
+  setTheme(next);
+});
+</script>
+</body></html>
