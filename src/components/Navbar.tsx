@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { useCart } from '../context/CartContext';
 import { useStudent } from '../context/StudentContext';
-import { Sun, Moon, ShoppingBag, ShieldCheck, Menu, X, ArrowRight } from 'lucide-react';
+import { Sun, Moon, ShoppingBag, ShieldCheck, Menu, X, ArrowRight, Sparkles } from 'lucide-react';
 
 interface NavbarProps {
   onNavigate: (page: 'storefront' | 'pdp' | 'auth' | 'checkout', category?: string) => void;
@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
   return (
     <header className="sticky top-0 z-50 h-16 w-full backdrop-blur-xl border-b border-[var(--ln)] bg-[var(--bg)]/80 transition-colors duration-200">
       <div className="max-w-[1240px] h-full mx-auto px-4 sm:px-8 flex items-center justify-between gap-4">
-        {/* Brand Logo */}
+        {/* Brand Logo - UniGear */}
         <div
           role="button"
           tabIndex={0}
@@ -35,83 +35,81 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             }
           }}
           aria-label="Về trang chủ UniGear"
-          className="flex items-center gap-3 cursor-pointer group select-none"
+          className="flex items-center gap-2.5 cursor-pointer group select-none shrink-0"
         >
-          <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-[var(--pri)] via-[var(--warm)] to-[var(--pri)] flex-shrink-0 shadow-md group-hover:scale-105 transition-transform" />
-          <span className="text-xl font-extrabold tracking-tight text-[var(--tx)]">
+          <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[var(--pri)] via-[var(--warm)] to-[var(--pri)] flex-shrink-0 shadow-md group-hover:scale-110 group-hover:rotate-45 transition-all duration-300" />
+          <span className="text-xl font-extrabold tracking-tight text-[var(--tx)] group-hover:text-[var(--pri-h)] transition-colors duration-200 whitespace-nowrap">
             UniGear
-          </span>
-          <span className="hidden sm:inline-block text-[11px] font-semibold text-[var(--mu)] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[var(--surface)] border border-[var(--ln)]">
-            FOR STUDENTS
           </span>
         </div>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-6 text-[14px] font-medium text-[var(--mu)]">
+        {/* Desktop Nav Links - Single Line & Hover Animation */}
+        <nav className="hidden md:flex items-center gap-1 lg:gap-2 text-[14px] font-medium text-[var(--mu)]">
           <button
+            type="button"
             onClick={() => handleNavClick('storefront', 'laptop')}
-            className="hover:text-[var(--tx)] transition-colors cursor-pointer"
+            className="relative px-3.5 py-1.5 rounded-full text-[14px] font-medium text-[var(--mu)] hover:text-[var(--tx)] hover:bg-[var(--surface)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer whitespace-nowrap shrink-0 group"
           >
-            Laptop
+            <span>Laptop</span>
+            <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] bg-[var(--pri)] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-center" />
           </button>
           <button
+            type="button"
             onClick={() => handleNavClick('storefront', 'tablet')}
-            className="hover:text-[var(--tx)] transition-colors cursor-pointer"
+            className="relative px-3.5 py-1.5 rounded-full text-[14px] font-medium text-[var(--mu)] hover:text-[var(--tx)] hover:bg-[var(--surface)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer whitespace-nowrap shrink-0 group"
           >
-            Tablet
+            <span>Tablet</span>
+            <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] bg-[var(--pri)] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-center" />
           </button>
           <button
+            type="button"
             onClick={() => handleNavClick('storefront', 'audio')}
-            className="hover:text-[var(--tx)] transition-colors cursor-pointer"
+            className="relative px-3.5 py-1.5 rounded-full text-[14px] font-medium text-[var(--mu)] hover:text-[var(--tx)] hover:bg-[var(--surface)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer whitespace-nowrap shrink-0 group"
           >
-            Tai nghe &amp; Loa
+            <span>Tai nghe &amp; Loa</span>
+            <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] bg-[var(--pri)] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-center" />
           </button>
           <button
+            type="button"
             onClick={() => handleNavClick('storefront', 'accessory')}
-            className="hover:text-[var(--tx)] transition-colors cursor-pointer"
+            className="relative px-3.5 py-1.5 rounded-full text-[14px] font-medium text-[var(--mu)] hover:text-[var(--tx)] hover:bg-[var(--surface)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer whitespace-nowrap shrink-0 group"
           >
-            Phụ kiện sinh viên
-          </button>
-          <button
-            onClick={() => handleNavClick('storefront')}
-            className="hover:text-[var(--tx)] transition-colors cursor-pointer"
-          >
-            Thu cũ đổi mới
-          </button>
-          <button
-            onClick={() => handleNavClick('auth')}
-            className="hover:text-[var(--warm)] text-[var(--warm)] font-semibold transition-colors flex items-center gap-1 cursor-pointer"
-          >
-            <span>Ưu đãi thẻ SV (-5%)</span>
+            <span>Phụ kiện sinh viên</span>
+            <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] bg-[var(--pri)] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-center" />
           </button>
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-3">
-          {/* Student Status Badge */}
+        <div className="flex items-center gap-3 shrink-0">
+          {/* Glowing Student Verification Button */}
           {student.isVerified ? (
             <button
+              type="button"
               onClick={() => handleNavClick('auth')}
-              className="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--ok)]/15 border border-[var(--ok)]/30 text-[var(--ok)] hover:bg-[var(--ok)]/25 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap text-[var(--ok)] bg-[var(--ok)]/15 border border-[var(--ok)]/40 shadow-[0_0_14px_rgba(61,213,152,0.35)] hover:shadow-[0_0_22px_rgba(61,213,152,0.6)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shrink-0"
               title="Đã kích hoạt ưu đãi Thẻ Sinh Viên -5%"
             >
-              <ShieldCheck className="w-3.5 h-3.5" />
+              <ShieldCheck className="w-4 h-4 text-[var(--ok)]" />
               <span>Đã xác thực SV</span>
             </button>
           ) : (
             <button
+              type="button"
               onClick={() => handleNavClick('auth')}
-              className="hidden lg:flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--surface)] border border-[var(--ln)] text-[var(--mu)] hover:text-[var(--tx)] transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap text-white bg-gradient-to-r from-[var(--pri)] via-[var(--pri-h)] to-[var(--warm)] shadow-[0_0_16px_rgba(111,92,255,0.5)] hover:shadow-[0_0_24px_rgba(255,138,76,0.65)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shrink-0"
+              title="Xác thực thẻ sinh viên để nhận giảm thêm 5%"
             >
+              <Sparkles className="w-3.5 h-3.5 text-yellow-200 animate-pulse" />
               <span>Xác thực SV (-5%)</span>
             </button>
           )}
 
           {/* Theme Switcher Toggle */}
           <button
+            type="button"
             onClick={toggleTheme}
             aria-label="Chuyển chế độ Sáng / Tối"
-            className="w-9 h-9 rounded-full flex items-center justify-center bg-[var(--surface)] border border-[var(--ln)] text-[var(--tx)] hover:bg-[var(--card)] transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-full flex items-center justify-center bg-[var(--surface)] border border-[var(--ln)] text-[var(--tx)] hover:bg-[var(--card)] hover:border-[var(--pri)]/40 hover:scale-110 hover:rotate-12 active:scale-95 transition-all duration-200 cursor-pointer shrink-0"
             title={theme === 'dark' ? 'Chuyển sang chế độ Sáng' : 'Chuyển sang chế độ Tối'}
           >
             {theme === 'dark' ? (
@@ -121,20 +119,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             )}
           </button>
 
-          {/* Cart Button */}
+          {/* Cart Button - Single Line Horizontal */}
           <button
             type="button"
             onClick={() => handleNavClick('checkout')}
             aria-label={`Giỏ hàng sinh viên, ${totalCount} sản phẩm`}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-bold whitespace-nowrap shrink-0 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer ${
               currentPage === 'checkout'
-                ? 'bg-[var(--pri)] text-white border-[var(--pri)]'
-                : 'bg-[var(--surface)] border-[var(--ln)] text-[var(--tx)] hover:border-[var(--pri)]'
+                ? 'bg-[var(--pri)] text-white border-[var(--pri)] shadow-[0_0_12px_rgba(111,92,255,0.35)]'
+                : 'bg-[var(--surface)] border-[var(--ln)] text-[var(--tx)] hover:border-[var(--pri)] hover:shadow-[0_0_12px_rgba(111,92,255,0.2)]'
             }`}
           >
-            <ShoppingBag className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Giỏ hàng</span>
-            <span className="w-5 h-5 rounded-full bg-[var(--pri)] text-white text-[11px] font-mono-code flex items-center justify-center">
+            <ShoppingBag className="w-3.5 h-3.5 shrink-0" />
+            <span className="hidden sm:inline whitespace-nowrap">Giỏ hàng</span>
+            <span className="w-5 h-5 rounded-full bg-[var(--pri)] text-white text-[11px] font-mono-code flex items-center justify-center shrink-0">
               {totalCount}
             </span>
           </button>
@@ -145,7 +143,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? 'Đóng menu điều hướng' : 'Mở menu điều hướng'}
             aria-expanded={mobileMenuOpen}
-            className="md:hidden w-9 h-9 rounded-full flex items-center justify-center bg-[var(--surface)] border border-[var(--ln)] text-[var(--tx)] cursor-pointer"
+            className="md:hidden w-9 h-9 rounded-full flex items-center justify-center bg-[var(--surface)] border border-[var(--ln)] text-[var(--tx)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shrink-0"
           >
             {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
@@ -156,39 +154,47 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-[var(--surface)] border-b border-[var(--ln)] px-6 py-5 flex flex-col gap-4 shadow-2xl animate-in slide-in-from-top-4 duration-200">
           <button
+            type="button"
             onClick={() => handleNavClick('storefront', 'laptop')}
-            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center"
+            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center whitespace-nowrap"
           >
             <span>Laptop đồ án &amp; IT</span>
             <ArrowRight className="w-4 h-4 text-[var(--mu)]" />
           </button>
           <button
+            type="button"
             onClick={() => handleNavClick('storefront', 'tablet')}
-            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center"
+            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center whitespace-nowrap"
           >
             <span>Tablet &amp; Bút cảm ứng</span>
             <ArrowRight className="w-4 h-4 text-[var(--mu)]" />
           </button>
           <button
+            type="button"
             onClick={() => handleNavClick('storefront', 'audio')}
-            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center"
+            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center whitespace-nowrap"
           >
             <span>Tai nghe &amp; Loa</span>
             <ArrowRight className="w-4 h-4 text-[var(--mu)]" />
           </button>
           <button
+            type="button"
             onClick={() => handleNavClick('storefront', 'accessory')}
-            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center"
+            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center whitespace-nowrap"
           >
             <span>Phụ kiện sinh viên</span>
             <ArrowRight className="w-4 h-4 text-[var(--mu)]" />
           </button>
           <button
+            type="button"
             onClick={() => handleNavClick('auth')}
-            className="text-left py-2 font-medium text-[var(--warm)] flex justify-between items-center"
+            className="text-left py-2.5 px-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-[var(--pri)] to-[var(--warm)] flex justify-between items-center shadow-[0_0_14px_rgba(111,92,255,0.4)] whitespace-nowrap"
           >
-            <span>Đăng ký &amp; Xác thực Thẻ Sinh Viên (-5%)</span>
-            <ShieldCheck className="w-4 h-4 text-[var(--warm)]" />
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-yellow-200 animate-pulse" />
+              <span>Xác thực Thẻ Sinh Viên (-5%)</span>
+            </div>
+            <ArrowRight className="w-4 h-4 text-white" />
           </button>
         </div>
       )}
