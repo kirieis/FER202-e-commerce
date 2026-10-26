@@ -17,6 +17,7 @@ export async function POST(request: Request) {
       studentDiscount,
       shippingFee,
       finalTotal,
+      orderCode,
     } = body;
 
     const supabase = await createServerClient();
@@ -48,6 +49,8 @@ export async function POST(request: Request) {
     const customerEmail = student?.email?.trim() || 'khachhang@unigear.vn';
     const address = deliveryAddress?.trim() || 'KTX Khu B / Nhận tại Campus Hub';
     const totalAmount = Number(finalTotal) || Number(subtotal) || 0;
+    const notePrefix = orderCode ? `[Mã đơn: ${orderCode}]` : '';
+    const formattedDeliveryNote = [notePrefix, deliveryNote?.trim()].filter(Boolean).join(' - ');
 
     // Insert order into Supabase
     const { error: orderError } = await supabase
@@ -62,7 +65,7 @@ export async function POST(request: Request) {
         student_id_code: student?.studentId || '',
         delivery_method: deliveryMethod || 'ktx',
         delivery_address: address,
-        delivery_note: deliveryNote || '',
+        delivery_note: formattedDeliveryNote,
         payment_method: paymentMethod || 'vietqr',
         subtotal: Number(subtotal) || totalAmount,
         discount_campaign: Number(discountCampaign) || 0,
@@ -101,6 +104,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       orderId: orderId,
+      orderCode: orderCode || orderId.slice(0, 8).toUpperCase(),
     });
   } catch (error: any) {
     console.error('Orders route exception:', error);

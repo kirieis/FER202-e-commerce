@@ -98,6 +98,17 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
   const [isOrderedSuccess, setIsOrderedSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [confirmedOrder, setConfirmedOrder] = useState<{
+    orderCode: string;
+    fullName: string;
+    phone: string;
+    address: string;
+    studentId: string;
+    paymentMethod: 'installment' | 'vietqr' | 'cod';
+    installmentMonths: 3 | 6 | 12;
+    installmentPerMonth: number;
+    finalTotal: number;
+  } | null>(null);
 
   const formatPrice = (val: number) => val.toLocaleString('vi-VN') + 'đ';
 
@@ -145,15 +156,31 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
         }),
       });
       const data = await res.json();
-      if (!data.success) {
-        console.warn('Orders API response:', data);
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Không thể ghi nhận đơn hàng');
       }
-    } catch (err) {
-      console.warn('Order submission offline fallback:', err);
-    } finally {
-      setIsSubmitting(false);
+
+      setConfirmedOrder({
+        orderCode: data.orderCode || orderCode,
+        fullName,
+        phone,
+        address,
+        studentId,
+        paymentMethod,
+        installmentMonths,
+        installmentPerMonth,
+        finalTotal,
+      });
+
+      // Xóa giỏ hàng ngay lập tức để tránh dồn món ở các lần mua sau
+      clearCart();
       setIsOrderedSuccess(true);
       showToast('🎉 Đặt hàng thành công! Kỹ thuật viên UniGear sẽ gọi xác nhận trong 15 phút.');
+    } catch (err: any) {
+      console.error('Order submission error:', err);
+      showToast(`⚠️ Lỗi gửi đơn hàng: ${err?.message || 'Vui lòng thử lại!'}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -178,6 +205,18 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
   }
 
   if (isOrderedSuccess) {
+    const displayOrder = confirmedOrder || {
+      orderCode,
+      fullName,
+      phone,
+      address,
+      studentId,
+      paymentMethod,
+      installmentMonths,
+      installmentPerMonth,
+      finalTotal,
+    };
+
     return (
       <div className="max-w-[760px] w-full mx-auto px-4 py-12 sm:py-16 text-center">
         <div className="bg-[var(--card)] border border-[var(--ln)] rounded-3xl p-6 sm:p-12 shadow-2xl flex flex-col items-center animate-in zoom-in-95 duration-300">
@@ -191,7 +230,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
             Cảm Ơn Bạn Đã Mua Sắm Tại UniGear!
           </h1>
           <p className="text-xs sm:text-sm text-[var(--mu)] mt-2.5 max-w-lg leading-relaxed">
-            Đơn hàng mã <strong className="text-[var(--tx)] font-mono-code">#{orderCode}</strong> đã được lưu trữ trên hệ thống. Nhân viên phụ trách KTX sẽ liên hệ hỗ trợ bạn kiểm tra và bàn giao thiết bị.
+            Đơn hàng mã <strong className="text-[var(--tx)] font-mono-code">#{displayOrder.orderCode}</strong> đã được lưu trữ trên hệ thống. Nhân viên phụ trách KTX sẽ liên hệ hỗ trợ bạn kiểm tra và bàn giao thiết bị.
           </p>
 
           {/* Delivery Timeline Card */}
@@ -199,10 +238,10 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
             <div className="flex items-center justify-between border-b border-[var(--ln)] pb-3">
               <span className="text-xs text-[var(--mu)] font-medium">Mã vận đơn KTX:</span>
               <div className="flex items-center gap-2">
-                <span className="font-mono-code font-bold text-sm text-[var(--tx)]">#{orderCode}</span>
+                <span className="font-mono-code font-bold text-sm text-[var(--tx)]">#{displayOrder.orderCode}</span>
                 <button
                   type="button"
-                  onClick={() => copyToClipboard(orderCode, 'mã đơn hàng')}
+                  onClick={() => copyToClipboard(displayOrder.orderCode, 'mã đơn hàng')}
                   className="p-1 hover:text-[var(--pri)] text-[var(--mu)] cursor-pointer"
                   title="Sao chép mã"
                 >
@@ -214,22 +253,22 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div>
                 <span className="text-[var(--mu)] block">Người nhận hàng:</span>
-                <span className="font-bold text-[var(--tx)]">{fullName} {studentId && `(MSSV: ${studentId})`}</span>
+                <span className="font-bold text-[var(--tx)]">{displayOrder.fullName} {displayOrder.studentId && `(MSSV: ${displayOrder.studentId})`}</span>
               </div>
               <div>
                 <span className="text-[var(--mu)] block">Số điện thoại:</span>
-                <span className="font-mono-code font-bold text-[var(--tx)]">{phone}</span>
+                <span className="font-mono-code font-bold text-[var(--tx)]">{displayOrder.phone}</span>
               </div>
               <div className="sm:col-span-2">
                 <span className="text-[var(--mu)] block">Địa chỉ giao máy:</span>
-                <span className="font-medium text-[var(--tx)]">{address}</span>
+                <span className="font-medium text-[var(--tx)]">{displayOrder.address}</span>
               </div>
               <div className="sm:col-span-2">
                 <span className="text-[var(--mu)] block">Hình thức thanh toán:</span>
                 <span className="font-semibold text-[var(--warm)]">
-                  {paymentMethod === 'vietqr' && 'Chuyển khoản QR ngân hàng (VietQR)'}
-                  {paymentMethod === 'installment' && `Trả góp 0% sinh viên (${installmentMonths} tháng · ${formatPrice(installmentPerMonth)}/tháng)`}
-                  {paymentMethod === 'cod' && 'Thanh toán COD khi nhận máy tại KTX'}
+                  {displayOrder.paymentMethod === 'vietqr' && 'Chuyển khoản QR ngân hàng (VietQR)'}
+                  {displayOrder.paymentMethod === 'installment' && `Trả góp 0% sinh viên (${displayOrder.installmentMonths} tháng · ${formatPrice(displayOrder.installmentPerMonth)}/tháng)`}
+                  {displayOrder.paymentMethod === 'cod' && 'Thanh toán COD khi nhận máy tại KTX'}
                 </span>
               </div>
             </div>
@@ -237,7 +276,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
             <div className="flex justify-between items-baseline border-t border-[var(--ln)] pt-3">
               <span className="font-bold text-xs sm:text-sm text-[var(--tx)]">Tổng thanh toán:</span>
               <span className="font-mono-code text-lg sm:text-xl font-extrabold text-[var(--warm)]">
-                {formatPrice(finalTotal)}
+                {formatPrice(displayOrder.finalTotal)}
               </span>
             </div>
           </div>
