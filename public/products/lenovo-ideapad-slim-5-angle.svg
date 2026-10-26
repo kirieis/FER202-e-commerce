@@ -1,0 +1,27 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ideapad-ang-lid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1F5F9" />
+      <stop offset="50%" stop-color="#E2E8F0" />
+      <stop offset="100%" stop-color="#CBD5E1" />
+    </linearGradient>
+    <filter id="ideapad-ang-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="3" dy="16" stdDeviation="15" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <g filter="url(#ideapad-ang-shadow)" transform="translate(45, 30)">
+    
+    <path d="M40 140 L230 85 L210 15 L20 70 Z" fill="url(#ideapad-ang-lid)" stroke="#94A3B8" stroke-width="1.2" />
+    
+    <rect x="180" y="25" width="22" height="6" rx="1" fill="#0F172A" transform="rotate(-16 180 25)" />
+    <text x="191" y="29.5" font-size="3.5" fill="#FFFFFF" font-family="sans-serif" font-weight="bold" text-anchor="middle" transform="rotate(-16 180 25)">Lenovo</text>
+
+    
+    <path d="M40 140 L230 85 L285 185 L95 240 Z" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2" />
+    
+    <path d="M60 148 L215 102 L245 160 L90 205 Z" fill="#1E293B" stroke="#64748B" stroke-width="0.8" opacity="0.9" />
+    
+    <path d="M125 210 L185 192 L195 220 L135 238 Z" fill="#E2E8F0" stroke="#94A3B8" stroke-width="0.8" />
+  </g>
+</svg>

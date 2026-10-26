@@ -58,6 +58,7 @@ export interface StudentProfile {
   studentId: string;
   isVerified: boolean;
   idCardImage?: string;
+  avatarUrl?: string;
 }
 
 export interface Order {

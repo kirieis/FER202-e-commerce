@@ -55,7 +55,7 @@ export const StudentPerksBanner: React.FC<StudentPerksBannerProps> = ({ onNaviga
         </div>
       </div>
 
-      <div className="mt-8 flex justify-center">
+      <div className="mt-8 flex flex-col items-center gap-3">
         <button
           type="button"
           onClick={onNavigateAuth}
@@ -65,6 +65,12 @@ export const StudentPerksBanner: React.FC<StudentPerksBannerProps> = ({ onNaviga
           <span>Kích hoạt Thẻ Sinh Viên ngay (-5%)</span>
           <ArrowRight className="w-4 h-4 ml-1" />
         </button>
+        <p className="text-xs text-[var(--mu)] text-center max-w-xl">
+          *Thời gian duyệt tự động áp dụng cho ảnh thẻ sinh viên hoặc app VNeID/SV điện tử rõ nét. Xem chi tiết{' '}
+          <a href="/chinh-sach/bao-mat" className="text-[var(--tx)] underline hover:text-[var(--pri)] cursor-pointer">
+            Điều khoản &amp; Chính sách xác thực sinh viên
+          </a>.
+        </p>
       </div>
     </section>
   );

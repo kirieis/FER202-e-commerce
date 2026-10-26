@@ -1,0 +1,46 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="marshall-leather" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#26272B" />
+      <stop offset="50%" stop-color="#191A1E" />
+      <stop offset="100%" stop-color="#0E0F12" />
+    </linearGradient>
+    <linearGradient id="brass-knob" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="50%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#92400E" />
+    </linearGradient>
+    <filter id="m-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <g filter="url(#m-shadow)" transform="translate(60, 25)">
+    
+    <path d="M45 160 C 45 40, 235 40, 235 160" stroke="#1F2024" stroke-width="26" stroke-linecap="round" fill="none" />
+    
+    <path d="M50 160 C 50 50, 230 50, 230 160" stroke="#37383D" stroke-width="2" stroke-dasharray="4 4" fill="none" />
+
+    
+    <line x1="56" y1="140" x2="56" y2="185" stroke="#71717A" stroke-width="5" stroke-linecap="round" />
+    <line x1="224" y1="140" x2="224" y2="185" stroke="#71717A" stroke-width="5" stroke-linecap="round" />
+
+    
+    <g transform="translate(10, 160)">
+      <rect x="0" y="0" width="85" height="90" rx="20" fill="url(#marshall-leather)" stroke="#3F3F46" stroke-width="1.5" />
+      <rect x="8" y="8" width="69" height="74" rx="14" fill="#141518" stroke="#27272A" stroke-width="1" />
+      
+      <text x="42" y="52" font-size="14" fill="#F4F4F5" font-family="'Times New Roman', serif" font-style="italic" font-weight="bold" text-anchor="middle" letter-spacing="1">Marshall</text>
+      
+      <circle cx="16" cy="74" r="7" fill="url(#brass-knob)" stroke="#78350F" stroke-width="1" />
+      <circle cx="16" cy="74" r="3" fill="#B45309" />
+    </g>
+
+    
+    <g transform="translate(185, 160)">
+      <rect x="0" y="0" width="85" height="90" rx="20" fill="url(#marshall-leather)" stroke="#3F3F46" stroke-width="1.5" />
+      <rect x="8" y="8" width="69" height="74" rx="14" fill="#141518" stroke="#27272A" stroke-width="1" />
+      <text x="42" y="52" font-size="14" fill="#F4F4F5" font-family="'Times New Roman', serif" font-style="italic" font-weight="bold" text-anchor="middle" letter-spacing="1">Marshall</text>
+    </g>
+  </g>
+</svg>

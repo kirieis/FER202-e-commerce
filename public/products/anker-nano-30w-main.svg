@@ -1,0 +1,30 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nano-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="40%" stop-color="#3730A3" />
+      <stop offset="100%" stop-color="#1E1B4B" />
+    </linearGradient>
+    <filter id="nano-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <g filter="url(#nano-shadow)" transform="translate(135, 65)">
+    
+    <rect x="0" y="0" width="130" height="130" rx="24" fill="url(#nano-body)" stroke="#6366F1" stroke-width="1.5" />
+
+    
+    <rect x="14" y="14" width="102" height="102" rx="18" fill="#18182E" stroke="#312E81" stroke-width="1" />
+
+    
+    <g transform="translate(35, 42)">
+      <rect x="0" y="0" width="60" height="28" rx="8" fill="#0B0B14" stroke="#818CF8" stroke-width="1.5" />
+      <rect x="12" y="9" width="36" height="10" rx="3" fill="#312E81" />
+      <text x="30" y="38" font-size="8" fill="#A5B4FC" font-family="monospace" text-anchor="middle">IQ3 · 30W</text>
+    </g>
+
+    
+    <text x="65" y="100" font-size="11" fill="#FFFFFF" font-family="sans-serif" font-weight="900" letter-spacing="2" text-anchor="middle">ANKER</text>
+  </g>
+</svg>

@@ -1,0 +1,43 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g5-deck" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181B" />
+      <stop offset="50%" stop-color="#09090B" />
+      <stop offset="100%" stop-color="#000000" />
+    </linearGradient>
+    <linearGradient id="g5-screen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F97316" />
+      <stop offset="50%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#09090B" />
+    </linearGradient>
+    <filter id="g5-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="15" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <g filter="url(#g5-shadow)" transform="translate(50, 30)">
+    
+    <rect x="25" y="10" width="250" height="155" rx="6" fill="#09090B" stroke="#27272A" stroke-width="1.2" />
+    <rect x="29" y="14" width="242" height="147" rx="3" fill="url(#g5-screen)" />
+    <text x="150" y="85" font-size="9" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="900" letter-spacing="2" text-anchor="middle">GIGABYTE G5 GAMING</text>
+    <text x="150" y="98" font-size="7" fill="#FED7AA" font-family="system-ui, sans-serif" opacity="0.9" text-anchor="middle">RTX 4050 6GB · Màn hình 144Hz chiến game mượt mà</text>
+
+    
+    <rect x="65" y="165" width="170" height="5" rx="2" fill="#27272A" />
+
+    
+    <path d="M5 170 L295 170 L278 216 Q274 220 266 220 L34 220 Q26 220 22 216 Z" fill="url(#g5-deck)" stroke="#27272A" stroke-width="1.2" />
+
+    
+    <path d="M15 175 L30 195 L25 210" stroke="#F97316" stroke-width="0.8" fill="none" opacity="0.6" />
+    <path d="M285 175 L270 195 L275 210" stroke="#F97316" stroke-width="0.8" fill="none" opacity="0.6" />
+
+    
+    <rect x="36" y="174" width="206" height="18" rx="2" fill="#09090B" stroke="#F97316" stroke-width="0.7" />
+    <line x1="40" y1="183" x2="238" y2="183" stroke="#F97316" stroke-width="0.7" opacity="0.7" stroke-dasharray="5 2.5" />
+
+    
+    <rect x="115" y="196" width="70" height="17" rx="2.5" fill="#18181B" stroke="#3F3F46" stroke-width="0.8" />
+    <text x="150" y="207" font-size="5" fill="#71717A" font-family="monospace" text-anchor="middle">GIGABYTE</text>
+  </g>
+</svg>

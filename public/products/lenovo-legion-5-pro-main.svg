@@ -1,0 +1,54 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="legion-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E232A" />
+      <stop offset="50%" stop-color="#14181F" />
+      <stop offset="100%" stop-color="#0B0D11" />
+    </linearGradient>
+    <linearGradient id="legion-screen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D2FF" />
+      <stop offset="50%" stop-color="#0066FF" />
+      <stop offset="100%" stop-color="#0A1128" />
+    </linearGradient>
+    <linearGradient id="legion-rgb" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F0FF" />
+      <stop offset="35%" stop-color="#7000FF" />
+      <stop offset="70%" stop-color="#FF007A" />
+      <stop offset="100%" stop-color="#00F0FF" />
+    </linearGradient>
+    <filter id="legion-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#000000" flood-opacity="0.55" />
+    </filter>
+  </defs>
+
+  <g filter="url(#legion-shadow)" transform="translate(45, 20)">
+    
+    <path d="M25 150 L285 150 L295 170 L15 170 Z" fill="#0D1117" stroke="#2D3748" stroke-width="1.2" />
+    
+    <rect x="35" y="156" width="45" height="8" rx="2" fill="#00E5FF" opacity="0.8" />
+    <rect x="230" y="156" width="45" height="8" rx="2" fill="#00E5FF" opacity="0.8" />
+    
+    <circle cx="140" cy="160" r="2.5" fill="#4A5568" />
+    <rect x="150" y="158" width="10" height="4" rx="1" fill="#4A5568" />
+    <rect x="165" y="158" width="8" height="4" rx="1" fill="#FF5252" />
+
+    
+    <rect x="30" y="8" width="250" height="152" rx="6" fill="#14181F" stroke="#374151" stroke-width="1.5" />
+    <rect x="35" y="13" width="240" height="142" rx="3" fill="url(#legion-screen)" />
+    
+    <path d="M155 60 L145 75 L155 78 L155 95 L157 95 L157 78 L167 75 Z" fill="#FFFFFF" opacity="0.85" />
+    <text x="155" y="112" font-size="9" fill="#E2E8F0" font-family="system-ui, sans-serif" font-weight="800" letter-spacing="3" text-anchor="middle">LEGION 5 PRO · 165Hz</text>
+
+    
+    <path d="M5 168 L305 168 L285 218 Q280 224 270 224 L40 224 Q30 224 25 218 Z" fill="url(#legion-bg)" stroke="#2D3748" stroke-width="1.5" />
+
+    
+    <rect x="38" y="174" width="234" height="22" rx="3" fill="#0B0D11" stroke="url(#legion-rgb)" stroke-width="1" />
+    
+    <line x1="42" y1="181" x2="268" y2="181" stroke="url(#legion-rgb)" stroke-width="0.8" opacity="0.6" stroke-dasharray="6 3" />
+    <line x1="42" y1="188" x2="268" y2="188" stroke="url(#legion-rgb)" stroke-width="0.8" opacity="0.6" stroke-dasharray="6 3" />
+
+    
+    <rect x="125" y="202" width="60" height="15" rx="3" fill="#1A202C" stroke="#4A5568" stroke-width="0.8" />
+  </g>
+</svg>

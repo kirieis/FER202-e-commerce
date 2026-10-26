@@ -1,0 +1,39 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blade-edge-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#242831" />
+      <stop offset="60%" stop-color="#181B22" />
+      <stop offset="100%" stop-color="#0E1015" />
+    </linearGradient>
+    <filter id="blade-edge-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <g filter="url(#blade-edge-shadow)" transform="translate(50, 95)">
+    
+    <rect x="0" y="0" width="300" height="70" rx="14" fill="url(#blade-edge-body)" stroke="#373D4D" stroke-width="1.5" />
+
+    
+    
+    <rect x="35" y="24" width="36" height="22" rx="6" fill="#0C0E14" stroke="#4B5568" stroke-width="1" />
+    <text x="53" y="38" font-size="7" fill="#60A5FA" font-family="monospace" text-anchor="middle">Type-C1</text>
+
+    
+    <rect x="85" y="24" width="36" height="22" rx="6" fill="#0C0E14" stroke="#4B5568" stroke-width="1" />
+    <text x="103" y="38" font-size="7" fill="#60A5FA" font-family="monospace" text-anchor="middle">Type-C2</text>
+
+    
+    <rect x="145" y="24" width="36" height="22" rx="4" fill="#0C0E14" stroke="#F59E0B" stroke-width="1" />
+    <text x="163" y="38" font-size="7" fill="#F59E0B" font-family="monospace" text-anchor="middle">USB-A1</text>
+
+    
+    <rect x="195" y="24" width="36" height="22" rx="4" fill="#0C0E14" stroke="#F59E0B" stroke-width="1" />
+    <text x="213" y="38" font-size="7" fill="#F59E0B" font-family="monospace" text-anchor="middle">USB-A2</text>
+
+    
+    <rect x="250" y="28" width="20" height="14" rx="4" fill="#1F2937" stroke="#4B5568" stroke-width="1" />
+
+    <text x="150" y="60" font-size="8" fill="#94A3B8" font-family="monospace" text-anchor="middle">18MM ULTRA-SLIM PROFILE · 100W PD</text>
+  </g>
+</svg>

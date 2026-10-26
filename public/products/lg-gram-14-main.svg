@@ -1,0 +1,30 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gram-white" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="60%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#E2E8F0" />
+    </linearGradient>
+    <linearGradient id="gram-screen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+    <filter id="gram-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <g filter="url(#gram-shadow)" transform="translate(50, 30)">
+    
+    <rect x="25" y="10" width="250" height="165" rx="8" fill="#0B0F19" stroke="#E2E8F0" stroke-width="1.5" />
+    <rect x="30" y="15" width="240" height="155" rx="4" fill="url(#gram-screen)" />
+    <circle cx="150" cy="12.5" r="1.5" fill="#475569" />
+
+    
+    <path d="M0 175 L300 175 L280 205 Q275 210 265 210 L35 210 Q25 210 20 205 Z" fill="url(#gram-white)" stroke="#CBD5E1" stroke-width="1" />
+
+    
+    <rect x="40" y="179" width="220" height="15" rx="3" fill="#334155" opacity="0.25" />
+    <text x="150" y="202" font-size="9" fill="#64748B" font-family="'Times New Roman', serif" font-style="italic" font-weight="bold" letter-spacing="1" text-anchor="middle">gram</text>
+  </g>
+</svg>

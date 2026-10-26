@@ -1,0 +1,39 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="k4-side-frame" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3F3F46" />
+      <stop offset="50%" stop-color="#27272A" />
+      <stop offset="100%" stop-color="#18181B" />
+    </linearGradient>
+    <filter id="k4-ang-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <g filter="url(#k4-ang-shadow)" transform="translate(60, 80)">
+    
+    <polygon points="10,80 270,30 280,100 20,130" fill="url(#k4-side-frame)" stroke="#52525B" stroke-width="1.5" />
+
+    
+    
+    <polygon points="255,20 275,17 272,32 252,35" fill="#EA580C" />
+    
+    <polygon points="215,28 235,25 232,42 212,45" fill="#3F3F46" />
+    
+    <polygon points="175,37 195,34 192,52 172,55" fill="#27272A" />
+    
+    <polygon points="135,47 155,44 152,62 132,65" fill="#27272A" />
+    
+    <polygon points="95,57 115,54 112,72 92,75" fill="#27272A" />
+    
+    <polygon points="55,67 75,64 72,82 52,85" fill="#3F3F46" />
+
+    
+    <rect x="250" y="90" width="16" height="20" rx="3" fill="#18181B" />
+
+    
+    <rect x="70" y="105" width="24" height="10" rx="3" fill="#18181B" stroke="#71717A" stroke-width="1" />
+    <circle cx="78" cy="110" r="3" fill="#EA580C" />
+    <text x="150" y="115" font-size="8" fill="#A1A1AA" font-family="sans-serif" font-weight="bold">KEYCHRON 9° ERGONOMIC TILT</text>
+  </g>
+</svg>

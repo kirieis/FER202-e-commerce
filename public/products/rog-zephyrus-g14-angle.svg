@@ -1,0 +1,37 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rog-lid-cnc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#373E47" />
+      <stop offset="50%" stop-color="#242930" />
+      <stop offset="100%" stop-color="#14171A" />
+    </linearGradient>
+    <linearGradient id="slash-led" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#00F0FF" />
+      <stop offset="100%" stop-color="#FF0055" />
+    </linearGradient>
+    <filter id="rog-ang-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="3" dy="16" stdDeviation="15" flood-color="#000000" flood-opacity="0.55" />
+    </filter>
+  </defs>
+
+  <g filter="url(#rog-ang-shadow)" transform="translate(45, 30)">
+    
+    <path d="M40 140 L230 85 L210 15 L20 70 Z" fill="url(#rog-lid-cnc)" stroke="#4A5260" stroke-width="1.2" />
+
+    
+    <line x1="30" y1="120" x2="200" y2="35" stroke="url(#slash-led)" stroke-width="4" stroke-linecap="round" />
+    <line x1="30" y1="120" x2="200" y2="35" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.9" />
+
+    
+    <rect x="35" y="65" width="20" height="7" rx="1.5" fill="#0E1013" stroke="#FF0055" stroke-width="0.8" transform="rotate(-16 35 65)" />
+    <text x="45" y="70" font-size="4" fill="#FFFFFF" font-family="sans-serif" font-weight="bold" text-anchor="middle" transform="rotate(-16 45 70)">ROG</text>
+
+    
+    <path d="M40 140 L230 85 L285 185 L95 240 Z" fill="#1A1E24" stroke="#3D444E" stroke-width="1.2" />
+    
+    <path d="M60 148 L215 102 L245 160 L90 205 Z" fill="#0E1013" stroke="#FF0055" stroke-width="0.8" opacity="0.85" />
+    
+    <path d="M125 210 L185 192 L195 220 L135 238 Z" fill="#242930" stroke="#4A5260" stroke-width="0.8" />
+  </g>
+</svg>

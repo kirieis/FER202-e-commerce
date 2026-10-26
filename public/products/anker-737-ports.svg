@@ -1,0 +1,33 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="p-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D323E" />
+      <stop offset="50%" stop-color="#1E222B" />
+      <stop offset="100%" stop-color="#14171E" />
+    </linearGradient>
+    <filter id="p-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <g filter="url(#p-shadow)" transform="translate(100, 60)">
+    
+    <rect x="0" y="0" width="200" height="150" rx="24" fill="url(#p-body)" stroke="#4A5568" stroke-width="1.5" />
+    <rect x="15" y="15" width="170" height="120" rx="16" fill="#0C0E14" stroke="#2D3748" stroke-width="1" />
+
+    
+    <rect x="35" y="45" width="34" height="20" rx="6" fill="#1A202C" stroke="#00F0FF" stroke-width="1.5" />
+    <text x="52" y="58" font-size="8" fill="#00F0FF" font-family="monospace" font-weight="bold" text-anchor="middle">C1 140W</text>
+
+    
+    <rect x="85" y="45" width="34" height="20" rx="6" fill="#1A202C" stroke="#00F0FF" stroke-width="1.5" />
+    <text x="102" y="58" font-size="8" fill="#00F0FF" font-family="monospace" font-weight="bold" text-anchor="middle">C2 140W</text>
+
+    
+    <rect x="135" y="44" width="34" height="22" rx="4" fill="#1A202C" stroke="#718096" stroke-width="1.5" />
+    <rect x="140" y="48" width="24" height="6" rx="2" fill="#00F0FF" />
+    <text x="152" y="78" font-size="7" fill="#A0AEC0" font-family="monospace" text-anchor="middle">USB-A</text>
+
+    <text x="100" y="112" font-size="9" fill="#00F0FF" font-family="sans-serif" font-weight="bold" letter-spacing="1" text-anchor="middle">POWERCORE 24K · 140W TWO-WAY</text>
+  </g>
+</svg>

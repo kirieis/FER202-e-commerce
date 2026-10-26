@@ -5,20 +5,20 @@ import { CartProvider } from './context/CartContext';
 import { ToastProvider } from './context/ToastContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { Storefront } from './pages/Storefront';
+import { Storefront } from './views/Storefront';
 import { PageSkeleton } from './components/PageSkeleton';
 import { Product } from './types';
 import { PRODUCTS } from './data/products';
 
 // Code Splitting with dynamic lazy imports
 const ProductDetail = lazy(() =>
-  import('./pages/ProductDetail').then((m) => ({ default: m.ProductDetail }))
+  import('./views/ProductDetail').then((m) => ({ default: m.ProductDetail }))
 );
 const StudentAuth = lazy(() =>
-  import('./pages/StudentAuth').then((m) => ({ default: m.StudentAuth }))
+  import('./views/StudentAuth').then((m) => ({ default: m.StudentAuth }))
 );
 const Checkout = lazy(() =>
-  import('./pages/Checkout').then((m) => ({ default: m.Checkout }))
+  import('./views/Checkout').then((m) => ({ default: m.Checkout }))
 );
 
 type Page = 'storefront' | 'pdp' | 'auth' | 'checkout';

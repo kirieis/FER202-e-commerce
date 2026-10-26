@@ -1,0 +1,27 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="duo-oled" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="50%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#EC4899" />
+    </linearGradient>
+    <filter id="duo-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <g filter="url(#duo-shadow)" transform="translate(60, 20)">
+    
+    <rect x="20" y="10" width="240" height="135" rx="8" fill="#0B0F19" stroke="#334155" stroke-width="1.5" />
+    <rect x="25" y="15" width="230" height="125" rx="4" fill="url(#duo-oled)" />
+    <text x="140" y="80" font-size="10" fill="#FFFFFF" font-family="sans-serif" font-weight="bold" text-anchor="middle">PRIMARY 14" 3K OLED 120Hz</text>
+
+    
+    <rect x="15" y="145" width="250" height="8" rx="3" fill="#1E293B" stroke="#475569" stroke-width="1" />
+
+    
+    <rect x="20" y="153" width="240" height="115" rx="8" fill="#0B0F19" stroke="#334155" stroke-width="1.5" />
+    <rect x="25" y="158" width="230" height="105" rx="4" fill="url(#duo-oled)" opacity="0.9" />
+    <text x="140" y="215" font-size="10" fill="#FFFFFF" font-family="sans-serif" font-weight="bold" text-anchor="middle">SECONDARY 14" FULL TOUCH OLED</text>
+  </g>
+</svg>

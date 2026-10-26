@@ -1,5 +1,6 @@
 import React from 'react';
-import { Search, X, SlidersHorizontal } from 'lucide-react';
+import { Search, X, SlidersHorizontal, ArrowUpDown } from 'lucide-react';
+import { PriceTier, SortOption, SORT_OPTIONS } from '@/lib/catalogFilters';
 
 interface CatalogFilterBarProps {
   searchQuery: string;
@@ -8,11 +9,14 @@ interface CatalogFilterBarProps {
   onCategorySelect: (cat: string) => void;
   categoryCounts: Record<string, number>;
   totalProductsCount: number;
-  selectedBudget: 'all' | 'under1' | '1to5' | 'above5';
-  onBudgetSelect: (budget: 'all' | 'under1' | '1to5' | 'above5') => void;
+  priceTiers: PriceTier[];
+  selectedBudget: string;
+  onBudgetSelect: (budget: string) => void;
   availableBrands: string[];
   selectedBrand: string;
   onBrandSelect: (brand: string) => void;
+  selectedSort: SortOption;
+  onSortSelect: (sort: SortOption) => void;
   filteredCount: number;
   visibleCount: number;
   interpretation?: string;
@@ -25,14 +29,17 @@ export const CatalogFilterBar: React.FC<CatalogFilterBarProps> = ({
   onCategorySelect,
   categoryCounts,
   totalProductsCount,
+  priceTiers,
   selectedBudget,
   onBudgetSelect,
   availableBrands,
   selectedBrand,
   onBrandSelect,
+  selectedSort,
+  onSortSelect,
   filteredCount,
   visibleCount,
-  interpretation
+  interpretation,
 }) => {
   return (
     <div className="mb-8 text-left">
@@ -42,7 +49,7 @@ export const CatalogFilterBar: React.FC<CatalogFilterBarProps> = ({
             Kho thiết bị sinh viên UniGear.
           </h2>
           <p className="mt-2 text-sm sm:text-base text-[var(--mu)]">
-            Giá đã gồm VAT. Giảm thêm 5% khi xác thực thẻ SV. Ảnh thật tách nền 100%, bảo hành 12 tháng 1 đổi 1.
+            Giá đã gồm VAT. Giảm thêm 5% khi xác thực thẻ SV, bảo hành chính hãng 12 tháng 1 đổi 1 và giao tận KTX.
           </p>
         </div>
 
@@ -71,7 +78,7 @@ export const CatalogFilterBar: React.FC<CatalogFilterBarProps> = ({
         </div>
       </div>
 
-      {/* Filter Pills: Category, Budget, Brand */}
+      {/* Filter Pills: Category, Dynamic Budget, Brand */}
       <div className="mt-6 flex flex-col gap-3">
         {/* Row 1: Categories */}
         <div className="flex flex-wrap items-center gap-2">
@@ -81,7 +88,7 @@ export const CatalogFilterBar: React.FC<CatalogFilterBarProps> = ({
             { id: 'laptop', label: `Laptop (${categoryCounts['laptop'] || 0})` },
             { id: 'tablet', label: `Tablet & Bút (${categoryCounts['tablet'] || 0})` },
             { id: 'audio', label: `Tai nghe & Loa (${categoryCounts['audio'] || 0})` },
-            { id: 'accessory', label: `Phụ kiện (${categoryCounts['accessory'] || 0})` }
+            { id: 'accessory', label: `Phụ kiện (${categoryCounts['accessory'] || 0})` },
           ].map((cat) => (
             <button
               key={cat.id}
@@ -98,26 +105,21 @@ export const CatalogFilterBar: React.FC<CatalogFilterBarProps> = ({
           ))}
         </div>
 
-        {/* Row 2: Budget */}
+        {/* Row 2: Category-Aware Budget */}
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-semibold text-[var(--mu)] mr-1">Mức giá:</span>
-          {[
-            { id: 'all', label: 'Mọi mức giá' },
-            { id: 'under1', label: 'Dưới 1 triệu' },
-            { id: '1to5', label: '1 - 5 triệu' },
-            { id: 'above5', label: 'Trên 5 triệu' }
-          ].map((tab) => (
+          {priceTiers.map((tier) => (
             <button
-              key={tab.id}
+              key={tier.id}
               type="button"
-              onClick={() => onBudgetSelect(tab.id as 'all' | 'under1' | '1to5' | 'above5')}
+              onClick={() => onBudgetSelect(tier.id)}
               className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                selectedBudget === tab.id
+                selectedBudget === tier.id
                   ? 'bg-[var(--pri)] text-white shadow-sm'
                   : 'bg-[var(--surface)] border border-[var(--ln)] text-[var(--tx)] hover:border-[var(--tx)]'
               }`}
             >
-              {tab.label}
+              {tier.label}
             </button>
           ))}
         </div>
@@ -133,7 +135,7 @@ export const CatalogFilterBar: React.FC<CatalogFilterBarProps> = ({
                 key={brand}
                 type="button"
                 onClick={() => onBrandSelect(brand)}
-                className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all cursor-pointer ${
+                className={`px-3 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                   selectedBrand === brand
                     ? 'bg-[var(--tx)] text-[var(--bg)]'
                     : 'bg-[var(--surface)] text-[var(--mu)] hover:text-[var(--tx)] border border-[var(--ln)] hover:border-[var(--tx)]'
@@ -146,17 +148,41 @@ export const CatalogFilterBar: React.FC<CatalogFilterBarProps> = ({
         )}
       </div>
 
-      {/* Result Status Bar */}
-      <div className="mt-4 flex items-center justify-between text-xs text-[var(--mu)] font-mono-code border-b border-[var(--ln)] pb-3">
-        <span>
+      {/* Result Status Bar with Sorting & Count */}
+      <div className="mt-5 pt-3 border-t border-[var(--ln)] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[var(--mu)] font-mono-code">
+        <div>
           Tìm thấy <strong className="text-[var(--tx)]">{filteredCount}</strong> sản phẩm phù hợp
           {searchQuery && ` cho từ khóa "${searchQuery}"`}
           {interpretation && ` · Hiểu là: ${interpretation}`}
           {selectedBrand !== 'all' && ` · Hãng ${selectedBrand}`}
-        </span>
-        <span>
-          Hiển thị {Math.min(visibleCount, filteredCount)} / {filteredCount}
-        </span>
+        </div>
+
+        <div className="flex items-center justify-between sm:justify-end gap-4">
+          {/* Sorting Dropdown */}
+          <div className="flex items-center gap-1.5">
+            <ArrowUpDown className="w-3.5 h-3.5 text-[var(--mu)]" />
+            <label htmlFor="catalog-sort" className="font-semibold text-xs text-[var(--mu)] hidden md:inline">
+              Sắp xếp:
+            </label>
+            <select
+              id="catalog-sort"
+              value={selectedSort}
+              onChange={(e) => onSortSelect(e.target.value as SortOption)}
+              aria-label="Sắp xếp sản phẩm"
+              className="bg-[var(--surface)] text-[var(--tx)] text-xs font-semibold px-2.5 py-1 rounded-full border border-[var(--ln)] hover:border-[var(--pri)] focus:outline-none focus:ring-1 focus:ring-[var(--pri)] cursor-pointer transition-all"
+            >
+              {SORT_OPTIONS.map((opt) => (
+                <option key={opt.id} value={opt.id} className="bg-[var(--card)] text-[var(--tx)]">
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <span className="text-[var(--mu)]">
+            Hiển thị {Math.min(visibleCount, filteredCount)} / {filteredCount}
+          </span>
+        </div>
       </div>
     </div>
   );

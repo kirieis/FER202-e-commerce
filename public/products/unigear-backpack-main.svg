@@ -1,0 +1,42 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pack-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#262B36" />
+      <stop offset="50%" stop-color="#1A1E27" />
+      <stop offset="100%" stop-color="#10131A" />
+    </linearGradient>
+    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6F5CFF" />
+      <stop offset="100%" stop-color="#FF8A4C" />
+    </linearGradient>
+    <filter id="pack-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <g filter="url(#pack-shadow)" transform="translate(115, 30)">
+    
+    <path d="M55 20 C55 4, 115 4, 115 20" stroke="#374151" stroke-width="8" stroke-linecap="round" fill="none" />
+
+    
+    <path d="M30 40 Q85 18 140 40 Q165 70 160 215 Q85 245 10 215 Q5 70 30 40 Z" fill="url(#pack-body)" stroke="#373D4D" stroke-width="1.5" />
+
+    
+    <polygon points="40,65 130,65 145,155 85,185 25,155" fill="#141822" stroke="#2B3242" stroke-width="1.5" />
+
+    
+    <line x1="45" y1="110" x2="125" y2="110" stroke="url(#shield-grad)" stroke-width="2.5" stroke-linecap="round" />
+
+    
+    <path d="M26 75 Q85 50 144 75" stroke="#4B5568" stroke-width="1.5" stroke-dasharray="3 3" fill="none" />
+    <path d="M18 120 Q85 95 152 120" stroke="#4B5568" stroke-width="1.5" stroke-dasharray="3 3" fill="none" />
+
+    
+    <path d="M15 195 Q85 220 155 195 L160 215 Q85 245 10 215 Z" fill="#0D0F14" />
+
+    
+    <circle cx="85" cy="140" r="10" fill="#1F2432" stroke="#3D4559" stroke-width="1" />
+    <text x="85" y="143" font-size="8" fill="#FF8A4C" font-family="sans-serif" font-weight="bold" text-anchor="middle">UG</text>
+    <text x="85" y="165" font-size="7" fill="#6B7280" font-family="monospace" text-anchor="middle">15.6" LAPTOP FIT</text>
+  </g>
+</svg>

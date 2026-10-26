@@ -1,0 +1,16 @@
+{
+  "name": "UniGear – Thiết bị công nghệ sinh viên",
+  "short_name": "UniGear",
+  "description": "Nền tảng thương mại điện tử công nghệ dành riêng cho sinh viên Việt Nam: laptop, tablet, tai nghe chính hãng, giảm 5% thẻ sinh viên, trả góp 0%.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0e14",
+  "theme_color": "#0c0e14",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

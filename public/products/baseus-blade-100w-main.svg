@@ -1,0 +1,42 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blade-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#242831" />
+      <stop offset="60%" stop-color="#181B22" />
+      <stop offset="100%" stop-color="#0E1015" />
+    </linearGradient>
+    <filter id="blade-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <g filter="url(#blade-shadow)" transform="translate(60, 45)">
+    
+    <rect x="0" y="0" width="280" height="195" rx="16" fill="url(#blade-body)" stroke="#373D4D" stroke-width="1.5" />
+
+    
+    <rect x="8" y="8" width="264" height="179" rx="10" fill="none" stroke="#252A36" stroke-width="1" />
+
+    
+    <rect x="180" y="24" width="76" height="42" rx="8" fill="#0A0C10" stroke="#1F2430" stroke-width="1" />
+    <text x="218" y="46" font-size="14" fill="#FF8A4C" font-family="monospace" font-weight="bold" text-anchor="middle">100%</text>
+    <text x="218" y="58" font-size="7" fill="#8892B0" font-family="monospace" text-anchor="middle">100W PD</text>
+
+    
+    <rect x="24" y="28" width="20" height="10" rx="3" fill="#0C0E14" stroke="#4B5568" stroke-width="1" />
+    <rect x="52" y="28" width="20" height="10" rx="3" fill="#0C0E14" stroke="#4B5568" stroke-width="1" />
+    <rect x="82" y="27" width="20" height="12" rx="2" fill="#0C0E14" stroke="#F59E0B" stroke-width="1" />
+    <rect x="110" y="27" width="20" height="12" rx="2" fill="#0C0E14" stroke="#F59E0B" stroke-width="1" />
+    <text x="76" y="50" font-size="7" fill="#6B7280" font-family="monospace">Type-C1/2 · USB1/2</text>
+
+    
+    <line x1="24" y1="84" x2="256" y2="84" stroke="#1E222B" stroke-width="1" />
+    <line x1="24" y1="104" x2="256" y2="104" stroke="#1E222B" stroke-width="1" />
+    <line x1="24" y1="124" x2="256" y2="124" stroke="#1E222B" stroke-width="1" />
+    <line x1="24" y1="144" x2="256" y2="144" stroke="#1E222B" stroke-width="1" />
+
+    
+    <text x="24" y="174" font-size="12" fill="#E2E8F0" font-family="sans-serif" font-weight="900" letter-spacing="1">Baseus</text>
+    <text x="256" y="174" font-size="10" fill="#64748B" font-family="monospace" text-anchor="end">20000mAh / 100W</text>
+  </g>
+</svg>

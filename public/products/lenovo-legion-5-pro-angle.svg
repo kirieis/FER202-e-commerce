@@ -1,0 +1,33 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="legion-ang-lid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D3748" />
+      <stop offset="50%" stop-color="#1A202C" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <filter id="legion-ang-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="4" dy="18" stdDeviation="16" flood-color="#000000" flood-opacity="0.55" />
+    </filter>
+  </defs>
+
+  <g filter="url(#legion-ang-shadow)" transform="translate(40, 30)">
+    
+    
+    <path d="M40 130 L220 75 L310 115 L130 170 Z" fill="#0F172A" stroke="#334155" stroke-width="1.2" />
+    
+    <path d="M230 85 L285 108" stroke="#00E5FF" stroke-width="4" stroke-linecap="round" opacity="0.85" />
+
+    
+    <path d="M40 130 L220 75 L200 8 L20 60 Z" fill="url(#legion-ang-lid)" stroke="#475569" stroke-width="1.5" />
+    
+    <text x="110" y="70" font-size="14" fill="#E2E8F0" font-family="system-ui, sans-serif" font-weight="900" letter-spacing="4" transform="rotate(-17 110 70)">LEGION</text>
+    <path d="M125 58 L128 53 L131 58 L129 65 Z" fill="#00E5FF" transform="rotate(-17 125 58)" />
+
+    
+    <path d="M130 170 L310 115 L260 215 L70 245 Z" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    
+    <path d="M145 168 L285 125 L250 185 L110 215 Z" fill="#0B0D11" stroke="#00F0FF" stroke-width="0.8" opacity="0.7" />
+    
+    <path d="M140 218 L195 202 L185 232 L130 242 Z" fill="#141923" stroke="#475569" stroke-width="0.8" />
+  </g>
+</svg>

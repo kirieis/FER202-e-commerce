@@ -1,0 +1,47 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ath-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D323E" />
+      <stop offset="50%" stop-color="#1B1E28" />
+      <stop offset="100%" stop-color="#0E1017" />
+    </linearGradient>
+    <linearGradient id="silver-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1F5F9" />
+      <stop offset="50%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+    <filter id="ath-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <g filter="url(#ath-shadow)" transform="translate(60, 20)">
+    
+    <path d="M45 160 C 45 35, 235 35, 235 160" stroke="#1E232E" stroke-width="30" stroke-linecap="round" fill="none" />
+    <text x="140" y="52" font-size="7" fill="#64748B" font-family="sans-serif" font-weight="900" letter-spacing="3" text-anchor="middle">audio-technica</text>
+
+    
+    <rect x="44" y="130" width="22" height="40" rx="6" fill="#334155" stroke="#64748B" stroke-width="1" />
+    <rect x="214" y="130" width="22" height="40" rx="6" fill="#334155" stroke="#64748B" stroke-width="1" />
+
+    
+    <g transform="translate(10, 150)">
+      <ellipse cx="45" cy="55" rx="42" ry="50" fill="url(#ath-body)" stroke="#334155" stroke-width="2" />
+      
+      <circle cx="45" cy="55" r="28" fill="none" stroke="url(#silver-ring)" stroke-width="3" />
+      <circle cx="45" cy="55" r="20" fill="#141822" stroke="#475569" stroke-width="1" />
+      
+      <polygon points="45,45 38,58 52,58" fill="url(#silver-ring)" />
+      <circle cx="45" cy="54" r="3" fill="#141822" />
+    </g>
+
+    
+    <g transform="translate(185, 150)">
+      <ellipse cx="45" cy="55" rx="42" ry="50" fill="url(#ath-body)" stroke="#334155" stroke-width="2" />
+      <circle cx="45" cy="55" r="28" fill="none" stroke="url(#silver-ring)" stroke-width="3" />
+      <circle cx="45" cy="55" r="20" fill="#141822" stroke="#475569" stroke-width="1" />
+      <polygon points="45,45 38,58 52,58" fill="url(#silver-ring)" />
+      <circle cx="45" cy="54" r="3" fill="#141822" />
+    </g>
+  </g>
+</svg>

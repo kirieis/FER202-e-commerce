@@ -1,0 +1,34 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="surf-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1F5F9" />
+      <stop offset="50%" stop-color="#CBD5E1" />
+      <stop offset="100%" stop-color="#94A3B8" />
+    </linearGradient>
+    <linearGradient id="surf-screen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <filter id="surf-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <g filter="url(#surf-shadow)" transform="translate(60, 30)">
+    
+    <rect x="25" y="10" width="230" height="170" rx="10" fill="#0F172A" stroke="#94A3B8" stroke-width="1.5" />
+    
+    <rect x="33" y="18" width="214" height="154" rx="4" fill="url(#surf-screen)" />
+    
+    <path d="M50 150 Q120 70 180 120 T240 100" stroke="#38BDF8" stroke-width="24" fill="none" opacity="0.6" />
+    
+    <circle cx="140" cy="14" r="1.5" fill="#475569" />
+
+    
+    <path d="M0 180 L280 180 L260 205 Q255 210 245 210 L35 210 Q25 210 20 205 Z" fill="url(#surf-body)" stroke="#CBD5E1" stroke-width="1" />
+
+    
+    <rect x="40" y="183" width="200" height="14" rx="2" fill="#64748B" opacity="0.4" />
+    <rect x="110" y="198" width="60" height="8" rx="2" fill="#E2E8F0" stroke="#94A3B8" stroke-width="0.8" />
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gram-ang-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="60%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#E2E8F0" />
+    </linearGradient>
+    <linearGradient id="gram-ang-screen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+    <filter id="gram-ang-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <g filter="url(#gram-ang-shadow)" transform="translate(60, 30)">
+    
+    <polygon points="60,10 240,25 215,180 35,165" fill="#0B0F19" stroke="#E2E8F0" stroke-width="1.5" />
+    <polygon points="68,18 232,32 208,172 44,158" fill="url(#gram-ang-screen)" />
+
+    
+    <polygon points="35,165 215,180 270,225 70,210" fill="url(#gram-ang-body)" stroke="#CBD5E1" stroke-width="1.2" />
+
+    
+    <polygon points="50,172 205,185 245,210 90,197" fill="#334155" opacity="0.25" />
+  </g>
+</svg>

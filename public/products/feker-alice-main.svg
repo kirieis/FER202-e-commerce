@@ -1,0 +1,63 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="alice-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="50%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <filter id="alice-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <g filter="url(#alice-shadow)" transform="translate(30, 60)">
+    
+    <path d="M10 20 Q170 0 330 20 Q340 160 320 170 Q170 190 20 170 Q0 160 10 20 Z" fill="url(#alice-body)" stroke="#475569" stroke-width="1.5" />
+
+    
+    <circle cx="305" cy="40" r="14" fill="#D97706" stroke="#FDE68A" stroke-width="1.5" />
+    <circle cx="305" cy="40" r="4" fill="#78350F" />
+
+    
+    <g transform="translate(30, 35) rotate(-8)">
+      <rect x="0" y="0" width="120" height="95" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1" />
+      
+      <rect x="5" y="8" width="16" height="15" rx="3" fill="#64748B" />
+      <rect x="25" y="8" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="45" y="8" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="65" y="8" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="85" y="8" width="28" height="15" rx="3" fill="#64748B" />
+
+      <rect x="5" y="27" width="20" height="15" rx="3" fill="#64748B" />
+      <rect x="29" y="27" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="49" y="27" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="69" y="27" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="89" y="27" width="24" height="15" rx="3" fill="#64748B" />
+
+      
+      <rect x="35" y="68" width="55" height="18" rx="4" fill="#F59E0B" />
+    </g>
+
+    
+    <g transform="translate(185, 20) rotate(8)">
+      <rect x="0" y="0" width="120" height="95" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1" />
+      <rect x="5" y="8" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="25" y="8" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="45" y="8" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="65" y="8" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="85" y="8" width="28" height="15" rx="3" fill="#64748B" />
+
+      <rect x="5" y="27" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="25" y="27" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="45" y="27" width="16" height="15" rx="3" fill="#475569" />
+      <rect x="65" y="27" width="30" height="15" rx="3" fill="#F59E0B" />
+      <rect x="99" y="27" width="16" height="15" rx="3" fill="#64748B" />
+
+      
+      <rect x="30" y="68" width="55" height="18" rx="4" fill="#F59E0B" />
+    </g>
+
+    
+    <text x="170" y="150" font-size="8" fill="#94A3B8" font-family="sans-serif" font-weight="bold" letter-spacing="2" text-anchor="middle">FEKER ALICE 80 · ERGO</text>
+  </g>
+</svg>

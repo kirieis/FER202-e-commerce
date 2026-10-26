@@ -1,117 +1,147 @@
+'use client';
+
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTheme } from '../context/ThemeContext';
 import { useCart } from '../context/CartContext';
 import { useStudent } from '../context/StudentContext';
-import { Sun, Moon, ShoppingBag, ShieldCheck, Menu, X, ArrowRight } from 'lucide-react';
+import { UniGearLogo } from './UniGearLogo';
+import { Sun, Moon, ShoppingBag, ShieldCheck, Menu, X, ArrowRight, Sparkles, User } from 'lucide-react';
 
 interface NavbarProps {
-  onNavigate: (page: 'storefront' | 'pdp' | 'auth' | 'checkout', category?: string) => void;
-  currentPage: string;
+  onNavigate?: (page: 'storefront' | 'pdp' | 'auth' | 'checkout', category?: string) => void;
+  currentPage?: string;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
+  const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
   const { totalCount } = useCart();
   const { student } = useStudent();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleNavClick = (page: 'storefront' | 'pdp' | 'auth' | 'checkout', category?: string) => {
-    onNavigate(page, category);
-    setMobileMenuOpen(false);
-  };
+  const isCheckout = currentPage === 'checkout' || pathname === '/thanh-toan';
 
   return (
-    <header className="sticky top-0 z-50 h-16 w-full backdrop-blur-xl border-b border-[var(--ln)] bg-[var(--bg)]/80 transition-colors duration-200">
-      <div className="max-w-[1240px] h-full mx-auto px-4 sm:px-8 flex items-center justify-between gap-4">
-        {/* Brand Logo */}
-        <div
-          role="button"
-          tabIndex={0}
-          onClick={() => handleNavClick('storefront')}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              handleNavClick('storefront');
-            }
+    <header className="sticky top-0 z-50 h-16 w-full backdrop-blur-xl border-b border-[var(--ln)] bg-[var(--bg)]/90 transition-colors duration-200 shadow-sm">
+      <div className="max-w-[1280px] h-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 lg:gap-6">
+        
+        {/* 1. Brand Logo as real <a> */}
+        <Link
+          href="/"
+          onClick={() => {
+            if (onNavigate) onNavigate('storefront');
           }}
           aria-label="Về trang chủ UniGear"
-          className="flex items-center gap-3 cursor-pointer group select-none"
+          className="flex-shrink-0 cursor-pointer group flex items-center"
         >
-          <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-[var(--pri)] via-[var(--warm)] to-[var(--pri)] flex-shrink-0 shadow-md group-hover:scale-105 transition-transform" />
-          <span className="text-xl font-extrabold tracking-tight text-[var(--tx)]">
-            UniGear
-          </span>
-          <span className="hidden sm:inline-block text-[11px] font-semibold text-[var(--mu)] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[var(--surface)] border border-[var(--ln)]">
-            FOR STUDENTS
-          </span>
-        </div>
+          <UniGearLogo size="md" />
+        </Link>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-6 text-[14px] font-medium text-[var(--mu)]">
-          <button
-            onClick={() => handleNavClick('storefront', 'laptop')}
-            className="hover:text-[var(--tx)] transition-colors cursor-pointer"
+        {/* 2. Desktop Navigation Links (Real accessible <a> links on 1 single line) */}
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-[13px] font-medium text-[var(--mu)] flex-shrink-0">
+          <Link
+            href="/laptop"
+            className={`whitespace-nowrap px-3 py-1.5 rounded-full transition-all cursor-pointer ${
+              pathname === '/laptop'
+                ? 'text-[var(--tx)] bg-[var(--surface)] font-semibold'
+                : 'hover:text-[var(--tx)] hover:bg-[var(--surface)]/60'
+            }`}
           >
             Laptop
-          </button>
-          <button
-            onClick={() => handleNavClick('storefront', 'tablet')}
-            className="hover:text-[var(--tx)] transition-colors cursor-pointer"
+          </Link>
+
+          <Link
+            href="/tablet"
+            className={`whitespace-nowrap px-3 py-1.5 rounded-full transition-all cursor-pointer ${
+              pathname === '/tablet'
+                ? 'text-[var(--tx)] bg-[var(--surface)] font-semibold'
+                : 'hover:text-[var(--tx)] hover:bg-[var(--surface)]/60'
+            }`}
           >
             Tablet
-          </button>
-          <button
-            onClick={() => handleNavClick('storefront', 'audio')}
-            className="hover:text-[var(--tx)] transition-colors cursor-pointer"
+          </Link>
+
+          <Link
+            href="/audio"
+            className={`whitespace-nowrap px-3 py-1.5 rounded-full transition-all cursor-pointer ${
+              pathname === '/audio'
+                ? 'text-[var(--tx)] bg-[var(--surface)] font-semibold'
+                : 'hover:text-[var(--tx)] hover:bg-[var(--surface)]/60'
+            }`}
           >
             Tai nghe &amp; Loa
-          </button>
-          <button
-            onClick={() => handleNavClick('storefront', 'accessory')}
-            className="hover:text-[var(--tx)] transition-colors cursor-pointer"
+          </Link>
+
+          <Link
+            href="/accessory"
+            className={`whitespace-nowrap px-3 py-1.5 rounded-full transition-all cursor-pointer ${
+              pathname === '/accessory'
+                ? 'text-[var(--tx)] bg-[var(--surface)] font-semibold'
+                : 'hover:text-[var(--tx)] hover:bg-[var(--surface)]/60'
+            }`}
           >
-            Phụ kiện sinh viên
-          </button>
-          <button
-            onClick={() => handleNavClick('storefront')}
-            className="hover:text-[var(--tx)] transition-colors cursor-pointer"
+            Phụ kiện
+          </Link>
+
+          <Link
+            href="/#tradein-section"
+            className="whitespace-nowrap px-3 py-1.5 rounded-full hover:text-[var(--tx)] hover:bg-[var(--surface)]/60 transition-all cursor-pointer"
           >
             Thu cũ đổi mới
-          </button>
-          <button
-            onClick={() => handleNavClick('auth')}
-            className="hover:text-[var(--warm)] text-[var(--warm)] font-semibold transition-colors flex items-center gap-1 cursor-pointer"
+          </Link>
+
+          <Link
+            href="/xac-thuc"
+            className="whitespace-nowrap px-3 py-1.5 rounded-full text-[var(--warm)] font-semibold hover:bg-[var(--warm)]/10 transition-all cursor-pointer flex items-center gap-1"
           >
-            <span>Ưu đãi thẻ SV (-5%)</span>
-          </button>
+            <Sparkles className="w-3.5 h-3.5 flex-shrink-0" />
+            <span>Ưu đãi SV (-5%)</span>
+          </Link>
         </nav>
 
-        {/* Right Actions */}
-        <div className="flex items-center gap-3">
-          {/* Student Status Badge */}
-          {student.isVerified ? (
-            <button
-              onClick={() => handleNavClick('auth')}
-              className="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--ok)]/15 border border-[var(--ok)]/30 text-[var(--ok)] hover:bg-[var(--ok)]/25 transition-colors cursor-pointer"
-              title="Đã kích hoạt ưu đãi Thẻ Sinh Viên -5%"
+        {/* 3. Right Action Bar with Real Links */}
+        <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
+          
+          {/* User Account / Prominent Login as real <a> */}
+          {student.email || student.isVerified ? (
+            <Link
+              href="/xac-thuc"
+              className="inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-semibold bg-[var(--ok)]/15 border border-[var(--ok)]/30 text-[var(--ok)] hover:bg-[var(--ok)]/25 transition-all cursor-pointer flex-shrink-0"
+              title={`Tài khoản: ${student.fullName || student.email}`}
             >
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Đã xác thực SV</span>
-            </button>
+              {student.avatarUrl ? (
+                <img
+                  src={student.avatarUrl}
+                  alt={student.fullName || 'Google Avatar'}
+                  className="w-5 h-5 rounded-full object-cover border border-[var(--ok)]"
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <div className="w-4 h-4 rounded-full bg-[var(--ok)] text-white flex items-center justify-center text-xs font-bold">
+                  {student.fullName ? student.fullName.charAt(0) : '✓'}
+                </div>
+              )}
+              <span className="hidden sm:inline max-w-[100px] truncate">{student.fullName?.split(' ').pop() || 'Sinh viên'}</span>
+              <span className="text-xs bg-[var(--ok)] text-white px-1.5 py-0.2 rounded font-mono-code font-bold">SV</span>
+            </Link>
           ) : (
-            <button
-              onClick={() => handleNavClick('auth')}
-              className="hidden lg:flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--surface)] border border-[var(--ln)] text-[var(--mu)] hover:text-[var(--tx)] transition-colors cursor-pointer"
+            <Link
+              href="/xac-thuc"
+              className="inline-flex items-center gap-1.5 whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-bold bg-[var(--surface)] border border-[var(--pri)]/60 text-[var(--tx)] hover:bg-[var(--pri)] hover:text-white hover:border-[var(--pri)] transition-all cursor-pointer shadow-sm group flex-shrink-0"
+              title="Đăng nhập tài khoản sinh viên"
             >
-              <span>Xác thực SV (-5%)</span>
-            </button>
+              <User className="w-3.5 h-3.5 text-[var(--pri)] group-hover:text-white transition-colors flex-shrink-0" />
+              <span>Đăng nhập</span>
+            </Link>
           )}
 
-          {/* Theme Switcher Toggle */}
+          {/* Theme Switcher Toggle (Button is appropriate for interactive state toggle) */}
           <button
             onClick={toggleTheme}
             aria-label="Chuyển chế độ Sáng / Tối"
-            className="w-9 h-9 rounded-full flex items-center justify-center bg-[var(--surface)] border border-[var(--ln)] text-[var(--tx)] hover:bg-[var(--card)] transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-full flex items-center justify-center bg-[var(--surface)] border border-[var(--ln)] text-[var(--tx)] hover:border-[var(--pri)] transition-all cursor-pointer flex-shrink-0"
             title={theme === 'dark' ? 'Chuyển sang chế độ Sáng' : 'Chuyển sang chế độ Tối'}
           >
             {theme === 'dark' ? (
@@ -121,75 +151,91 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             )}
           </button>
 
-          {/* Cart Button */}
-          <button
-            type="button"
-            onClick={() => handleNavClick('checkout')}
+          {/* Cart Link as real <a> */}
+          <Link
+            href="/thanh-toan"
             aria-label={`Giỏ hàng sinh viên, ${totalCount} sản phẩm`}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-bold transition-all cursor-pointer ${
-              currentPage === 'checkout'
-                ? 'bg-[var(--pri)] text-white border-[var(--pri)]'
+            className={`flex items-center gap-2 whitespace-nowrap px-3.5 py-1.5 rounded-full border text-xs font-bold transition-all cursor-pointer flex-shrink-0 ${
+              isCheckout
+                ? 'bg-[var(--pri)] text-white border-[var(--pri)] shadow-md shadow-[var(--pri)]/20'
                 : 'bg-[var(--surface)] border-[var(--ln)] text-[var(--tx)] hover:border-[var(--pri)]'
             }`}
           >
-            <ShoppingBag className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Giỏ hàng</span>
-            <span className="w-5 h-5 rounded-full bg-[var(--pri)] text-white text-[11px] font-mono-code flex items-center justify-center">
+            <ShoppingBag className="w-3.5 h-3.5 flex-shrink-0" />
+            <span className="inline whitespace-nowrap">Giỏ hàng</span>
+            <span className="w-5 h-5 rounded-full bg-[var(--pri)] text-white text-xs font-mono-code flex items-center justify-center flex-shrink-0">
               {totalCount}
             </span>
-          </button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Đóng menu điều hướng' : 'Mở menu điều hướng'}
-            aria-expanded={mobileMenuOpen}
-            className="md:hidden w-9 h-9 rounded-full flex items-center justify-center bg-[var(--surface)] border border-[var(--ln)] text-[var(--tx)] cursor-pointer"
+            aria-label={mobileMenuOpen ? 'Đóng menu' : 'Mở menu'}
+            className="lg:hidden w-9 h-9 rounded-full flex items-center justify-center bg-[var(--surface)] border border-[var(--ln)] text-[var(--tx)] cursor-pointer flex-shrink-0"
           >
             {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer (Using real <Link> items) */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[var(--surface)] border-b border-[var(--ln)] px-6 py-5 flex flex-col gap-4 shadow-2xl animate-in slide-in-from-top-4 duration-200">
-          <button
-            onClick={() => handleNavClick('storefront', 'laptop')}
-            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center"
+        <div className="lg:hidden bg-[var(--surface)] border-b border-[var(--ln)] px-6 py-5 flex flex-col gap-3 shadow-2xl animate-in slide-in-from-top-3 duration-200">
+          <Link
+            href="/xac-thuc"
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-full p-3 rounded-2xl bg-[var(--card)] border border-[var(--pri)]/40 flex items-center justify-between text-left cursor-pointer hover:border-[var(--pri)] transition-all mb-1"
           >
-            <span>Laptop đồ án &amp; IT</span>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-[var(--pri)]/15 text-[var(--pri)] flex items-center justify-center">
+                <User className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-[var(--tx)] block">
+                  {student.isVerified ? student.fullName || 'Tài khoản Sinh Viên' : 'Đăng nhập / Xác thực thẻ SV'}
+                </span>
+                <span className="text-xs text-[var(--ok)] font-medium">
+                  {student.isVerified ? '✓ Đã kích hoạt ưu đãi -5%' : 'Nhận mã giảm giá -5% toàn sàn'}
+                </span>
+              </div>
+            </div>
             <ArrowRight className="w-4 h-4 text-[var(--mu)]" />
-          </button>
-          <button
-            onClick={() => handleNavClick('storefront', 'tablet')}
-            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center"
+          </Link>
+
+          <Link
+            href="/laptop"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center whitespace-nowrap"
           >
-            <span>Tablet &amp; Bút cảm ứng</span>
+            <span>Laptop Đồ Án &amp; IT</span>
             <ArrowRight className="w-4 h-4 text-[var(--mu)]" />
-          </button>
-          <button
-            onClick={() => handleNavClick('storefront', 'audio')}
-            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center"
+          </Link>
+          <Link
+            href="/tablet"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center whitespace-nowrap"
           >
-            <span>Tai nghe &amp; Loa</span>
+            <span>Tablet &amp; Bút Cảm Ứng</span>
             <ArrowRight className="w-4 h-4 text-[var(--mu)]" />
-          </button>
-          <button
-            onClick={() => handleNavClick('storefront', 'accessory')}
-            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center"
+          </Link>
+          <Link
+            href="/audio"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center whitespace-nowrap"
           >
-            <span>Phụ kiện sinh viên</span>
+            <span>Tai Nghe &amp; Loa</span>
             <ArrowRight className="w-4 h-4 text-[var(--mu)]" />
-          </button>
-          <button
-            onClick={() => handleNavClick('auth')}
-            className="text-left py-2 font-medium text-[var(--warm)] flex justify-between items-center"
+          </Link>
+          <Link
+            href="/accessory"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-left py-2 font-medium text-[var(--tx)] border-b border-[var(--ln)] flex justify-between items-center whitespace-nowrap"
           >
-            <span>Đăng ký &amp; Xác thực Thẻ Sinh Viên (-5%)</span>
-            <ShieldCheck className="w-4 h-4 text-[var(--warm)]" />
-          </button>
+            <span>Phụ Kiện Sinh Viên</span>
+            <ArrowRight className="w-4 h-4 text-[var(--mu)]" />
+          </Link>
         </div>
       )}
     </header>

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 type Theme = 'dark' | 'light';
@@ -11,22 +13,35 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    const saved = localStorage.getItem('unigear_theme') as Theme;
-    return saved === 'light' ? 'light' : 'dark';
-  });
+  const [theme, setThemeState] = useState<Theme>('dark');
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('unigear_theme', theme);
-  }, [theme]);
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('unigear_theme') as Theme;
+      if (saved === 'light' || saved === 'dark') {
+        setThemeState(saved);
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    }
+  }, []);
 
   const toggleTheme = () => {
-    setThemeState((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    setThemeState((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      if (typeof window !== 'undefined') {
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('unigear_theme', next);
+      }
+      return next;
+    });
   };
 
   const setTheme = (t: Theme) => {
     setThemeState(t);
+    if (typeof window !== 'undefined') {
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('unigear_theme', t);
+    }
   };
 
   return (

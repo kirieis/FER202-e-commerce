@@ -1,0 +1,41 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="msi-mod-lid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="50%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="msi-mod-screen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="50%" stop-color="#0369A1" />
+      <stop offset="100%" stop-color="#0C4A6E" />
+    </linearGradient>
+    <filter id="msi-mod-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="15" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <g filter="url(#msi-mod-shadow)" transform="translate(50, 30)">
+    
+    <rect x="25" y="10" width="250" height="155" rx="6" fill="#0F172A" stroke="#475569" stroke-width="1.2" />
+    <rect x="29" y="14" width="242" height="147" rx="3" fill="url(#msi-mod-screen)" />
+    <text x="150" y="85" font-size="9" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" letter-spacing="2" text-anchor="middle">MSI MODERN 14</text>
+    <text x="150" y="98" font-size="7" fill="#E0F2FE" font-family="system-ui, sans-serif" opacity="0.85" text-anchor="middle">Mỏng nhẹ 1.4kg · Bàn phím có đèn LED trắng</text>
+
+    
+    <rect x="65" y="165" width="170" height="5" rx="2.5" fill="#475569" />
+
+    
+    <path d="M5 170 L295 170 L278 214 Q274 218 266 218 L34 218 Q26 218 22 214 Z" fill="url(#msi-mod-lid)" stroke="#475569" stroke-width="1.2" />
+
+    
+    <text x="258" y="179" font-size="6" fill="#94A3B8" font-family="sans-serif" font-weight="900" letter-spacing="1" text-anchor="middle">msi</text>
+
+    
+    <rect x="36" y="175" width="206" height="17" rx="2.5" fill="#090D14" stroke="#64748B" stroke-width="0.6" />
+    <line x1="40" y1="184" x2="238" y2="184" stroke="#FFFFFF" stroke-width="0.7" opacity="0.6" stroke-dasharray="5 2.5" />
+
+    
+    <rect x="115" y="196" width="70" height="16" rx="2.5" fill="#1E293B" stroke="#475569" stroke-width="0.8" />
+  </g>
+</svg>

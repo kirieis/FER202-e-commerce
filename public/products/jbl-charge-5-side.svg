@@ -1,0 +1,30 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="c5-side-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="50%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <filter id="c5-side-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <g filter="url(#c5-side-shadow)" transform="translate(110, 45)">
+    
+    <circle cx="90" cy="100" r="85" fill="url(#c5-side-body)" stroke="#475569" stroke-width="3" />
+
+    
+    <circle cx="90" cy="100" r="76" fill="#0F172A" stroke="#FF6B35" stroke-width="2.5" />
+
+    
+    <circle cx="90" cy="100" r="55" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <circle cx="90" cy="100" r="30" fill="#0F172A" stroke="#FF6B35" stroke-width="1" />
+
+    
+    <rect x="86" y="85" width="8" height="20" rx="3" fill="#FF6B35" />
+    <circle cx="90" cy="113" r="4" fill="#FF6B35" />
+
+    <text x="90" y="205" font-size="8" fill="#94A3B8" font-family="monospace" text-anchor="middle">JBL ORIGINAL PRO SOUND · IP67</text>
+  </g>
+</svg>

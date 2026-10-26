@@ -1,0 +1,35 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="msi-black" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#27272A" />
+      <stop offset="50%" stop-color="#18181B" />
+      <stop offset="100%" stop-color="#09090B" />
+    </linearGradient>
+    <linearGradient id="msi-red-screen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DC2626" />
+      <stop offset="50%" stop-color="#7F1D1D" />
+      <stop offset="100%" stop-color="#09090B" />
+    </linearGradient>
+    <filter id="msi-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <g filter="url(#msi-shadow)" transform="translate(50, 30)">
+    
+    <rect x="25" y="10" width="250" height="165" rx="8" fill="#09090B" stroke="#3F3F46" stroke-width="1.5" />
+    <rect x="30" y="15" width="240" height="155" rx="4" fill="url(#msi-red-screen)" />
+    
+    <path d="M40 160 L150 50 L260 160" stroke="#EF4444" stroke-width="2" fill="none" opacity="0.4" />
+
+    
+    <path d="M0 175 L300 175 L280 210 Q275 215 265 215 L35 215 Q25 215 20 210 Z" fill="url(#msi-black)" stroke="#27272A" stroke-width="1.5" />
+
+    
+    <rect x="35" y="179" width="230" height="18" rx="3" fill="#09090B" stroke="#EF4444" stroke-width="1" />
+    <text x="150" y="191" font-size="7" fill="#EF4444" font-family="monospace" font-weight="bold" text-anchor="middle">RED BACKLIT GAMING KEYBOARD</text>
+
+    
+    <rect x="120" y="200" width="60" height="10" rx="2" fill="#18181B" stroke="#3F3F46" stroke-width="0.8" />
+  </g>
+</svg>

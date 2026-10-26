@@ -1,0 +1,29 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="surf-ang-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2E8F0" />
+      <stop offset="50%" stop-color="#CBD5E1" />
+      <stop offset="100%" stop-color="#94A3B8" />
+    </linearGradient>
+    <linearGradient id="surf-ang-screen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <filter id="surf-ang-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <g filter="url(#surf-ang-shadow)" transform="translate(60, 30)">
+    
+    <polygon points="60,10 240,25 215,180 35,165" fill="#0F172A" stroke="#94A3B8" stroke-width="1.5" />
+    <polygon points="68,18 232,32 208,172 44,158" fill="url(#surf-ang-screen)" />
+
+    
+    <polygon points="35,165 215,180 270,225 70,210" fill="url(#surf-ang-body)" stroke="#CBD5E1" stroke-width="1.2" />
+
+    
+    <polygon points="50,172 205,185 245,210 90,197" fill="#64748B" opacity="0.35" />
+    <polygon points="120,200 180,205 190,218 130,213" fill="#F1F5F9" stroke="#94A3B8" stroke-width="0.8" />
+  </g>
+</svg>

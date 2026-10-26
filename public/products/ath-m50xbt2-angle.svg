@@ -1,0 +1,40 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ath-swivel-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D323E" />
+      <stop offset="50%" stop-color="#1B1E28" />
+      <stop offset="100%" stop-color="#0E1017" />
+    </linearGradient>
+    <linearGradient id="m50-silver-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1F5F9" />
+      <stop offset="50%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+    <filter id="m50-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <g filter="url(#m50-shadow)" transform="translate(90, 45)">
+    
+    <path d="M30 110 C 30 20, 190 20, 190 110" stroke="#1E232E" stroke-width="26" stroke-linecap="round" fill="none" />
+
+    
+    <g transform="translate(10, 95)">
+      <circle cx="50" cy="50" r="46" fill="url(#ath-swivel-body)" stroke="#334155" stroke-width="2" />
+      <circle cx="50" cy="50" r="32" fill="none" stroke="url(#m50-silver-ring)" stroke-width="3" />
+      <polygon points="50,40 42,55 58,55" fill="url(#m50-silver-ring)" />
+      <circle cx="50" cy="51" r="3" fill="#141822" />
+    </g>
+
+    
+    <g transform="translate(110, 95)">
+      <circle cx="50" cy="50" r="46" fill="url(#ath-swivel-body)" stroke="#334155" stroke-width="2" />
+      <circle cx="50" cy="50" r="32" fill="none" stroke="url(#m50-silver-ring)" stroke-width="3" />
+      <polygon points="50,40 42,55 58,55" fill="url(#m50-silver-ring)" />
+      <circle cx="50" cy="51" r="3" fill="#141822" />
+    </g>
+
+    <text x="110" y="215" font-size="8" fill="#64748B" font-family="monospace" text-anchor="middle">90° SWIVELING EARCUPS FOR DJ / STUDIO</text>
+  </g>
+</svg>

@@ -1,0 +1,40 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="m-side-leather" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#26272B" />
+      <stop offset="50%" stop-color="#191A1E" />
+      <stop offset="100%" stop-color="#0E0F12" />
+    </linearGradient>
+    <linearGradient id="m-brass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="50%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#92400E" />
+    </linearGradient>
+    <filter id="m-side-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <g filter="url(#m-side-shadow)" transform="translate(110, 45)">
+    
+    <rect x="75" y="0" width="30" height="70" rx="4" fill="#3F3F46" stroke="#71717A" stroke-width="1" />
+    <line x1="82" y1="10" x2="82" y2="60" stroke="#18181B" stroke-width="2" />
+    <line x1="98" y1="10" x2="98" y2="60" stroke="#18181B" stroke-width="2" />
+
+    
+    <rect x="15" y="65" width="150" height="130" rx="30" fill="#141518" stroke="#27272A" stroke-width="1.5" />
+
+    
+    <rect x="35" y="75" width="110" height="110" rx="24" fill="url(#m-side-leather)" stroke="#3F3F46" stroke-width="1.5" />
+
+    
+    <text x="90" y="135" font-size="18" fill="#F4F4F5" font-family="'Times New Roman', serif" font-style="italic" font-weight="bold" text-anchor="middle">Marshall</text>
+
+    
+    <circle cx="125" cy="165" r="10" fill="url(#m-brass)" stroke="#78350F" stroke-width="1" />
+    <circle cx="125" cy="165" r="4" fill="#B45309" />
+
+    
+    <text x="90" y="215" font-size="8" fill="#71717A" font-family="monospace" text-anchor="middle">80+ HOURS WIRELESS PLAYTIME</text>
+  </g>
+</svg>

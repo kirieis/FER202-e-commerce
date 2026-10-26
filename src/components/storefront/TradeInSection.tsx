@@ -114,6 +114,16 @@ export const TradeInSection: React.FC = () => {
             </ul>
           </div>
         </div>
+
+        {/* Disclaimer / Terms Link */}
+        <div className="mt-8 pt-4 border-t border-[var(--ln)] text-center">
+          <p className="text-xs text-[var(--mu)] leading-relaxed max-w-3xl mx-auto">
+            *Thời gian xét duyệt trả góp 5 phút do đối tác tài chính sinh viên thực hiện trong giờ làm việc. Báo giá thu cũ online 30 giây mang tính tham khảo và được chốt chuẩn xác sau khi kỹ thuật viên kiểm tra ngoại quan &amp; linh kiện thực tế. Xem thêm{' '}
+            <a href="/chinh-sach/tra-gop" className="text-[var(--tx)] underline hover:text-[var(--pri)] cursor-pointer">
+              Điều khoản thu cũ &amp; Quy định trả góp
+            </a>.
+          </p>
+        </div>
       </div>
     </section>
   );

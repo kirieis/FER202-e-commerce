@@ -1,9 +1,10 @@
 import React from 'react';
+import Link from 'next/link';
 import { Product } from '../../types';
 
 interface HeroBannerProps {
   flagshipProduct: Product;
-  onSelectProduct: (product: Product) => void;
+  onSelectProduct?: (product: Product) => void;
   onExploreCatalog: () => void;
   onExploreTradeIn: () => void;
 }
@@ -12,8 +13,10 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   flagshipProduct,
   onSelectProduct,
   onExploreCatalog,
-  onExploreTradeIn
+  onExploreTradeIn,
 }) => {
+  const productUrl = `/san-pham/${flagshipProduct.id}`;
+
   return (
     <>
       {/* Top Banner Tag */}
@@ -29,7 +32,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
           <span className="text-[var(--tx)]">Giá vừa ví sinh viên.</span>
         </h1>
         <p className="mt-5 text-sm sm:text-lg text-[var(--mu)] max-w-2xl leading-relaxed">
-          Kho 120+ thiết bị laptop, máy tính bảng, tai nghe và phụ kiện chính hãng tại UniGear. Hình ảnh thật chuẩn tách nền, hỗ trợ trả góp 0% và thu cũ đổi mới.
+          Kho 120+ thiết bị laptop, máy tính bảng, tai nghe và phụ kiện chính hãng tại UniGear. Bảo hành 1 đổi 1, hỗ trợ trả góp sinh viên 0% và thu cũ đổi mới.
         </p>
 
         {/* Hero CTAs */}
@@ -50,19 +53,17 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
           </button>
         </div>
 
-        {/* Hero Flagship Product Display */}
-        <div
-          role="button"
-          tabIndex={0}
-          onClick={() => onSelectProduct(flagshipProduct)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
+        {/* Hero Flagship Product Accessible Link */}
+        <Link
+          href={productUrl}
+          onClick={(e) => {
+            if (onSelectProduct) {
               e.preventDefault();
               onSelectProduct(flagshipProduct);
             }
           }}
-          className="mt-12 w-full max-w-4xl relative group cursor-pointer"
-          aria-label={`Xem chi tiết sản phẩm nổi bật ${flagshipProduct.name}`}
+          className="mt-12 w-full max-w-4xl relative group cursor-pointer block rounded-3xl focus:outline-none focus:ring-2 focus:ring-[var(--pri)]"
+          aria-label={`Xem cấu hình chi tiết sản phẩm nổi bật ${flagshipProduct.name}`}
         >
           {/* Ambient Glow */}
           <div className="absolute inset-0 bg-radial from-[var(--pri)]/35 via-[var(--warm)]/20 to-transparent blur-3xl opacity-75 group-hover:opacity-100 transition-opacity -z-10" />
@@ -71,18 +72,23 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
             <img
               src={flagshipProduct.imageUrl}
               alt={flagshipProduct.name}
+              width={640}
+              height={420}
               fetchPriority="high"
               className="w-full max-w-[640px] max-h-[380px] sm:max-h-[420px] object-contain drop-shadow-2xl group-hover:scale-[1.03] transition-transform duration-500"
             />
-            <div className="mt-6 font-mono-code text-xs sm:text-sm text-[var(--mu)] flex items-center gap-2">
+            <div className="mt-6 font-mono-code text-xs sm:text-sm text-[var(--mu)] flex flex-wrap items-center justify-center gap-2">
               <span className="font-bold text-[var(--tx)]">{flagshipProduct.name}</span>
               <span>
                 · từ {flagshipProduct.price.toLocaleString('vi-VN')}đ hoặc{' '}
-                {flagshipProduct.monthlyInstallment.toLocaleString('vi-VN')}đ/tháng (Click xem chi tiết)
+                {flagshipProduct.monthlyInstallment.toLocaleString('vi-VN')}đ/tháng (Kỳ hạn 12 tháng, 0% lãi)
+              </span>
+              <span className="text-[var(--pri-h)] font-semibold underline group-hover:text-[var(--pri)] transition-colors">
+                Xem cấu hình chi tiết →
               </span>
             </div>
           </div>
-        </div>
+        </Link>
       </section>
     </>
   );

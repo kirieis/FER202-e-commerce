@@ -90,7 +90,9 @@ export function searchProducts(query: string, opts?: SearchOptions): SearchResul
   const { tokens, categoryConstraint, minPrice, maxPrice, rawLower, interpretation, corrections } = parsed;
 
   const baseItems = opts?.products
-    ? opts.products.map((p) => INDEXED_PRODUCTS.find((ip) => ip.product === p)).filter((x): x is IndexedProduct => !!x)
+    ? opts.products
+        .map((p) => INDEXED_PRODUCTS.find((ip) => ip.product.id === p.id))
+        .filter((x): x is IndexedProduct => !!x)
     : INDEXED_PRODUCTS;
 
   const scored: { item: IndexedProduct; score: number }[] = [];

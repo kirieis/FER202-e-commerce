@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { CartItem, Product } from '../types';
 import { PRODUCTS } from '../data/products';
@@ -24,32 +26,39 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { student } = useStudent();
 
-  const [items, setItems] = useState<CartItem[]>(() => {
-    const saved = localStorage.getItem('unigear_cart');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) {
-          return parsed.map((item: any) => ({
-            ...item,
-            cartItemId:
-              item.cartItemId ||
-              getCartItemId(
-                item.product?.id || 'unknown',
-                item.selectedConfigId || 'default',
-                item.selectedColorId || 'default'
-              )
-          }));
-        }
-      } catch {
-        // fallback
-      }
-    }
-    return [];
-  });
+  const [items, setItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    localStorage.setItem('unigear_cart', JSON.stringify(items));
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('unigear_cart');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed)) {
+            setItems(
+              parsed.map((item: any) => ({
+                ...item,
+                cartItemId:
+                  item.cartItemId ||
+                  getCartItemId(
+                    item.product?.id || 'unknown',
+                    item.selectedConfigId || 'default',
+                    item.selectedColorId || 'default'
+                  )
+              }))
+            );
+          }
+        } catch {
+          // fallback
+        }
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('unigear_cart', JSON.stringify(items));
+    }
   }, [items]);
 
   const addToCart = (

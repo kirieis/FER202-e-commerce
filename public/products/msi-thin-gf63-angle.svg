@@ -1,0 +1,30 @@
+<svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="msi-ang-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#27272A" />
+      <stop offset="50%" stop-color="#18181B" />
+      <stop offset="100%" stop-color="#09090B" />
+    </linearGradient>
+    <linearGradient id="msi-ang-screen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DC2626" />
+      <stop offset="50%" stop-color="#7F1D1D" />
+      <stop offset="100%" stop-color="#09090B" />
+    </linearGradient>
+    <filter id="msi-ang-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <g filter="url(#msi-ang-shadow)" transform="translate(60, 30)">
+    
+    <polygon points="60,10 240,25 215,180 35,165" fill="#09090B" stroke="#3F3F46" stroke-width="1.5" />
+    <polygon points="68,18 232,32 208,172 44,158" fill="url(#msi-ang-screen)" />
+    <path d="M70 140 L160 50 L200 130" stroke="#EF4444" stroke-width="2" fill="none" opacity="0.5" />
+
+    
+    <polygon points="35,165 215,180 270,225 70,210" fill="url(#msi-ang-body)" stroke="#27272A" stroke-width="1.5" />
+
+    
+    <polygon points="50,172 205,185 245,210 90,197" fill="#09090B" stroke="#EF4444" stroke-width="1" />
+  </g>
+</svg>
