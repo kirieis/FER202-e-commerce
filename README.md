@@ -122,8 +122,13 @@ Toàn bộ lược đồ cơ sở dữ liệu được định nghĩa trong `sup
 ---
 
 ## 📁 Tài Liệu Thiết Kế (Design Mockups)
-Các bản vẽ thiết kế nguyên mẫu (Prototype UI Desktop 1440px, Mobile 390px, Dark/Light mode) được lưu trữ có tổ chức tại thư mục:
-* [`docs/design-mockups/`](./docs/design-mockups/)
+Các bản vẽ thiết kế nguyên mẫu UI được tổ chức gọn gàng chuẩn kebab-case tại thư mục [`docs/design-mockups/`](./docs/design-mockups/):
+* `storefront-desktop-1440px` & `storefront-mobile-390px`: Giao diện trang chủ Storefront đa kích thước.
+* `storefront-light-v1` & `storefront-light-v2`: Các biến thể giao diện Light Mode.
+* `product-detail-dark` & `product-detail-light`: Màn hình chi tiết sản phẩm (PDP).
+* `student-login-register`: Màn hình đăng nhập & đăng ký tài khoản sinh viên.
+* `student-verification-dark` & `student-verification-light`: Luồng xác thực thẻ sinh viên kèm AI OCR.
+* `checkout-dark` & `checkout-light`: Màn hình thanh toán và tóm tắt đơn hàng.
 
 ---
 
